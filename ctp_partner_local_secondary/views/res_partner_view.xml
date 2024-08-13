@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="view_form_res_partner_inherit" model="ir.ui.view">
+            <field name="name">res.partner.view.form.language.secondary</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']/parent::div" position="before">
+                    <div class="o_row">
+                        <field name="local_name" placeholder="Name in Local"/>
+                    </div>
+                </xpath>
+                <field name="vat" position="before">
+                    <label for="local_street" string="Address in Local"/>
+                    <div class="o_address_format">
+                        <field name="local_street" placeholder="Street in Local" class="o_address_street" readonly="type == 'contact' and parent_id != False"/>
+                        <field name="local_street2" placeholder="Street 2 in Local" class="o_address_street" readonly="type == 'contact' and parent_id != False"/>
+                        <field name="local_city" placeholder="City in Local" class="o_address_city" readonly="type == 'contact' and parent_id != False"/>
+                        <field name="local_state" placeholder="State in Local" class="o_address_local_state" readonly="type == 'contact' and parent_id != False"/>
+                        <field name="local_zip" class="o_address_zip" readonly="1" />
+                        <field name="local_country" placeholder="Country in Local" class="o_address_country" readonly="type == 'contact' and parent_id != False"/>
+                    </div>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

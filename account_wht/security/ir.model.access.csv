@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_wht_type_user,account.wht.type,model_account_wht_type,account.group_account_user,1,1,1,1
+access_account_wht_type_manager,account.wht.type,model_account_wht_type,account.group_account_manager,1,1,1,1
+access_account_wht_user,account.wht,model_account_wht,account.group_account_user,1,1,1,1
+access_account_wht_manager,account.wht,model_account_wht,account.group_account_manager,1,1,1,1
+access_account_wht_line_user,account.wht.line,model_account_wht_line,account.group_account_user,1,1,1,1
+access_account_wht_line_manager,account.wht.line,model_account_wht_line,account.group_account_manager,1,1,1,1
+access_account_wht_pnd_user,account.wht.pnd,model_account_wht_pnd,account.group_account_user,1,1,1,1
+access_account_wht_pnd_manager,account.wht.pnd,model_account_wht_pnd,account.group_account_manager,1,1,1,1
+access_wht_cerif_report_user,wht.cerif.report,model_wht_cerif_report,account.group_account_user,1,1,1,1
+access_jasper_create_data_pnd_manager,jasper.create.data.pnd,model_jasper_create_data_pnd,account.group_account_manager,1,1,1,1

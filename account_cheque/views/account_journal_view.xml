@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_journal_inherit_form" model="ir.ui.view">
+            <field name="name">account.journal.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='currency_id']" position="after">
+                    <field name="is_cheque"/>
+                    <field name="cheque_income_account_id"
+                        options="{'no_create':True, 'no_create_edit':True, 'no_open': True}"
+                        invisible="not is_cheque"
+                        required="is_cheque" />
+                    <field name="cheque_out_account_id"
+                        options="{'no_create':True, 'no_create_edit':True, 'no_open': True}"
+                        invisible="not is_cheque"
+                        required="is_cheque" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

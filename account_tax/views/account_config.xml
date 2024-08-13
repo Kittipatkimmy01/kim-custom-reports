@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_report_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.report.view.form.inherit.account.accountant</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//setting[@id='post_bank_transactions_and_payments_setting']" position="after">
+                    <setting string="Default Account Vat Report">
+                        <div class="content-group">
+                            <div class="row mt8">
+                                <label for="account_purchase_vat_report_id" string="Purchase Vat Report Account"/>
+                                <field name="account_purchase_vat_report_id"/>
+                            </div>
+                            <div class="row mt8">
+                                <label for="account_sale_vat_report_id" string="Sale Vat Report Account"/>
+                                <field name="account_sale_vat_report_id"/>
+                            </div>
+                        </div>
+                    </setting>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

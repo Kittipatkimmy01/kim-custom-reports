@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Add "Asset Category" to supplier invoices -->
+    <record model="ir.ui.view" id="view_res_partner_scr_demo">
+        <field name="name">res.partner.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="fax"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

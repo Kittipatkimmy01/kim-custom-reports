@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="report_invoice_document_inherit" model="ir.ui.view">
+            <field name="name">report.invoice.document.inherit</field>
+            <field name="type">qweb</field>
+            <field name="priority">9999</field>
+            <field name="inherit_id" ref="account.report_invoice_document"/>
+            <field name="arch" type="xml">
+                <xpath expr="//t[@t-call='account.document_tax_totals']" position="after">
+                    <!--WHT-->
+                    <t t-if="o.amount_wht > 0">
+                        <tr>
+                            <td>Withholding Tax</td>
+                            <td class="text-end">
+                                -<span t-field="o.amount_wht">00.00</span>
+                            </td>
+                        </tr>
+                        <tr class="fw-bold" t-att-style="'background-color: %s !important;color:#E9E9E9;' % o.company_id.primary_color">
+                            <td>Payment</td>
+                            <td class="text-end">
+                                <span t-field="o.amount_after_wht">11.05</span>
+                            </td>
+                        </tr>
+                    </t>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

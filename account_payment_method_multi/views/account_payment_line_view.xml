@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_payment_form" model="ir.ui.view">
+            <field name="name">account.payment</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account_payment.view_account_payment_form_inherit_payment"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_transaction_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[1]" position="after">
+                    <notebook>
+                        <page string="Invoice Line" name="invoice_line">
+                            <field name="invoice_line"  readonly="state != 'draft'" >
+                                <tree editable="bottom" >
+                                    <field name="invoice_id" domain = "[('state', '=', 'posted'),('amount_residual', '!=', 0),('partner_id','=', parent.partner_id)]" />
+                                    <field name="dute_date"/>
+                                    <field name="amount"/>
+                                    <field name="wht_total"/>
+                                    <field name="balance"/>
+                                    <field name="currency_id"/>
+                                    <field name="paid_amount" sum="All"/>
+                                    <button name="check_full" icon="fa-check text-success"  string="Full" type="object" class="oe_link" invisible="paid_amount != 0" />
+                                </tree>
+                            </field>
+                            <field name="payment_line" readonly="state != 'draft'" nolabel="1"  context="{'default_paid_total': invoice_total - amount}">
+                                <tree editable="bottom">
+                                    <field name="payment_method_id" />
+                                    <field name="bank_id"/>
+                                    <field name="payment_method_line_type" invisible="1" />
+                                    <!--field name="cheque_number" required="payment_method_line_type == 'cheque'" />
+                                    <field name="cheque_date" required="payment_method_line_type == 'cheque'"/-->
+                                    <field name="paid_total" sum="All"/>
+                                    <field name="wht_id" />
+                                    <!--field name="cheque_id" />
+                                    <button name="create_cheque"
+                                   string="Create Cheque" type="object"
+                                   icon="fa-pencil-square text-success" context="{'cheque_number': cheque_number}" attrs="{'invisible': [('cheque_number','=',False)]}"/-->
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <!--field name="amount" readonly="state != 'draft'" /-->
+                                <field name="other_amount"/>
+                                <field name='invoice_total'/>
+                                <field name='total_amount'/>
+                                </group>
+                            <div>
+                                <field name="comment" placeholder="Additional notes..."/>
+                            </div>
+                        </page>
+                    </notebook>
+                </xpath>
+                <xpath expr="//field[@name='payment_type']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='journal_id']" position="after">
+                       <field name="tax_invoice_number" invisible="payment_type == 'inbound'" />
+                       <field name="tax_invoice_date" invisible="payment_type == 'inbound'"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_bank_id']" position="after">
+                    <field name="is_cheque" invisible="1" />
+                    <field name="cheque_number" invisible="not is_cheque" required="is_cheque" />
+                    <field name="cheque_date" invisible="not is_cheque" required="is_cheque" />
+                    <field name="cheque_ids" class="oe_inline" widget="many2many_tags" invisible="not is_cheque"/>
+                </xpath>
+                <!--xpath expr="//button[@name='button_open_journal_entry']" position="attributes">
+                    <attribute name="invisible">state != 'posted'</attribute>
+                </xpath-->
+            </field>
+        </record>
+
+        <record id="view_account_payment_account_form" model="ir.ui.view">
+            <field name="name">account.payment.account</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='amount']" position="replace">
+                    <label for="total_amount" />
+                </xpath>
+                <xpath expr="//field[@name='amount']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='amount']" position="after">
+                    <field name="total_amount" />
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem id="account.menu_action_account_payments_receivable" name="Receipt" parent="account.menu_finance_receivables" sequence="15"/>
+
+        <record id="account.action_account_payments" model="ir.actions.act_window">
+            <field name="domain">[('payment_type', '=', 'inbound')]</field>
+        </record>
+
+        <record id="account.action_account_payments_payable" model="ir.actions.act_window">
+            <field name="domain">[('payment_type', '=', 'outbound')]</field>
+        </record>
+
+    </data>
+</odoo>

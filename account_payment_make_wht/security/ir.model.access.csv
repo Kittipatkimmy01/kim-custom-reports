@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payment_make_wht,payment.make.wht,model_payment_make_wht,account.group_account_user,1,1,1,1
+access_payment_make_wht_line,payment.make.wht.line,model_payment_make_wht_line,account.group_account_user,1,1,1,1
+access_wizard_clear_pnd54,access_wizard_clear_pnd54.report,model_wizard_clear_pnd54,account.group_account_user,1,1,1,1

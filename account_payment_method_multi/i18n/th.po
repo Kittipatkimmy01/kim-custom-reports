@@ -1,0 +1,270 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_payment_method_multi
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20170207\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-05 11:15+0000\n"
+"PO-Revision-Date: 2017-11-02 12:06+0700\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: th\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#. module: account_payment_method_multi
+#: model:ir.ui.view,arch_db:account_payment_method_multi.inherit_view_account_payment_form_inherit_payment
+msgid "All"
+msgstr "ทั้งหมด"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_invoice_total
+msgid "Amount Invoice"
+msgstr "ยอดเงินตามใบแจ้งหนี้"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_bank_id
+msgid "Bank"
+msgstr "ธนาคาร"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_cheque_id
+msgid "Cheque"
+msgstr "เช็ค"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment.py:230
+#: code:addons/account_payment_method_multi/models/account_payment.py:232
+#, python-format
+msgid "Configuration Error !"
+msgstr "Configuration Error !"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment.py:117
+#, python-format
+msgid "Counterpart"
+msgstr "Counterpart"
+
+#. module: account_payment_method_multi
+#: model:ir.ui.view,arch_db:account_payment_method_multi.inherit_view_account_payment_form_inherit_payment
+msgid "Create Cheque"
+msgstr "สร้างเช็ค"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_create_uid
+msgid "Created by"
+msgstr "สร้างโดย"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_create_date
+msgid "Created on"
+msgstr "สร้างเมื่อ"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_cheque_date
+msgid "Date"
+msgstr "วันที่"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_display_name
+msgid "Display Name"
+msgstr "ชื่อ"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment.py:102
+#, python-format
+msgid ""
+"Error!\n"
+"The paid amount over balance."
+msgstr ""
+"Error!\n"
+"จำนวนเงินจ่ายเกินกว่ายอดคงค้าง."
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_move_id
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_relate_move_id
+msgid "Journal Entry"
+msgstr "บันทึกบัญชี"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line___last_update
+msgid "Last Modified on"
+msgstr "แก้ไขครั้งสุดท้ายเมื่อ"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_write_uid
+msgid "Last Updated by"
+msgstr "อัพเดทครั้งสุดท้ายโดย"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_write_date
+msgid "Last Updated on"
+msgstr "อัพเดทครั้งสุดท้ายเมื่อ"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,help:account_payment_method_multi.field_account_payment_move_id
+#: model:ir.model.fields,help:account_payment_method_multi.field_account_payment_relate_move_id
+msgid "Link to the automatically generated Journal Items."
+msgstr "เชื่อมโยงไปยังรายการรายวันที่ถูกสร้างขึ้นอัตโนมัติ."
+
+#. module: account_payment_method_multi
+#: model:ir.ui.view,arch_db:account_payment_method_multi.inherit_view_account_payment_form_inherit_payment
+msgid "Memo"
+msgstr "หมายเหตุ"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_payment_method_id
+msgid "Method"
+msgstr "วิธีการ"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:60
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:66
+#, python-format
+msgid "No Bank Account!"
+msgstr "ไม่มีบัญชีธนาคาร!"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:51
+#, python-format
+msgid "No Bank!"
+msgstr "ไม่มีธนาคาร!"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:54
+#, python-format
+msgid "No Cheque number!"
+msgstr "ไม่มีเลขที่เช็ค!"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:56
+#, python-format
+msgid "No Date!"
+msgstr "ไม่มีวันที่!"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_cheque_number
+msgid "Number"
+msgstr "หมายเลข"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment.py:191
+#, python-format
+msgid "Only a draft payment can be posted. Trying to post a payment in state %s."
+msgstr "Only a draft payment can be posted. Trying to post a payment in state %s."
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_payment_id
+msgid "Payment"
+msgstr "การจ่ายเงิน"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_payment_line
+msgid "Payment Detail"
+msgstr "รายละเอียดการจ่ายเงิน"
+
+#. module: account_payment_method_multi
+#: model:ir.model,name:account_payment_method_multi.model_account_payment
+msgid "Payments"
+msgstr "การชำระ"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:60
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:66
+#, python-format
+msgid "Please insert Account for Bank"
+msgstr "โปรดใส่บัญชีธนาคาร"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:54
+#, python-format
+msgid "Please insert Cheque number"
+msgstr "โปรดใส่เลขที่เช็ค"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:51
+#, python-format
+msgid "Please insert bank"
+msgstr "โปรดใส่ธนาคาร"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:56
+#, python-format
+msgid "Please insert date   "
+msgstr "โปรดใส่วันที่   "
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:49
+#, python-format
+msgid "Sorry you have cheque"
+msgstr "ขออภัย มีเช็คแล้ว"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_tax_invoice_date
+msgid "Tax Invoice Date"
+msgstr "วันที่ใบกำกับภาษี"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_tax_invoice_number
+msgid "Tax Invoice Number"
+msgstr "เลขที่ใบกำกับภาษี"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment.py:230
+#, python-format
+msgid "The journal %s does not have a sequence, please specify one."
+msgstr "The journal %s does not have a sequence, please specify one."
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment.py:194
+#, python-format
+msgid "The payment cannot be processed because the invoice is not open!"
+msgstr "The payment cannot be processed because the invoice is not open!"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment.py:232
+#, python-format
+msgid "The sequence of journal %s is deactivated."
+msgstr "The sequence of journal %s is deactivated."
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_paid_total
+msgid "Total"
+msgstr "รวมทั้งหมด"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment.py:158
+#, python-format
+msgid "Transfer to %s"
+msgstr "Transfer to %s"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_line_wht_id
+msgid "WHT"
+msgstr "ภงด"
+
+#. module: account_payment_method_multi
+#: model:ir.model.fields,field_description:account_payment_method_multi.field_account_payment_wht_total
+msgid "WHT Total"
+msgstr "รวม ภาษีหัก ณ ที่จ่าย"
+
+#. module: account_payment_method_multi
+#: code:addons/account_payment_method_multi/models/account_payment_line.py:49
+#, python-format
+msgid "You have cheque alredy!"
+msgstr "มีเช็คเรียบร้อยแล้ว!"
+
+#. module: account_payment_method_multi
+#: model:ir.model,name:account_payment_method_multi.model_account_payment_line
+msgid "account.payment.line"
+msgstr "account.payment.line"

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.account.accountant</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='quick_edit_mode']" position="after">
+                <block title="WHT Setting Account" id="wht_acc_setting">
+                    <setting id="payment_method3_id" string="Payment WHT PND3">
+                        <field name="payment_method3_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                    </setting>
+                    <setting id="payment_method53_id" string="Payment WHT PND53">
+                        <field name="payment_method53_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                    </setting>
+                    <setting id="payment_method54_id" string="Payment WHT PND54">
+                        <field name="payment_method54_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                    </setting>
+                    <setting id="sale_method3_id" string="Sale WHT PND3">
+                        <field name="sale_method3_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                    </setting>
+                    <setting id="sale_method53_id" string="Sale WHT PND53">
+                        <field name="sale_method53_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                    </setting>
+                    <setting id="partner_wht_id" string="Partner WHT">
+                        <field name="partner_wht_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                    </setting>
+                </block>
+            </xpath>
+            <xpath expr="//setting[@id='post_bank_transactions_and_payments_setting']" position="after">
+                <setting string="PND54 default Account">
+                    <div class="content-group">
+                        <div class="row mt8">
+                            <label for="acc_pnd54_ext_id" string="PND54(EXP)"/>
+                            <field name="acc_pnd54_ext_id"/>
+                        </div>
+                        <div class="row mt8">
+                            <label for="acc_pnd54_ap_id" string="PND54(AP)"/>
+                            <field name="acc_pnd54_ap_id"/>
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

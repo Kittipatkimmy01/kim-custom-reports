@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_move_inherit_form" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_payments_widget']" position="replace"/>
+                <xpath expr="//field[@name='amount_residual']" position="replace"/>
+                
+                <xpath expr="//field[@name='tax_totals']" position="after">
+                    <div class="o_cell flex-grow-0 flex-sm-grow-0">
+                        <div class="o_field_widget o_readonly_modifier o_field_account-tax-totals-field">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="o_td_label"><label class="o_form_label o_tax_total_label" for="amount_wht">VAT 7%</label></td>
+                                        <td class="o_tax_group pe-0"><field name="amount_wht" nolabel="1" colspan="2"/></td>
+                                    </tr>
+                                    <tr style="background-color: #EE5414 !important; color:#E9E9E9;">
+                                        <td class="o_td_label"><label class="o_form_label o_tax_total_label" for="amount_after_wht">Total</label></td>
+                                        <td class="o_list_monetary pe-0"><field name="amount_after_wht" nolabel="1" colspan="2" class="oe_subtotal_footer_separator"/></td>
+                                    </tr>
+                                    <tr invisible="not invoice_payments_widget">
+                                        <td colspan="2" class="pt-3 pe-0"><field name="invoice_payments_widget" colspan="2" nolabel="1" widget="payment" style="white-space: nowrap;"/></td>
+                                    </tr>
+                                    <tr invisible="state == 'draft'">
+                                        <td class="o_td_label pt-3 pe-0"><label class="o_form_label o_form_label_readonly" for="amount_residual">Amount Due</label></td>
+                                        <td colspan="2" class="pt-3 pe-0"><field name="amount_residual" class="oe_subtotal_footer_separator"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </xpath>
+
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_subtotal']" position="before">
+                    <field name="wht_type" options="{'no_open': True, 'no_create': True}" readonly="0"/>
+                    <field name="total_wht"/>
+                </xpath>
+
+                <xpath expr="//field[@name='line_ids']/tree/field[@name='tax_line_id']" position="before">
+                    <field name="wht_type" invisible="1" />
+                </xpath>
+                
+                <xpath expr="//field[@name='line_ids']/tree" position="attributes">
+                    <attribute name="default_order"></attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

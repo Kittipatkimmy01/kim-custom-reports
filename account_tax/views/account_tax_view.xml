@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_tax_inherit_form" model="ir.ui.view">
+            <field name="name">account.tax.form</field>
+            <field name="model">account.tax</field>
+            <field name="inherit_id" ref="account.view_tax_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='country_id']" position="after">
+                    <field name="use_suspend_vat"/>
+                    <field name="tax_suspend_id" invisible="not use_suspend_vat" required="use_suspend_vat" />
+                    <field name="auto_usevat_so"/>
+                    <field name="auto_usevat_po"/>
+                    <field name="PP36"/>
+                    <field name="acc_vat36_id" invisible="not PP36" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

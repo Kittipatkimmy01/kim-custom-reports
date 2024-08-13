@@ -1,0 +1,156 @@
+.o_ctp_thai_tax_page, .o_withholding_tax_report_page {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.o_ctp_thai_tax_print {
+    font-size: 12px;
+}
+.act_as_table {
+    display: table !important;
+    background-color: #ffffff;
+}
+.act_as_row {
+    display: table-row !important;
+    page-break-inside: avoid;
+}
+.act_as_cell {
+    display: table-cell !important;
+    page-break-inside: avoid;
+}
+.act_as_thead {
+    display: table-header-group !important;
+}
+.act_as_tbody {
+    display: table-row-group !important;
+}
+.list_table,
+.data_table,
+.totals_table {
+    width: 100% !important;
+    font-size: 12px;
+}
+.act_as_row.labels {
+    background-color: #f0f0f0 !important;
+}
+.list_table,
+.data_table,
+.totals_table,
+.act_as_row,
+.list_table .act_as_row {
+    border-left: 0px;
+    border-right: 0px;
+    text-align: center;
+    font-size: 12px;
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-collapse: collapse;
+}
+.totals_table {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+.list_table .act_as_row.labels,
+.list_table .act_as_row.initial_balance,
+.list_table .act_as_row.lines {
+    border-color: #808080 !important;
+    border-bottom: 1px solid #d3d3d3 !important;
+}
+.data_table .act_as_cell {
+    border: 1px solid #d3d3d3;
+    text-align: center;
+}
+.data_table .act_as_cell,
+.list_table .act_as_cell,
+.totals_table .act_as_cell {
+    word-wrap: break-word;
+    font-size: 12px;
+    padding: 5px 3px;
+}
+.data_table .act_as_row.labels,
+.totals_table .act_as_row.labels {
+    font-weight: bold;
+    font-size: 12px;
+}
+.initial_balance .act_as_cell {
+    font-style: italic;
+}
+.account_title {
+    font-size: 12px;
+    font-weight: bold;
+}
+.account_title.labels {
+    background-color: #f0f0f0 !important;
+}
+.act_as_cell.amount {
+    word-wrap: normal;
+    text-align: right;
+    font-size: 12px;
+}
+.act_as_cell.left {
+    text-align: left;
+}
+.act_as_cell.right {
+    text-align: right;
+}
+.list_table .act_as_cell {
+    /*    border-right:1px solid lightGrey;  uncomment to active column lines */
+}
+.list_table .act_as_cell.first_column {
+    padding-left: 0px;
+    /*    border-left:1px solid lightGrey; uncomment to active column lines */
+}
+.overflow_ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.custom_footer {
+    font-size: 7px !important;
+}
+.page_break {
+    page-break-inside: avoid;
+}
+.button_row {
+    padding-bottom: 10px;
+}
+.o_l10n_th_tax_report_page {
+    padding-top: 10px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: Helvetica, Arial;
+}
+
+@media print {
+    .o_l10n_th_tax_report_print {
+       visibility: hidden;
+    }
+    .o_ctp_thai_tax_page, .o_withholding_tax_report_page {
+        margin-top: 0;
+    }
+    .table-borderless {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+    .list_table,
+    .data_table,
+    .totals_table,
+    .act_as_row,
+    .list_table .act_as_row {
+        padding-right: 1px;
+        padding-left: 1px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .data_table .act_as_cell,
+    .list_table .act_as_cell,
+    .totals_table .act_as_cell {
+        padding: 1px 0px;
+    }
+    .act_as_row.labels {
+        background-color: #dddddd !important;
+    }
+ }

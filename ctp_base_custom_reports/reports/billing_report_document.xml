@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="billing_report_document">
+        <div class="header">
+            <div class="row">
+                <div class="col-2 pe-2">
+                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height: 120px;" alt="Company Logo" class="float-left position-absolute"/>
+                </div>
+                <div class="col-7 ps-3" style="font-family: AngsanaNew;font-size:14px;">
+                    <strong>
+                        <span t-field="o.company_id.name"/>
+                    </strong>
+                    <br/>
+                    <t t-if="o.company_id.partner_id.branch">
+                        <t t-if="o.company_id.partner_id.branch == '00000'">
+                            <span>สาขา สำนักงานใหญ่</span>
+                        </t>
+                        <t t-if="o.company_id.partner_id.branch != '00000'">สาขา
+                            <span t-field="o.company_id.partner_id.branch"/>
+                        </t>
+                    </t>
+                    <t t-if="o.company_id.vat">รหัสประจำตัวผู้เสียภาษี :
+                        <span t-field="o.company_id.vat"/>
+                    </t>
+                    <br/>
+                    ที่อยู่ :
+                    <span t-if="o.company_id.partner_id.street" t-esc="o.company_id.partner_id.street"/>
+                    <br/>
+                    <span t-if="o.company_id.partner_id.street2" t-esc="o.company_id.partner_id.street2"/>
+                    <span t-if="o.company_id.partner_id.city" t-esc="o.company_id.partner_id.city"/>
+                    <span t-if="o.company_id.partner_id.state_id" t-esc="o.company_id.partner_id.state_id.name"/>
+                    <span t-if="o.company_id.partner_id.zip" t-esc="o.company_id.partner_id.zip"/>
+                    <span t-if="o.company_id.partner_id.country_id" t-esc="o.company_id.partner_id.country_id.name"/>
+                    <br/>
+                    <t t-if="o.company_id.phone">โทรศัพท์ :
+                        <span class="o_force_ltr" t-field="o.company_id.phone"/>
+                    </t>
+                    <t t-if="o.company_id.fax">แฟกซ์ :
+                        <span class="o_force_ltr" t-field="o.company_id.fax"/>
+                    </t>
+                    <br/>
+                    <t t-if="o.company_id.email">อีเมล์ :
+                        <span t-field="o.company_id.email"/>
+                    </t>
+                    <t t-if="o.company_id.website">เว็บไซต์ :
+                        <span t-field="o.company_id.website"/>
+                    </t>
+                </div>
+                <div class="col-3 pe-2 float-right text-right" style="width:max-content;font-family: AngsanaNew;font-size:14px;">
+                    <h2 class="w-100 text-center mx-3 p-3 border border-dark" style="border-radius: 10px;">
+                        <span>ใบวางบิล</span>
+                    </h2>
+                    <h3 class="w-100 text-center mx-3 p-3 border border-secondary"
+                        style="border-radius: 10px;">
+                        <span>ต้นฉบับ</span>
+                    </h3>
+                    <br/>
+                    <div class="text-muted w-100 text-center mx-3 p-3">
+                        Page:
+                        <span class="page"/>
+                        /
+                        <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page" style="font-family: AngsanaNew; font-size: 14px;">
+
+            <div class="row pb-2">
+                <div class="col-7 p-3">
+                    <strong>ลูกค้า</strong>
+                    <br/>
+                    ชื่อ :[<span t-field="o.partner_id.ref"/>]&amp;nbsp;<span t-field="o.partner_id.name"/>
+                    <br/>
+                    ที่อยู่
+                    <span t-if="o.partner_id.street" t-esc="o.partner_id.street"/>
+                    <br/>
+                    <span t-if="o.partner_id.street2" t-esc="o.partner_id.street2"/>
+                    <span t-if="o.partner_id.city" t-esc="o.partner_id.city"/>
+                    <span t-if="o.partner_id.state_id" t-esc="o.partner_id.state_id.name"/>
+                    <span t-if="o.partner_id.zip" t-esc="o.partner_id.zip"/>
+                    <span t-if="o.partner_id.country_id" t-esc="o.partner_id.country_id.name"/>
+                    <br/>
+                    เลขประจำตัวผู้เสียภาษี : <span t-if="o.partner_id.vat" t-esc="o.partner_id.vat"/>
+                    สาขา : <span t-if="o.partner_id.branch != '00000'" t-esc="o.partner_id.branch"/><span t-else="">สำนักงานใหญ่</span>
+                </div>
+                <div class="col-5 p-3">
+                     <strong>เลขที่เอกสาร</strong>:
+                    <span t-field="o.name"/>
+                    <br/>
+                     <strong>วันที่</strong>:
+                    <!--<span t-field="o.bill_date" t-options="{&quot;widget&quot;: &quot;date&quot;,&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>-->
+                    <br/>
+                     <strong>เงื่อนไขการชำระเงิน</strong>:
+                    <!--<span t-esc="o.get_payment_term()"/>-->
+                </div>
+            </div>
+            <table class="table table-bordered o_main_table border" width="100%">
+                <thead>
+                    <tr style="background-color:#E2DBC8;">
+                        <td class="text-center p-2">ลำดับ</td>
+                        <td class="text-center p-2">เลขที่ใบแจ้งหนี้</td>
+                        <td class="text-center p-2">วันที่ใบแจ้งหนี้</td>
+                        <td class="text-center p-2">กำหนดชำระ</td>
+<!--                        <td class="text-center p-2">อ้างอิง</td>-->
+                        <td class="text-center p-2">มูลค่าตามใบแจ้งหนี้</td>
+                        <td class="text-center p-2">มูลค่าวางบิล</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-set="sumall" t-value="0"/>
+                    <t t-set="line_index" t-value="0"/>
+                    <t t-set="lines" t-value="line"/>
+                    <!-- <t t-foreach="o.get_invoice_with_out_down_payment()" t-as="line"> -->
+<!--                    <t t-foreach="o.invoice_ids" t-as="line">-->
+<!--                            <tr>-->
+<!--                                <t t-set="line_index" t-value="line_index + 1"/>-->
+<!--                                <td width="5%" class="text-center p-2">-->
+<!--                                    <span t-esc="line_index"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-center">-->
+<!--                                    <span t-esc="line.name"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-center">-->
+<!--                                    <span t-field="line.invoice_date" t-options="{&quot;widget&quot;: &quot;date&quot;,&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-center">-->
+<!--                                    <span t-field="line.invoice_date_due" t-options="{&quot;widget&quot;: &quot;date&quot;,&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-center">-->
+<!--                                    <span t-field="line.ref"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-right p-2">-->
+<!--                                    <span t-esc="'{:,.2f}'.format(line.amount_total)"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-right p-2">-->
+<!--                                    <span t-esc="'{:,.2f}'.format(line.amount_residual)"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <t t-set="sumall" t-value="line.price_subtotal + sumall"/>-->
+<!--                        </t>-->
+                </tbody>
+            </table>
+            <table style="margin-top:0;" width="100%">
+                <tr class="border" style="height: 50px;vertical-align: middle;">
+                    <td/>
+                    <td style="vertical-align: middle;">
+                        <span>รวม
+                            <!--<t t-esc="len(o.invoice_ids)"/> รายการ-->
+                        </span>
+                    </td>
+                    <td/>
+                    <td style="vertical-align: middle;">
+                        <span>จำนวนเงิน
+                            <!--(<t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.bills_total))"/>)-->
+                        </span>
+                    </td>
+                    <td/>
+                    <td/>
+                    <td class="text-right" style="vertical-align: middle;">
+                        <span>
+                            <!--<t t-esc="'{0:,.2f}'.format(o.bills_total)"/>-->
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <strong>หมายเหตุ</strong>
+            </p>
+            <span style="width:max-content;font-family: AngsanaNew;font-size:14px;">
+                กรุณาโอนเงินเข้าบัญชี : บริษัท สยาม คริสตัล ไรซ์ จำกัด
+                <ul>
+                    <li>ธนาคารกรุงเทพ สาขาบางปะกง บัญชีออมทรัพย์ เลขที่ 386-4-09111-5</li>
+                    <li>ธนาคารกสิกรไทย สาขาบางปะกง บัญชีออมทรัพย์ เลขที่  318-2-52285-5</li>
+                    <li>ธนาคารกรุงเทพ สาขาบางน้ำเปรี้ยว บัญชีออมทรัพย์ เลขที่ 365-0-48500-0</li>
+                    <li>ธนาคารกสิกรไทย สาขาบางปะกง บัญชีออมทรัพย์ เลขที่ 026-1-86668-4</li>
+                    <li>ธนาคารไทยพาณิชย์ สาขานิคมอุตสาหกรรมเวลโกรว์ บัญชีออมทรัพย์ เลขที่  819-403597-3</li>
+                    <li>ธนาคารกรุงเทพ สาขาบางปะกง บัญชีออมทรัพย์ เลขที่ 386-4-31289-1</li>
+                    <li>ธนาคารกสิกรไทย สาขาบางปะกง บัญชีออมทรัพย์ เลขที่ 027-8-70255-3</li>
+                </ul>
+                หรือสั่งจ่ายเช็คขีดคร่อมและขีดฆ่าคำว่า "หรือผู้ถือ" ในนามบริษัท สยาม คริสตัล ไรซ์ จำกัด
+            </span>
+            </div>
+        <div class="footer last-page" style="font-family: AngsanaNew; font-size: 14px;">
+            <table class="table table-borderless" style="border-color:#FFF;width:100%;height:20%">
+                <tr style="background-color: #FFF;">
+                    <td class="text-center">ได้รับสินค้าตามรายการข้างต้นไว้ถูกต้องเรียบร้อยแล้ว</td>
+                    <td class="text-center">ผู้วางบิล</td>
+                </tr>
+                <tr style="background-color: #FFF;">
+                    <td/>
+                    <td class="text-center">
+                        <t t-if="o.create_uid.employee_ids">
+                                <img t-attf-src="data:image/png;base64,{{ o.create_uid.employee_ids[0].sudo().user_signature }}" style="max-width: 90px;"/>
+                            </t>
+                    </td>
+                </tr>
+                <tr class="text-left" style="background-color: #FFF;">
+                    <td>
+                            ชื่อผู้รับวางบิล...............................................
+                    </td>
+                    <td/>
+                </tr>
+
+                <tr style="background-color: #FFF;">
+                    <td class="text-left">
+                            วันที่รับ..........................................................
+                    </td>
+                    <td class="text-center">
+                        <span t-field="o.create_uid.name"/>
+                    </td>
+                </tr>
+                <tr style="background-color: #FFF;">
+                    <td class="text-left">
+                            วันที่นัดรับเช็ค...............................................
+                    </td>
+                    <td class="text-center">
+                        <span t-field="o.company_id.name"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+<!--        <p style="page-break-before:always;"/>-->
+    </template>
+
+    <template id="report_billing_report">
+        <t t-call="web.html_container">
+            <!--            <t t-call="web.external_layout">-->
+            <t t-foreach="docs" t-as="o">
+                <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                     t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <t t-set="lang" t-value="o.partner_id.lang"/>
+                    <t t-call="ctp_base_custom_reports.billing_report_document" t-lang="lang"/>
+                </div>
+            </t>
+            <!--            </t>-->
+        </t>
+    </template>
+
+    <record id="paperformat_billing_format" model="report.paperformat">
+        <field name="name">Billing Note Peper format</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">50</field>
+        <field name="margin_bottom">80</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">45</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="action_report_report_custom_billing" model="ir.actions.report">
+        <field name="name">Billing Note (PDF)</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ctp_base_custom_reports.report_billing_report</field>
+        <field name="report_file">ctp_base_custom_reports.report_billing_report</field>
+        <field name="binding_model_id" eval="ref('account.model_account_move')"/>
+        <field name="paperformat_id" ref="paperformat_billing_format"/>
+        <field name="print_report_name">'BL_ %s' % (object.name)</field>
+        <field name="binding_type">report</field>
+    </record>
+
+<!--    <report string="Billing Note (PDF)"-->
+<!--            id="action_report_report_scr_custom_billing"-->
+<!--            model="dtr.account.billing"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="scr_custom_form.report_billing_report"-->
+<!--            file="scr_custom_form.report_billing_report"-->
+<!--            paperformat="scr_custom_form.paperformat_billing_format"-->
+<!--            print_report_name="'BL_ %s' % (object.name)"/>-->
+</odoo>

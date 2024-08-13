@@ -1,0 +1,590 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <menuitem name="Thai Tax" parent="account_accountant.menu_accounting" 
+        id="menu_account_account" sequence="11"  />
+
+        <menuitem name="WHT" parent="menu_account_account"
+        id="menu_account_wht" sequence="1" />
+
+        <!-- WHT Type -->
+        <record model="ir.ui.view" id="account_wht_type_form">
+          <field name="name">account.wht.type.form</field>
+          <field name="model">account.wht.type</field>
+          <field name="arch" type="xml">
+                <form string="WHT Type" version="7.0">
+                    <header>
+                    </header>
+                    <sheet>
+    <group>
+    <group>
+
+                        <!--<label for="name" string="Description" />-->
+                        <field name="name" />
+
+                        <!--<label for="seq" string="Printed" />-->
+                        <field name="printed"/>
+                        <!--<label for="seq" string="Percentage" />-->
+                        <field name="percentage" />
+    </group>
+    </group>
+                    </sheet>
+                    <!-- 
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread" placeholder="Share a message..."/>
+                    </div>
+                     -->
+                </form>
+
+          </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_wht_type_tree">
+              <field name="name">account.wht.type.tree</field>
+              <field name="model">account.wht.type</field>
+              <field name="arch" type="xml">
+                <tree string="WHT Type">
+                    <field name="seq" />
+                    <field name="name"/>
+                    <field name="printed"/>
+                </tree>
+              </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_wht_type_filter">
+              <field name="name">account.wht.type.search</field>
+              <field name="model">account.wht.type</field>
+              <field name="arch" type="xml">
+                <search string="WHT Type">
+                    <field name="seq" />
+                      <field name="name" />
+                    <field name="printed" />
+                    <field name="percentage" />
+                </search>
+              </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="account_wht_type_action">
+            <field name="name">WHT Type</field>
+            <field name="res_model">account.wht.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="WHT Type" 
+            parent="menu_account_account" 
+            id="menu_account_wht_type" 
+            sequence="100" 
+            action="account_wht_type_action"/>
+
+        <!-- WHT -->
+        <record model="ir.ui.view" id="account_wht_form">
+              <field name="name">account.wht.form</field>
+              <field name="model">account.wht</field>
+              <field name="arch" type="xml">
+                <form string="With holding tax">
+                    <header>
+                        <button name="action_done" string="Done" type="object" class="oe_highlight" invisible="state != 'draft'" />
+                        <button name="action_cancel" string="Cancel" type="object" invisible="state not in ['draft','done']" />
+                        <button name="action_draft" string="Set Draft" type="object" invisible="state not in ['cancel','done']" />
+                        <!-- <button name="print_report_wht_certificate" string="Print WHT Certificate" type="object" class="oe_highlight" /> -->
+                        <button name="%(withholding_tax_pdf_report)d" string="Print WHT Certificate" type="action" class="oe_highlight" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,sent,invoiced,done" statusbar_colors='{"invoice_except":"red","waiting_date":"blue"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_payment"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="payment_count == 0" >
+                                <field name="payment_count" widget="statinfo" string="Payments"/>
+                            </button>
+                        </div>
+                        <h1>
+                            <label string="No." for="name" />
+                            <field name="name" readonly="1" />
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="partner_id" class="oe_inline"/>
+                                <field name="date_doc" />
+                                <field name="company_id" />
+                                <field name="currency_id"/>
+                                <field name="seq" />
+                            </group>
+                            <group>
+                                <field name="wht_type" required="1" />
+                                <field name="wht_kind" required="1" />
+                                <field name="wht_payment" required="1" />
+                                <field name="account_id" required="0" invisible="1" domain="[('account_wht','=',1)]"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Detail">
+                                <field name="line_ids" context="{'default_date_doc':date_doc,'default_wht_type_id':15}">
+                                    <tree string="WHT Lines">
+                                        <field name="date_doc" />
+                                        <field name="wht_type_id" />
+                                        <field name="type"/>
+                                        <field name="percent" />
+                                        <field name="base_amount" />
+                                        <field name="rounding"/>
+                                        <field name="tax"/>
+                                        <field name="tax_invoice" column_invisible="1"/>
+                                        <field name="note" />
+                                    </tree>
+                                    <form string="WHT Lines" version="7.0">
+                                        <group>
+                                            <group>
+                                                <field name="date_doc" />
+                                                <field name="wht_type_id" />
+                                                <field name="type"/>
+                                                <field name="note" />
+                                            </group>
+                                            <group>
+                                                <field name="percent" />
+                                                <field name="base_amount" />
+                                                <field name="rounding"/>
+                                                <field name="tax"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <group>
+                                        <field name="base_amount" readonly="1" />
+                                    </group>
+                                    <group>
+                                        <field name="tax" readonly="1" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Note">
+                                <field name="note" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread" placeholder="Share a message..."/>
+                    </div>
+                </form>
+
+              </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_wht_tree">
+            <field name="name">account.wht.tree</field>
+            <field name="model">account.wht</field>
+            <field name="arch" type="xml">
+            <tree string="With holding tax">
+                <field name="seq" />
+                <field name="name" />
+                <field name="date_doc" />
+                <field name="partner_id" />
+                <field name="wht_type" />
+                   <field name="wht_kind" />
+                  <field name="base_amount" sum="Total"/>
+                  <field name="tax" />
+                <field name="state"/>
+            </tree>
+            </field>
+        </record>
+
+        <!--record model="ir.ui.view" id="account_wht_search">
+              <field name="name">account.wht.search</field>
+              <field name="model">account.wht</field>
+              <field name="arch" type="xml">
+                <search string="With holding tax">
+                    <field name="name" />
+                    <field name="date_doc" />
+                    <field name="partner_id" />
+                    <field name="wht_type" />
+                       <field name="wht_kind" />
+                      <field name="base_amount" />
+                      <field name="tax" />
+                    <filter string="PP3" icon="terp-personal" domain="[('wht_kind','=','pp4')]" context=""/>
+                    <filter string="PP53" icon="terp-personal" domain="[('wht_kind','=','pp7')]" context=""/>
+                    <filter string="PP54" icon="terp-personal" domain="[('wht_kind','=','pp54')]" context=""/>
+                    <group string="Group By...">
+                        <filter string="Partner" icon="terp-personal" domain="" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Date" icon="terp-personal" domain="" context="{'group_by':'date_doc'}" /> 
+                    </group>
+                </search>
+              </field>
+        </record-->
+
+        <record model="ir.actions.act_window" id="account_wht_action_customer">
+            <field name="name">WHT - Customer</field>
+            <field name="res_model">account.wht</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('wht_type','=','sale')]</field>
+            <field name="context">{'default_wht_type': 'sale'}</field>
+        </record>
+
+        <menuitem name="WHT - Customer" 
+            id="menu_account_wht_customer" 
+            parent="menu_account_wht" 
+            sequence="10" 
+            action="account_wht_action_customer"/>
+
+        <record model="ir.actions.act_window" id="account_wht_action_supplier">
+            <field name="name">WHT - Supplier</field>
+            <field name="res_model">account.wht</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('wht_type','=','purchase')]</field>
+            <field name="context">{'default_wht_type': 'purchase'}</field>
+        </record>
+
+        <menuitem name="WHT - Supplier" 
+            id="menu_account_wht_supplier" 
+            parent="menu_account_wht" 
+            sequence="20" 
+            action="account_wht_action_supplier"/>
+
+        <record model="ir.ui.view" id="account_wht_pnd_form">
+              <field name="name">account.wht.pnd.form</field>
+              <field name="model">account.wht.pnd</field>
+              <field name="arch" type="xml">
+
+                <form string="WHT PND">
+                    <header>
+                        <button name="%(action_jasper_create_date_template)d" string="Print PND3 text file" type="action" />
+                        <!--button name="print_report_wht_pnd" string="Print PND - PDF" type="object" class="oe_highlight" />
+                        <button name="print_report_wht_pnd_attach" string="Print PND Attach - PDF" type="object" class="oe_highlight" /-->
+                    </header>
+
+                    <sheet>
+                        <h1>
+                            <label string="No." for="name" />
+                            <field name="name" />
+                        </h1>
+                        <group>
+                            <group>
+                                <!--<field name="period_tax_id" required="1"/>-->
+                                <field name="date_pnd"/>
+                                <field name="type_normal" />
+                                <field name="type_special" />
+                                <field name="type_no" />
+                                <field name="company_id" />
+                            </group>
+                            <group>
+                                <field name="section_3" />
+                                <field name="section_48" invisible="pnd_type != 'pp4'"/>
+                                <field name="section_50" invisible="pnd_type != 'pp4'"/>
+                                <field name="section_65" invisible="pnd_type != 'pp7'"/>
+                                <field name="section_69" invisible="pnd_type != 'pp7'"/>
+                                <field name="pnd_type" invisible="1"/>
+                                <field name="attach_pnd" />
+                                <field name="attach_count"/>
+                                <field name="attach_no"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Detail">
+                                <field name="wht_ids" domain="[('pnd_ids', '=', False),('wht_type','=','purchase'),('wht_kind','=','pp4'),('state','=','done')]">
+                                    <tree string="WHT PND3 Lines">
+                                        <field name="name" />
+                                        <field name="date_doc" />
+                                        <field name="partner_id" />
+                                        <field name="base_amount" />
+                                        <field name="tax" />
+                                    </tree>
+                                </field>
+                                <group>
+                                    <group>
+                                    </group>
+                                    <group>
+                                        <field name="total_amount"  readonly="1" />
+                                        <field name="total_tax"     readonly="1" />
+                                        <field name="add_amount"/>
+                                        <field name="total_tax_send" readonly="1" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Note">
+                                <field name="note" nolabel="1"/>
+                            </page>
+                        </notebook>
+                        <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread" placeholder="Share a message..."/>
+                    </div>
+                    </sheet>
+                </form>
+              </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_wht_pnd_tree">
+              <field name="name">account.wht.pnd.tree</field>
+              <field name="model">account.wht.pnd</field>
+              <field name="arch" type="xml">
+                <tree string="With holding tax PND">
+                    <field name="name" />
+                    <!--<field name="period_tax_id" />-->
+                    <field name="date_pnd" />
+                       <field name="total_amount" />
+                    <field name="total_tax" />
+                      <field name="add_amount" />
+                      <field name="total_tax_send" />
+                </tree>
+              </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_wht_pnd53_tree">
+              <field name="name">account.wht.pnd53.tree</field>
+              <field name="model">account.wht.pnd</field>
+              <field name="arch" type="xml">
+                <tree string="With holding tax PND">
+                    <field name="name" />
+                    <!--<field name="period_tax_id" />-->
+                    <field name="date_pnd" />
+                       <field name="total_amount" />
+                    <field name="total_tax" />
+                      <field name="add_amount" />
+                      <field name="total_tax_send" />
+                </tree>
+              </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_wht_pnd53_form">
+              <field name="name">account.wht.pnd53.form</field>
+              <field name="model">account.wht.pnd</field>
+              <field name="arch" type="xml">
+                <form string="WHT PND" >
+                     <header>
+                        <button name="%(action_jasper_create_date_template)d" string="Print PND53 text file" type="action" />
+                        <!--button name="print_report_wht_pnd" string="Print PND - PDF" type="object" class="oe_highlight" />
+                        <button name="print_report_wht_pnd_attach" string="Print PND Attach - PDF" type="object" class="oe_highlight" /-->
+                    </header>
+                    <sheet>
+                        <h1>
+                            <label string="No." for="name" />
+                            <field name="name" />
+                        </h1>
+                        <group>
+                            <group>
+                                <!--<field name="period_tax_id" required="1"/>-->
+                                <field name="date_pnd"/>
+                                <field name="type_normal" />
+                                <field name="type_special" />
+                                <field name="type_no" />
+                                <field name="company_id" />
+                            </group>
+                            <group>
+                                <field name="section_3" />
+                                <field name="section_48" invisible="pnd_type != 'pp4'"/>
+                                <field name="section_50" invisible="pnd_type != 'pp4'"/>
+                                <field name="section_65" invisible="pnd_type != 'pp7'"/>
+                                <field name="section_69" invisible="pnd_type != 'pp7'"/>
+                                <field name="pnd_type" invisible="1"/>
+                                <field name="attach_pnd" />
+                                <field name="attach_count"/>
+                                <field name="attach_no"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Detail">
+                                <field name="wht_ids" domain="[('pnd_ids', '=', False),('wht_type','=','purchase'),('wht_kind','=','pp7'),('state','=','done')]">
+                                    <tree string="WHT PND53 Lines">
+                                        <field name="name" />
+                                        <field name="date_doc" />
+                                        <field name="partner_id" />
+                                        <field name="base_amount" />
+                                        <field name="tax" />
+                                    </tree>
+                                </field>
+                                <group>
+                                    <group>
+                                    </group>
+                                    <group>
+                                        <field name="total_amount"  readonly="1" />
+                                        <field name="total_tax"     readonly="1" />
+                                        <field name="add_amount"/>
+                                        <field name="total_tax_send" readonly="1" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Note">
+                                <field name="note" nolabel="1"/>
+                            </page>
+                        </notebook>
+                        <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread" placeholder="Share a message..."/>
+                    </div>
+                    </sheet>
+                </form>
+              </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_wht_pnd54_form">
+            <field name="name">account.wht.pnd54.form</field>
+            <field name="model">account.wht.pnd</field>
+            <field name="arch" type="xml">
+                <form string="WHT PND" >
+                     <header>
+                        <button name="%(action_jasper_create_date_template)d" string="Print PND54" type="action" />
+                        <button name="print_report_wht_pnd" string="Print PND - PDF" type="object" class="oe_highlight" />
+                     </header>
+                    <sheet>
+                        <h1>
+                            <label string="No." for="name" />
+                            <field name="name" />
+                        </h1>
+                        <group>
+                            <group>
+                                <!--<field name="period_tax_id" required="1"/>-->
+                                <field name="date_pnd"/>
+                                <field name="type_normal" />
+                                <field name="type_special" />
+                                <field name="type_of_income" required="1" />
+                                <field name="type_no" />
+                                <field name="company_id" />
+                            </group>
+                            <group>
+                                <field name="section_3" />
+                                <field name="pnd_type" invisible="1"/>
+                                <field name="attach_pnd" />
+                                <field name="attach_count"/>
+                                <field name="attach_no"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Detail">
+                                <field name="wht_ids" domain="[('pnd_ids', '=', False),('wht_type','=','purchase'),('wht_kind','=','pp54'),('state','=','done')]">
+                                    <tree string="WHT PND54 Lines">
+                                        <field name="name" />
+                                        <field name="date_doc" />
+                                        <field name="partner_id" />
+                                        <field name="base_amount" />
+                                        <field name="tax" />
+                                    </tree>
+                                </field>
+                                <group>
+                                    <group>
+                                    </group>
+                                    <group>
+                                        <field name="total_amount"  readonly="1" />
+                                        <field name="total_tax" readonly="1" />
+                                        <field name="add_amount"/>
+                                        <field name="total_tax_send" readonly="1" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Note">
+                                <field name="note" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="account_wht_pnd_action">
+            <field name="name">PND3</field>
+            <field name="res_model">account.wht.pnd</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('pnd_type','=','pp4')]</field>
+            <field name="context">{'default_pnd_type': 'pp4','pnd_type': 'pp4'}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="account_wht_pnd_action_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account_wht_pnd_tree"/>
+            <field name="act_window_id" ref="account_wht_pnd_action"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="account_wht_pnd_action_from">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_wht_pnd_form"/>
+            <field name="act_window_id" ref="account_wht_pnd_action"/>
+        </record>
+
+        <menuitem name="PND3"
+            id="menu_account_wht_pnd"
+            parent="menu_account_account"
+            sequence="10"
+            action="account_wht_pnd_action"/>
+
+
+        <record model="ir.actions.act_window" id="account_wht_pnd_action53">
+            <field name="name">PND53</field>
+            <field name="res_model">account.wht.pnd</field>
+            <field name="view_id" ref="account_wht_pnd_tree"/>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('pnd_type','=','pp7')]</field>
+            <field name="context">{'default_pnd_type': 'pp7','pnd_type': 'pp7'}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="account_wht_pnd_action53_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account_wht_pnd53_tree"/>
+            <field name="act_window_id" ref="account_wht_pnd_action53"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="account_wht_pnd_action53_from">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_wht_pnd53_form"/>
+            <field name="act_window_id" ref="account_wht_pnd_action53"/>
+        </record>
+
+        <menuitem name="PND53" 
+            id="menu_account_wht_pnd53"
+            parent="menu_account_account"
+            sequence="11"
+            action="account_wht_pnd_action53"/>
+
+        <record model="ir.actions.act_window" id="account_wht_pnd_action54">
+            <field name="name">PND54</field>
+            <field name="res_model">account.wht.pnd</field>
+            <field name="view_id" ref="account_wht_pnd_tree"/>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('pnd_type','=','pp54')]</field>
+            <field name="context">{'default_pnd_type': 'pp54','pnd_type': 'pp54'}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="account_wht_pnd_action54_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account_wht_pnd53_tree"/>
+            <field name="act_window_id" ref="account_wht_pnd_action54"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="account_wht_pnd_action54_from">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_wht_pnd54_form"/>
+            <field name="act_window_id" ref="account_wht_pnd_action54"/>
+        </record>
+
+        <!--menuitem name="PND54"
+            id="menu_account_wht_pnd54"
+            parent="menu_account_account"
+            sequence="11"
+            action="account_wht_pnd_action54"/-->
+
+        <record model="ir.ui.view" id="view_account_account_account_form">
+            <field name="name">account.account.account.form</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+                <field name="account_type" position="after">
+                    <field name="account_wht" />
+                </field>
+            </field>
+        </record>
+        <!--report id="report_wht_certif"         report_type="pdf"         model="account.wht"         name="wht.certif"         string="Withholding Tax Certificate"  menu="False"
+                header="False"/>
+        <report id="report_wht_pnd3"         report_type="pdf"         model="account.wht.pnd"     name="wht.pnd3"         string="PND 3"  menu="False"
+                header="False"/>
+        <report id="report_wht_pnd3_attach" report_type="pdf"         model="account.wht.pnd"     name="wht.pnd3.attach"     string="PND3 Attach"  menu="False"
+                header="False"/>
+        <report id="report_wht_pnd53"         report_type="pdf"         model="account.wht.pnd"     name="wht.pnd53"         string="PND 53"  menu="False"
+                header="False"/>
+        <report id="report_wht_pnd53_attach" report_type="pdf"         model="account.wht.pnd"     name="wht.pnd53.attach" string="PND53 Attach"  menu="False"
+                header="False"/>
+        <report id="report_wht_pnd54" report_type="pdf"         model="account.wht.pnd"     name="wht.pnd54" string="PND54"  menu="False"
+                header="False"/-->
+    </data>
+</odoo>

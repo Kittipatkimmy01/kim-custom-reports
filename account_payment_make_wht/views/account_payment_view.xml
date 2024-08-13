@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_payment_inherit_form" model="ir.ui.view">
+            <field name="name">account.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="pnd54" invisible="1" />
+                    <field name="move_pnd54_id" readonly="1" invisible="pnd54_state != 'cleared'" />
+                </xpath>
+                <xpath expr="//field[@name='state']" position="before">
+                    <field name="pnd54_state" invisible="1" />
+                    <button name="clear_pnd54" string="Clear PND54" invisible="state != 'posted' or not pnd54 or pnd54_state in ('none','cleared')" type="object" />
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="account_payment_pnd54_action">
+            <field name="name">Payment PND54</field>
+            <field name="res_model">account.payment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('pnd54','=',True)]</field>
+            <field name="context">{'create': False}</field>
+        </record>
+
+        <menuitem name="Payment PND54"
+            id="menu_account_payment_pnd54"
+            parent="account_wht.menu_account_wht"
+            sequence="30"
+            action="account_payment_pnd54_action"/>
+
+    </data>
+</odoo>

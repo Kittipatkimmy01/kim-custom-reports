@@ -1,0 +1,42 @@
+# -*- coding: utf-8 -*-
+{
+    "name": "Cybernetics+ Account Tax",
+    "description": """Cybernetics+ Account Tax """,
+    "summary": "",
+    "category": "Accounting/Accounting",
+    "version": "17.0",
+    "author": "Cybernetics+",
+    "company": "",
+    "maintainer": "",
+    "website": "https://www.cybernetics.plus",
+    "depends": [
+        "base",
+        "web",
+        "account",
+        "account_reports",
+        "account_payment",
+        "account_payment_method_multi",
+    ],
+    "data": [
+        "security/ir.model.access.csv",
+        "wizard/wizard_purcahse_vat_report_view.xml",
+        "wizard/wizard_sale_vat_report_view.xml",
+        "wizard/wizard_clear_pp36_view.xml",
+        "views/account_config.xml",
+        # "views/sale_order.xml",
+        "views/account_tax_view.xml",
+        "views/account_move_view.xml",
+#         "views/account_journal_view.xml",
+#         "views/account_pp30_view.xml",
+        "views/account_payment_view.xml",
+        "views/res_partner_view.xml.xml",
+    ],
+    "assets": {
+    },
+    "images": [
+    ],
+    "license": "LGPL-3",
+    "installable": True,
+    "application": False,
+    "auto_install": False,
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="view_form_res_company_inherit" model="ir.ui.view">
+            <field name="name">res.company.view.form.language.secondary</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//h1[1]" position="after">
+                    <div class="o_row">
+                        <field name="local_name" placeholder="Name in Local"/>
+                    </div>
+                </xpath>
+                <xpath expr="//div[@class='o_address_format']" position="after">
+                    <label for="local_street" string="Address in Local"/>
+                    <div class="o_address_format">
+                        <field name="local_street" placeholder="Street in Local" readonly="parent_id != False" class="o_address_street"/>
+                        <field name="local_street2" placeholder="Street 2 in Local" readonly="parent_id != False" class="o_address_street"/>
+                        <field name="local_city" placeholder="City in Local" readonly="parent_id != False" class="o_address_city"/>
+                        <field name="local_state" placeholder="State in Local" readonly="parent_id != False" class="o_address_local_state"/>
+                        <field name="local_zip" class="o_address_zip" readonly="1" />
+                        <field name="local_country" placeholder="Country in Local" readonly="parent_id != False" class="o_address_country"/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

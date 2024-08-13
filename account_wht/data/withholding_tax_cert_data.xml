@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="withholding_tax_pdf_report" model="ir.actions.report">
+            <field name="name">WHT Certificates (pdf)</field>
+            <field name="model">account.wht</field>
+            <field name="report_name">account_wht.wt_cert_form</field>
+            <field name="report_file">account_wht.wt_cert_form</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="print_report_name">'WHT - %s' % (object.name or '')</field>
+            <field name="paperformat_id" ref="account_wht.paperformat_withholding_tax" />
+            <field name="binding_model_id" ref="model_account_wht" />
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

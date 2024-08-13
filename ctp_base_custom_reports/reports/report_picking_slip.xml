@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <template id="report_picking_extend_lot" inherit_id="stock.report_picking" priority="99" primary="True">
+         <xpath expr="//th[@name='th_serial_number']" position="attributes">
+            <attribute name="style">width: 30%;</attribute>
+            <attribute name="class" add="lot-serial-column" separator=" "/>
+        </xpath>
+     </template>
+
+<!--    <template id="assets_common_inherited" inherit_id="web.report_assets_common">-->
+<!--        <xpath expr="." position="inside">-->
+<!--            <style>-->
+<!--                .lot-serial-column {-->
+<!--                    width: 30%;-->
+<!--                    max-width: 200px;-->
+<!--                    word-wrap: break-word;-->
+<!--                }-->
+<!--            </style>-->
+<!--        </xpath>-->
+<!--    </template>-->
+</odoo>

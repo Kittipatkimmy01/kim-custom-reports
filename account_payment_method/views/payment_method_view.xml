@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_payment_method_view_form" model="ir.ui.view">
+            <field name="name">Payment Method Form</field>
+            <field name="model">account.payment.method.multi</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="type"/>
+                            <field name="account_id"/>
+                            <field name="parent_id" domain="[('parent_id', '=', False)]" />
+                            <field name="percent" />
+                            <field name="put_select_account" required="type == 'wht'" invisible="type != 'wht'" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_payment_method_view_tree" model="ir.ui.view">
+            <field name="name">Payment Method</field>
+            <field name="model">account.payment.method.multi</field>
+            <field name="arch" type="xml">
+                <tree string="Payment method" editable="bottom" >
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="account_id"/>
+                    <field name="parent_id" domain="[('parent_id', '=', False)]" />
+                    <field name="percent" />
+                    <field name="put_select_account" required="type == 'wht'" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_payment_method" model="ir.actions.act_window">
+            <field name="name">Payment Method</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.payment.method.multi</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="account_payment_method_view_tree"/>
+        </record>
+        <menuitem action="action_payment_method" id="menu_account_payment_method" parent="account.account_account_menu" sequence="6"/>
+
+    </data>
+</odoo>

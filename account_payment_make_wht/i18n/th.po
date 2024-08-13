@@ -1,0 +1,258 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_payment_make_wht
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20170207\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-05 11:14+0000\n"
+"PO-Revision-Date: 2017-11-02 12:08+0700\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: th\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#. module: account_payment_make_wht
+#: selection:payment.make.wht,wht_payment:0
+msgid "(1) With holding tax"
+msgstr "(1) ภาษีหัก ณ ที่จ่าย"
+
+#. module: account_payment_make_wht
+#: selection:payment.make.wht,wht_payment:0
+msgid "(2) Forever"
+msgstr "(2) ตลอดไป"
+
+#. module: account_payment_make_wht
+#: selection:payment.make.wht,wht_payment:0
+msgid "(3) Once"
+msgstr "(3) ครั้งเดียว"
+
+#. module: account_payment_make_wht
+#: selection:payment.make.wht,wht_payment:0
+msgid "(4) Other"
+msgstr "(4) อื่นๆ"
+
+#. module: account_payment_make_wht
+#: selection:payment.make.wht,wht_kind:0
+msgid "(4) PP3"
+msgstr "(4) ภ.พ.3"
+
+#. module: account_payment_make_wht
+#: selection:payment.make.wht,wht_kind:0
+msgid "(7) PP53"
+msgstr "(7) ภ.พ.53"
+
+#. module: account_payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.view_account_config_wht_settings
+msgid "Apply"
+msgstr "นำไปใช้"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_wht_base
+msgid "Base"
+msgstr "พื้นฐาน"
+
+#. module: account_payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.view_account_config_wht_settings
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#. module: account_payment_make_wht
+#: model:ir.actions.act_window,name:account_payment_make_wht.action_account_wht_config
+msgid "Configure Accounting"
+msgstr "ตั้งค่าระบบบัญชี"
+
+#. module: account_payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.payment_make_wht
+msgid "Create"
+msgstr "สร้าง"
+
+#. module: account_payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.payment_make_wht
+msgid "Create WHT"
+msgstr "สร้างภาษีหัก ณ ที่จ่าย"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht_create_uid
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_create_uid
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_create_uid
+msgid "Created by"
+msgstr "สร้างโดย"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht_create_date
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_create_date
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_create_date
+msgid "Created on"
+msgstr "สร้างเมื่อ"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht_display_name
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_display_name
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_display_name
+msgid "Display Name"
+msgstr "ชื่อที่ใช้แสดง"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_date_doc
+msgid "Document Date"
+msgstr "วันที่เอกสาร"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht_id
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_id
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_invoice_id
+msgid "Invoice"
+msgstr "ใบแจ้งหนี้"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht___last_update
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht___last_update
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line___last_update
+msgid "Last Modified on"
+msgstr "แก้ไขครั้งสุดท้ายเมื่อ"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht_write_uid
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_write_uid
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_write_uid
+msgid "Last Updated by"
+msgstr "อัพเดทครั้งสุดท้ายโดย"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht_write_date
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_write_date
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_write_date
+msgid "Last Updated on"
+msgstr "อัพเดทครั้งสุดท้ายเมื่อ"
+
+#. module: account_payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.inherited_view_purchase_receipt_form
+#: model:ir.ui.view,arch_db:account_payment_make_wht.inherited_view_sale_receipt_form
+#: model:ir.ui.view,arch_db:account_payment_make_wht.view_account_advance_form
+#: model:ir.ui.view,arch_db:account_payment_make_wht.view_account_payment_form
+#: model:ir.ui.view,arch_db:account_payment_make_wht.view_account_petty_payment_form
+msgid "Make WHT"
+msgstr "สร้างภาษีหัก ณ ที่จ่าย"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_note
+msgid "Note"
+msgstr "โน้ต"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_payment_method_id
+msgid "Payment WHT"
+msgstr "การจ่ายภาษีหัก ณ ที่จ่าย"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht_default_payment_method3_id
+msgid "Payment WHT PP3"
+msgstr "การจ่ายภาษีหัก ณ ที่จ่าย ภ.พ.3"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht_default_payment_method53_id
+msgid "Payment WHT PP53"
+msgstr "การจ่ายภาษีหัก ณ ที่จ่าย ภ.พ.53"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_wht_rate
+msgid "Rate"
+msgstr "อัตรา"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht_default_sale_method3_id
+msgid "Sale WHT PP3"
+msgstr "ภาษีถูกหัก ณ ที่จ่าย ภ.พ.3"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_account_config_wht_default_sale_method53_id
+msgid "Sale WHT PP53"
+msgstr "ภาษีถูกหัก ณ ที่จ่าย ภ.พ.53"
+
+#. module: account_payment_make_wht
+#: model:ir.ui.menu,name:account_payment_make_wht.menu_account_wht_config
+msgid "Settings WHT"
+msgstr "ตั้งค่าภาษีหัก ณ ที่จ่าย"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_total_wht
+msgid "Total WHT"
+msgstr "รวมภาษีหัก ณ ที่จ่าย"
+
+#. module: account_payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.view_account_config_wht_settings
+msgid "TrinityRoot Config"
+msgstr "TrinityRoot Config"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_wht_kind
+msgid "Type"
+msgstr "ประเภท"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_wht_type
+msgid "WHT"
+msgstr "ภงด."
+
+#. module: account_payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.payment_make_wht
+msgid "WHT Invoice Line"
+msgstr "รายการใบแจ้งหนี้"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_wht_payment
+msgid "WHT Payment"
+msgstr "WHT Payment"
+
+#. module: account_payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.view_account_config_wht_settings
+msgid "WHT Process"
+msgstr "WHT Process"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_wht_ids
+msgid "Wht ids"
+msgstr "Wht ids"
+
+#. module: account_payment_make_wht
+#: model:ir.model.fields,field_description:account_payment_make_wht.field_payment_make_wht_line_wht_payment_id
+msgid "Wht payment id"
+msgstr "Wht payment id"
+
+#. module: account_payment_make_wht
+#: model:ir.model,name:account_payment_make_wht.model_account_config_wht
+msgid "account.config.wht"
+msgstr "account.config.wht"
+
+#. module: account_payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.payment_make_wht
+#: model:ir.ui.view,arch_db:account_payment_make_wht.view_account_config_wht_settings
+msgid "or"
+msgstr "or"
+
+#. module: account_payment_make_wht
+#: model:ir.actions.act_window,name:account_payment_make_wht.action_view_payment_make_wht
+msgid "payment make wht"
+msgstr "payment make wht"
+
+#. module: account_payment_make_wht
+#: model:ir.model,name:account_payment_make_wht.model_payment_make_wht
+msgid "payment.make.wht"
+msgstr "payment.make.wht"
+
+#. module: account_payment_make_wht
+#: model:ir.model,name:account_payment_make_wht.model_payment_make_wht_line
+msgid "payment.make.wht.line"
+msgstr "payment.make.wht.line"

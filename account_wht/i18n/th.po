@@ -1,0 +1,615 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_wht
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-01 09:54+0000\n"
+"PO-Revision-Date: 2017-11-01 17:37+0700\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: th\n"
+"X-Generator: Poedit 2.0.4\n"
+
+#. module: account_wht
+#: selection:account.wht,wht_kind:0
+msgid "(1) PP1"
+msgstr "(1) ภ.พ.1"
+
+#. module: account_wht
+#: selection:account.wht,wht_payment:0
+msgid "(1) With holding tax"
+msgstr "(1) ภาษีหัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: selection:account.wht,wht_payment:0
+msgid "(2) Forever"
+msgstr "(2) ตลอดไป"
+
+#. module: account_wht
+#: selection:account.wht,wht_kind:0
+msgid "(2) PP1"
+msgstr "(2) ภ.พ.1"
+
+#. module: account_wht
+#: selection:account.wht,wht_payment:0
+msgid "(3) Once"
+msgstr "(3) ครั้งเดียว"
+
+#. module: account_wht
+#: selection:account.wht,wht_kind:0
+msgid "(3) PP2"
+msgstr "(3) ภ.พ.2"
+
+#. module: account_wht
+#: selection:account.wht,wht_payment:0
+msgid "(4) Other"
+msgstr "(4) อื่นๆ"
+
+#. module: account_wht
+#: selection:account.wht,wht_kind:0 selection:account.wht.pnd,pnd_type:0
+msgid "(4) PP3"
+msgstr "(4) ภ.พ.3"
+
+#. module: account_wht
+#: selection:account.wht,wht_kind:0
+msgid "(5) PP2"
+msgstr "(5) ภ.พ.2"
+
+#. module: account_wht
+#: selection:account.wht,wht_kind:0
+msgid "(6) PP2"
+msgstr "(6) ภ.พ.2"
+
+#. module: account_wht
+#: selection:account.wht,wht_kind:0 selection:account.wht.pnd,pnd_type:0
+msgid "(7) PP53"
+msgstr "(7) ภ.พ.53"
+
+#. module: account_wht
+#: model:ir.model,name:account_wht.model_account_account
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_account_id
+msgid "Account"
+msgstr "บัญชี"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_active_id
+msgid "Active ID"
+msgstr "Active ID"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_add_amount
+msgid "Add Amount"
+msgstr "เพิ่มจำนวนเงิน"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_attach_count
+msgid "Attach Count"
+msgstr "แนบผลรวม"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_attach_no
+msgid "Attach No"
+msgstr "แนบเลขที่"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_attach_pnd
+msgid "Attach PND"
+msgstr "แนบ PND"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_base_amount
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_base_amount
+msgid "Base Amount"
+msgstr "ฐานจำนวนเงิน"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_form
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#. module: account_wht
+#: selection:account.wht,state:0
+msgid "Cancelled"
+msgstr "ถูกยกเลิกแล้ว"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.view_pos_box_out
+msgid "Close"
+msgstr "ปิด"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_code
+msgid "Code"
+msgstr "รหัส"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_company_id
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_company_id
+msgid "Company"
+msgstr "บริษัท"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_type
+msgid "Condition"
+msgstr "เงื่อนไข"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.view_pos_box_out
+msgid "Create"
+msgstr "สร้าง"
+
+#. module: account_wht
+#: model:ir.actions.act_window,name:account_wht.action_jasper_create_date_template
+#: model:ir.ui.view,arch_db:account_wht.view_pos_box_out
+msgid "Create Data Template"
+msgstr "สร้างข้อมูล Template"
+
+#. module: account_wht
+#: model:ir.model,name:account_wht.model_jasper_create_data_pnd
+msgid "Create data template PND"
+msgstr "สร้างข้อมูล template PND"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_create_uid
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_create_uid
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_create_uid
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_create_uid
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_create_uid
+msgid "Created by"
+msgstr "สร้างโดย"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_create_date
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_create_date
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_create_date
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_create_date
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_create_date
+msgid "Created on"
+msgstr "สร้างเมื่อ"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_data
+msgid "Data"
+msgstr "ข้อมูล"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_date_doc
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_date_pnd
+#: model:ir.ui.view,arch_db:account_wht.account_wht_search
+msgid "Date"
+msgstr "วันที่"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_name
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_name
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_name
+msgid "Description"
+msgstr "คำอธิบาย"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_form
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd53_form
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd_form
+msgid "Detail"
+msgstr "รายละเอียด"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_display_name
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_display_name
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_display_name
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_display_name
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_display_name
+msgid "Display Name"
+msgstr "ชื่อที่ใช้แสดง"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_date_doc
+msgid "Document Date"
+msgstr "วันที่เอกสาร"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_form selection:account.wht,state:0
+msgid "Done"
+msgstr "เสร็จสิ้น"
+
+#. module: account_wht
+#: selection:account.wht,state:0
+msgid "Draft"
+msgstr "ฉบับร่าง"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_filename
+msgid "File Name"
+msgstr "ชื่อไฟล์"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_search
+msgid "Group By..."
+msgstr "จัดกลุ่มตาม..."
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_id
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_id
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_id
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_id
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_wht_kind
+msgid "Kind of WHT"
+msgstr "ประเภทของภาษีหัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd___last_update
+#: model:ir.model.fields,field_description:account_wht.field_account_wht___last_update
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line___last_update
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd___last_update
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type___last_update
+msgid "Last Modified on"
+msgstr "แก้ไขครั้งสุดท้ายเมื่อ"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_write_uid
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_write_uid
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_write_uid
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_write_uid
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_write_uid
+msgid "Last Updated by"
+msgstr "อัพเดทครั้งสุดท้ายโดย"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_write_date
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_write_date
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_write_date
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_write_date
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_write_date
+msgid "Last Updated on"
+msgstr "อัพเดทครั้งสุดท้ายเมื่อ"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_name
+#: model:ir.ui.view,arch_db:account_wht.account_wht_form
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd53_form
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd_form
+msgid "No."
+msgstr "เลขที่"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_type_normal
+msgid "Normal Type"
+msgstr "ประเภทปกติ"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_note
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_note
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_note
+#: model:ir.ui.view,arch_db:account_wht.account_wht_form
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd53_form
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd_form
+msgid "Note"
+msgstr "โน้ต"
+
+#. module: account_wht
+#: model:ir.actions.report.xml,name:account_wht.report_wht_pnd3
+msgid "PND 3"
+msgstr "ภ.ง.ด. 3"
+
+#. module: account_wht
+#: model:ir.actions.report.xml,name:account_wht.report_wht_pnd53
+msgid "PND 53"
+msgstr "ภ.ง.ด. 53"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_pnd_type
+msgid "PND Type"
+msgstr "ประเภทภ.ง.ด."
+
+#. module: account_wht
+#: model:ir.actions.act_window,name:account_wht.account_wht_pnd_action
+#: model:ir.ui.menu,name:account_wht.menu_account_wht_pnd
+msgid "PND3"
+msgstr "แบบยื่นภ.ง.ด.3"
+
+#. module: account_wht
+#: model:ir.actions.report.xml,name:account_wht.report_wht_pnd3_attach
+msgid "PND3 Attach"
+msgstr "รายงานภ.ง.ด. 3"
+
+#. module: account_wht
+#: model:ir.actions.act_window,name:account_wht.account_wht_pnd_action53
+#: model:ir.ui.menu,name:account_wht.menu_account_wht_pnd53
+msgid "PND53"
+msgstr "แบบยื่นภ.ง.ด. 53"
+
+#. module: account_wht
+#: model:ir.actions.report.xml,name:account_wht.report_wht_pnd53_attach
+msgid "PND53 Attach"
+msgstr "รายงานภ.ง.ด. 53"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_search
+msgid "PP3"
+msgstr "ภ.พ.3"
+
+#. module: account_wht
+#: model:ir.actions.report.xml,name:account_wht.report_pp30
+msgid "PP30"
+msgstr "ภ.พ.30"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_search
+msgid "PP53"
+msgstr "ภ.พ.53"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_partner_id
+#: model:ir.ui.view,arch_db:account_wht.account_wht_search
+msgid "Partner"
+msgstr "คู่ค้า"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_payment_id
+msgid "Payment"
+msgstr "การจ่ายเงิน"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_percent
+msgid "Percent"
+msgstr "เปอร์เซ็นต์"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_percentage
+msgid "Percentage"
+msgstr "ร้อยละ"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.view_pos_box_out
+msgid "Position PND3"
+msgstr "สถานะ ภ.ง.ด.3"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.view_pos_box_out
+msgid "Position PND53"
+msgstr "สถานะ ภ.ง.ด.53"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_help
+msgid "Positon PND3"
+msgstr "สถานะ ภ.ง.ด.3"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_jasper_create_data_pnd_help_53
+msgid "Positon PND53"
+msgstr "สถานะ ภ.ง.ด.53"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd_form
+msgid "Print PND3"
+msgstr "พิมพ์ ภ.ง.ด.3"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd53_form
+msgid "Print PND53"
+msgstr "พิมพ์ ภ.ง.ด.53"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_printed
+msgid "Printed"
+msgstr "พิมพ์แล้ว"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_section_3
+msgid "Section 3"
+msgstr "Section 3"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_section_48
+msgid "Section 48"
+msgstr "Section 48"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_section_50
+msgid "Section 50"
+msgstr "Section 50"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_section_65
+msgid "Section 65"
+msgstr "Section 65"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_section_69
+msgid "Section 69"
+msgstr "Section 69"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_seq
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_type_seq
+msgid "Sequence"
+msgstr "ลำดับ"
+
+#. module: account_wht
+#: sql_constraint:account.wht.type:0
+msgid "Sequence must be unique !"
+msgstr "ลำดับไม่สามารถซ้ำกันได้ !"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_form
+msgid "Set Draft"
+msgstr "กำหนดให้เป็นฉบับร่าง"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_form
+msgid "Share a message..."
+msgstr "แชร์ข้อความไปยัง..."
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_type_special
+msgid "Special Type"
+msgstr "ประเภทพิเศษ"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_state
+msgid "Status"
+msgstr "สถานะ"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_tax
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_tax
+msgid "Tax"
+msgstr "ภาษี"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_period_tax_id
+msgid "Tax Period"
+msgstr "ระยะเวลาภาษี"
+
+#. module: account_wht
+#: model:ir.ui.menu,name:account_wht.menu_account_account
+msgid "Thai Tax"
+msgstr "ภาษีไทย"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_tree
+msgid "Total"
+msgstr "รวมทั้งหมด"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_total_amount
+msgid "Total Amount"
+msgstr "จำนวนเงินรวม"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_total_tax
+msgid "Total Tax"
+msgstr "รวมภาษี"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_total_tax_send
+msgid "Total Tax Send"
+msgstr "รวมภาษีที่นำส่ง"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_wht_type_id
+msgid "Type"
+msgstr "ประเภท"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_type_no
+msgid "Type No."
+msgstr "เลขที่ประเภท"
+
+#. module: account_wht
+#: model:ir.model,name:account_wht.model_account_wht_type
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_wht_type
+msgid "Type of WHT"
+msgstr "ประเภทของภงด."
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_voucher_id
+msgid "Voucher"
+msgstr "ใบสำคัญ"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_wht_id
+#: model:ir.ui.menu,name:account_wht.menu_account_wht
+msgid "WHT"
+msgstr "หัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: model:ir.actions.act_window,name:account_wht.account_wht_action_customer
+#: model:ir.ui.menu,name:account_wht.menu_account_wht_customer
+msgid "WHT - Customer"
+msgstr "หัก ณ ที่จ่าย - ลูกค้า"
+
+#. module: account_wht
+#: model:ir.actions.act_window,name:account_wht.account_wht_action_supplier
+#: model:ir.ui.menu,name:account_wht.menu_account_wht_supplier
+msgid "WHT - Supplier"
+msgstr "หัก ณ ที่จ่าย - ผู้ค้า"
+
+#. module: account_wht
+#: model:ir.model,name:account_wht.model_account_wht_line
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_line_ids
+msgid "WHT Line"
+msgstr "รายการหัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_form
+msgid "WHT Lines"
+msgstr "รายการหัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: model:ir.model,name:account_wht.model_account_wht_pnd
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd53_form
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd_form
+msgid "WHT PND"
+msgstr "หัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd_form
+msgid "WHT PND3 Lines"
+msgstr "รายการหัก ณ ที่จ่าย ภ.ง.ด.3"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd53_form
+msgid "WHT PND53 Lines"
+msgstr "รายการหัก ณ ที่จ่าย ภ.ง.ด.53"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_wht_payment
+msgid "WHT Payment"
+msgstr "การจ่ายภาษีหัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: model:ir.actions.act_window,name:account_wht.account_wht_type_action
+#: model:ir.ui.menu,name:account_wht.menu_account_wht_type
+#: model:ir.ui.view,arch_db:account_wht.account_wht_type_filter
+#: model:ir.ui.view,arch_db:account_wht.account_wht_type_form
+#: model:ir.ui.view,arch_db:account_wht.account_wht_type_tree
+msgid "WHT Type"
+msgstr "ประเภทการหัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_account_account_wht
+msgid "With Holding Tax"
+msgstr "ภาษีหัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: model:ir.model,name:account_wht.model_account_wht
+#: model:ir.model.fields,field_description:account_wht.field_account_wht_pnd_wht_ids
+#: model:ir.ui.view,arch_db:account_wht.account_wht_form
+#: model:ir.ui.view,arch_db:account_wht.account_wht_search
+#: model:ir.ui.view,arch_db:account_wht.account_wht_tree
+msgid "With holding tax"
+msgstr "ภาษีหัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: selection:account.wht,wht_type:0
+msgid "With holding tax (Purchase)"
+msgstr "ภาษีหัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: selection:account.wht,wht_type:0
+msgid "With holding tax (Sale)"
+msgstr "ภาษีถูกหัก ณ ที่จ่าย"
+
+#. module: account_wht
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd53_tree
+#: model:ir.ui.view,arch_db:account_wht.account_wht_pnd_tree
+msgid "With holding tax PND"
+msgstr "ภาษีหัก ณ ที่จ่าย ภ.ง.ด."
+
+#. module: account_wht
+#: model:ir.actions.report.xml,name:account_wht.report_wht_certif
+msgid "Withholding Tax Certificate"
+msgstr "หนังสือรับรองภาษีหัก ณ ที่จ่าย"

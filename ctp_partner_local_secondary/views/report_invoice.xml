@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document_dhas_inherit" inherit_id="account.report_invoice_document">
+        <xpath expr ="//t[@t-set='address']/address" position ="after">
+            <span t-if="o.partner_id.local_name !='' or o.partner_id.local_street != ''">
+                <span t-field="o.partner_id.local_name"/>
+                <span t-field="o.partner_id.local_street"/>
+                <span t-field="o.partner_id.local_street2"/>
+                <span t-field="o.partner_id.local_city"/>
+                <span t-field="o.partner_id.local_country"/>
+                <span t-field="o.partner_id.local_zip"/>
+            </span>
+        </xpath>
+    </template>
+</odoo>

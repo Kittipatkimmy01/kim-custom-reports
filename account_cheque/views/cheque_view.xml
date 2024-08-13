@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_account_cheque_form" model="ir.ui.view">
+            <field name="name">account.cheque.form</field>
+            <field name="model">account.cheque</field>
+            <field name="arch" type="xml">
+                <form string="Cheque" version="7.0">
+                <header>
+                    <button name="action_assigned"      type="object" string="Assigned" invisible="state not in ('draft','pending')" />
+                    <button name="action_done"          type="object" string="Done" invisible="state not in ('assigned')" />
+                    <button name="reject_cheque"        type="object" string="Reject" invisible="state not in ('draft','assigned','pending')"/>
+                    <button name="cancel_cheque"        type="object" string="Cancel" invisible="state not in ('draft','assigned')"/>
+                    <button name="action_cancel_draft"  type="object" string="Set to Draft" invisible="state not in ('cancel','reject')"/>
+                    <button name="cancel_cheque_done"        type="object" string="Cancel Cheque"  groups="account.group_account_manager" invisible="state not in ('done')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="cancel,draft,assigned,pending,reject,done" statusbar_colors='{"assigned":"blue"}'/>
+                </header>
+                  <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_journal"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-street-view">
+                            <field name="journal_count" widget="statinfo" string="Journal Entries"/>
+                        </button>
+                        <button name="action_view_payment"
+                            type="object"
+                            class="oe_stat_button"
+                            invisible="payment_count == 0"
+                            icon="fa-street-view">
+                            <field name="payment_count" widget="statinfo" string="PV/RV"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"       readonly="state != 'draft'" />
+                            <field name="bank"       readonly="state != 'draft'" options="{'no_create':True, 'no_create_edit':True, 'no_open': True}"/>
+                            <field name="partner_id" readonly="state != 'draft'" options="{'no_create':True, 'no_create_edit':True, 'no_open': True}"/>
+                            <field name="amount"     readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="cheque_date" readonly="state == 'done'"/>
+                            <field name="date_receipt" readonly="state != 'draft'" required="state == 'draft'" />
+                            <field name="date_assigned" readonly="state != 'assigned'" required="state == 'assigned'" />
+                            <field name="date_done" readonly="state != 'assigned'" />
+                            <!--<field name="cheque_id"/>-->
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="move_name"/>
+                            <field name="move_ref"/>
+                            <field name="move_id" readonly="1" />
+                            <field name="active" readonly="state != 'draft'" />
+                        </group>
+                        <group>
+                            <field name="company_id" invisible="1" />
+                            <field name="note" readonly="state != 'draft'" />
+                            <field name="journal_id" readonly="state not in ('draft','assigned')"  options="{'no_create':True, 'no_create_edit':True, 'no_open': True}"/>
+                            <field name="account_receipt_id" invisible="type == 'out'" required="type == 'in'"  options="{'no_create':True, 'no_create_edit':True, 'no_open': True}"/>
+                            <field name="account_pay_id" invisible="type == 'in'" required="type == 'out'"  options="{'no_create':True, 'no_create_edit':True, 'no_open': True}"/>
+                            <field name="type" required="1" invisible="0"/>
+                        </group>
+                    </group>
+                  </sheet>
+                  <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                  </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_account_cheque_tree" model="ir.ui.view">
+            <field name="name">account.cheque.tree</field>
+            <field name="model">account.cheque</field>
+            <field name="arch" type="xml">
+                <tree string="Banks">
+                    <field name="name"/>
+                    <field name="cheque_date"/>
+                    <field name="bank" />
+                    <field name="partner_id"/>
+                    <field name="amount"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_account_cheque_search" model="ir.ui.view">
+            <field name="name">account.cheque.search</field>
+            <field name="model">account.cheque</field>
+            <field name="arch" type="xml">
+                <search string="cheque">
+                    <filter icon="terp-document-new" string="Draft"  	domain="[('state','=','draft')]"      	name="cheque_draft"/>
+                    <filter icon="terp-camera_test"  string="Cancel" 	domain="[('state','=','cancel')]"     	name="cheque_cancel"/>
+                    <filter icon="terp-camera_test"  string="Assigned" 	domain="[('state','=','assigned')]" 	name="cheque_assigned"/>
+                    <filter icon="terp-camera_test"  string="Pending" 	domain="[('state','=','pending')]"   	name="cheque_pending"/>
+                    <!--<filter icon="terp-camera_test"  string="Reject" 	domain="[('state','=','reject')]"   	name="cheque_reject"/>-->
+                    <filter icon="terp-camera_test"  string="Done" 		domain="[('state','=','done')]"   		name="cheque_done"/>
+                    <field name="name"/>
+                    <field name="cheque_date"/>
+                    <field name="bank" />
+                    <field name="partner_id"/>
+                    <field name="amount"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_account_cheque_in_form" model="ir.actions.act_window">
+            <field name="name">Receipt Cheque</field>
+            <field name="res_model">account.cheque</field>
+            <field name="domain">[('type','=','in')]</field>
+            <field name="context">{'default_type': 'in', 'type': 'in'}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="action_account_cheque_in_form" name="Receipt Cheque" sequence="13"
+            id="menu_action_account_cheque_in_form"  parent="account.menu_finance_receivables"/>
+
+
+        <record id="action_account_cheque_out_form" model="ir.actions.act_window">
+            <field name="name">Payment Cheque</field>
+            <field name="res_model">account.cheque</field>
+            <field name="domain">[('type','=','out')]</field>
+            <field name="context">{'default_type': 'out', 'type': 'out'}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="action_account_cheque_out_form" name="Payment Cheque" sequence="13"
+            id="menu_action_account_cheque_out_form"  parent="account.menu_finance_payables"/>
+
+    </data>
+</openerp>

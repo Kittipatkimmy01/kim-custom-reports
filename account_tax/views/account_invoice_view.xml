@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_invoice_inherit_form" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Vat Line" attrs="{'invisible': [('move_type', '!=', 'in_invoice'),('state','!=', 'posted')]}">
+                        <field name="vat_use_line_ids" readonly="0">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="date"/>
+                                <field name="tax_line_id" readonly="1" />
+                                <field name="account_id" readonly="1" />
+                                <field name="tax_base_amount" readonly="1" />
+                                <field name="amount_currency" string="Tax Amount" readonly="1" />
+                                <field name="vat_ref" attrs="{'readonly': [('is_verify','=', True)]}"/>
+                                <field name="month_vat" attrs="{'readonly': [('is_verify','=', True)]}"/>
+                                <field name="year" attrs="{'readonly': [('is_verify','=', True)]}"/>
+                                <field name="is_verify" invisible="1" />
+                                <field name="deffer_vat" invisible="0" />
+                                <button name="verify_tax" icon="fa-check text-success"  string="Use Vat" type="object" class="oe_link" attrs="{'invisible': ['|',('is_verify','=',True),('deffer_vat', '=', True)]}"/>
+                                <button name="unverify_tax" icon="fa-times text-danger"  string="Reset" type="object" class="oe_link" attrs="{'invisible': ['|',('is_verify','=',False),('deffer_vat', '=', True)]}"/>
+                                <field name="reverse_move_id" readonly="1" attrs="{'invisible': [('reverse_move_id','=', False)]}"/>
+                            </tree>
+                        </field>
+                        <group>
+                            <field name="amount_suspend_vat"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='invoice_date_due']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_payment_term_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_bank_id']" position="after">
+                    <field name="vat_ref" attrs="{'invisible': [('move_type','=', 'entry')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

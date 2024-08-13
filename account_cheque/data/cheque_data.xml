@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="seq_tr_chequ_out" model="ir.sequence">
+            <field name="name">CQO</field>
+            <field name="code">tr.cheque.out</field>
+            <field name="prefix">CQO-</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_tr_chequ_in" model="ir.sequence">
+            <field name="name">CQI</field>
+            <field name="code">tr.cheque.in</field>
+            <field name="prefix">CQi-</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

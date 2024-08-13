@@ -1,0 +1,130 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_payment_method
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20170207\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-05 11:14+0000\n"
+"PO-Revision-Date: 2017-10-09 14:06+0700\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: th\n"
+"X-Generator: Poedit 2.0.4\n"
+
+#. module: account_payment_method
+#: selection:account.payment.method.multi,type:0
+msgid "AP"
+msgstr "เจ้าหนี้"
+
+#. module: account_payment_method
+#: selection:account.payment.method.multi,type:0
+msgid "AR"
+msgstr "ลูกหนี้"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_account_id
+msgid "Account"
+msgstr "บัญชี"
+
+#. module: account_payment_method
+#: selection:account.payment.method.multi,type:0
+msgid "Bank"
+msgstr "ธนาคาร"
+
+#. module: account_payment_method
+#: selection:account.payment.method.multi,type:0
+msgid "Cash"
+msgstr "เงินสด"
+
+#. module: account_payment_method
+#: selection:account.payment.method.multi,type:0
+msgid "Cheque"
+msgstr "เช็ค"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_create_uid
+msgid "Created by"
+msgstr "สร้างโดย"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_create_date
+msgid "Created on"
+msgstr "สร้างเมื่อ"
+
+#. module: account_payment_method
+#: selection:account.payment.method.multi,type:0
+msgid "Discount"
+msgstr "ส่วนลด"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_display_name
+msgid "Display Name"
+msgstr "ชื่อ"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi___last_update
+msgid "Last Modified on"
+msgstr "แก้ไขครั้งสุดท้ายเมื่อ"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_write_uid
+msgid "Last Updated by"
+msgstr "อัพเดทครั้งสุดท้ายโดย"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_write_date
+msgid "Last Updated on"
+msgstr "อัพเดทครั้งสุดท้ายเมื่อ"
+
+#. module: account_payment_method
+#: selection:account.payment.method.multi,type:0
+msgid "Other"
+msgstr "อื่นๆ"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_parent_id
+msgid "Parent"
+msgstr "Parent"
+
+#. module: account_payment_method
+#: model:ir.actions.act_window,name:account_payment_method.tr_action_payment_method
+#: model:ir.ui.menu,name:account_payment_method.menu_tr_account_payment_method
+msgid "Payment Method"
+msgstr "วิธีการชำระเงิน"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_name
+msgid "Payment Name"
+msgstr "การชำระเงิน"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_type
+#: model:ir.ui.view,arch_db:account_payment_method.tr_account_payment_method_view_tree
+msgid "Payment method"
+msgstr "วิธีการชำระเงิน"
+
+#. module: account_payment_method
+#: model:ir.model.fields,field_description:account_payment_method.field_account_payment_method_multi_percent
+msgid "Percent"
+msgstr "เปอร์เซ็นต์"
+
+#. module: account_payment_method
+#: selection:account.payment.method.multi,type:0
+msgid "WHT"
+msgstr "ภาษีหัก ณ ที่จ่าย"
+
+#. module: account_payment_method
+#: model:ir.model,name:account_payment_method.model_account_payment_method_multi
+msgid "account.payment.method.multi"
+msgstr "account.payment.method.multi"

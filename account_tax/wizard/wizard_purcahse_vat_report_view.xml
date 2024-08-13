@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="wizard_purchase_vat_report_view" model="ir.ui.view">
+            <field name="name">wizard.purchase.vat.report.form</field>
+            <field name="model">wizard.purchase.vat.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="month"/>
+                        <field name="year"/>
+                        <field name="account_id"/>
+                        <field name="data" filename="filename" readonly="1" />
+                        <field name="filename" invisible="1" />
+                    </group>
+                    <footer>
+                        <button name="print_report" type="object" string="Print" class="oe_highlight"/>
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_report_purchase_vat_action" model="ir.actions.act_window">
+            <field name="name">Purchase Vat Report</field>
+            <field name="res_model">wizard.purchase.vat.report</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_purchase_vat_report_view"></field>
+        </record>
+
+        <menuitem id="menu_action_purchase_vat_report" name="Purchase Vat Report" action="wizard_report_purchase_vat_action" parent="account_reports.account_reports_audit_reports_menu"/>
+
+    </data>
+</odoo>

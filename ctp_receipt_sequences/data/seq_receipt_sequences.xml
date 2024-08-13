@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo noupdate="0">
+    <record id="seq_receipt_sequences" model="ir.sequence">
+        <field name="name">Receipt Sequences</field>
+        <field name="code">seq.receiptref.inv</field>
+        <field name="prefix">CTP-RT-%(range_year)s%(range_month)s-</field>
+        <field name="padding">3</field>
+    </record>
+</odoo>

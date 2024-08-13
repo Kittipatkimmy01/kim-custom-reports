@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Tr.Cheque -->
+        <report string="Cheque Bay - PDF"
+                    model="tr.cheque"
+                    auto="True"
+                    name="cheque.bay.jasper"
+                    rml="tr_cheque/reports/cheque_bay.jrxml"
+                    id="res_cheque_bay_jasper"
+                    menu="True"
+                    header="False" />
+
+        <report string="Cheque BBL - PDF"
+                    model="tr.cheque"
+                    auto="True"
+                    name="cheque.bbl.jasper"
+                    rml="tr_cheque/reports/cheque_bbl.jrxml"
+                    id="res_cheque_bbl_jasper"
+                    menu="True"
+                    header="False" />
+
+        <report string="Cheque KBank - PDF"
+                    model="tr.cheque"
+                    auto="True"
+                    name="cheque.kbank.jasper"
+                    rml="tr_cheque/reports/cheque_kbank.jrxml"
+                    id="res_cheque_kbank_jasper"
+                    menu="True"
+                    header="False" />
+
+        <report string="Cheque KTB - PDF"
+                    model="tr.cheque"
+                    auto="True"
+                    name="cheque.ktb.jasper"
+                    rml="tr_cheque/reports/cheque_ktb.jrxml"
+                    id="res_cheque_ktb_jasper"
+                    menu="True"
+                    header="False" />
+
+        <report string="Cheque SCB - PDF"
+                    model="tr.cheque"
+                    auto="True"
+                    name="cheque.scb.jasper"
+                    rml="tr_cheque/reports/cheque_scb.jrxml"
+                    id="res_cheque_scb_jasper"
+                    menu="True"
+                    header="False" />
+
+        <report string="Cheque TMB - PDF"
+                    model="tr.cheque"
+                    auto="True"
+                    name="cheque.tmb.jasper"
+                    rml="tr_cheque/reports/cheque_tmb.jrxml"
+                    id="res_cheque_tmb_jasper"
+                    menu="True"
+                    header="False" />
+    </data>
+</openerp>

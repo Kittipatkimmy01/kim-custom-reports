@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_account_wht" model="ir.sequence">
+            <field name="name">WHT Client</field>
+            <field name="code">account.wht</field>
+            <field name="prefix">CTP-HC-%(range_year)s%(range_month)s-</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+            <field name="implementation">no_gap</field>
+            <field name="use_date_range" eval="True"/>
+        </record>
+        <record id="seq_account_wht_vendor" model="ir.sequence">
+            <field name="name">WHT Vendor</field>
+            <field name="code">account.wht.vendor</field>
+            <field name="prefix">CTP-HV-%(range_year)s%(range_month)s-</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+            <field name="implementation">no_gap</field>
+            <field name="use_date_range" eval="True"/>
+        </record>
+        <record id="wht_type_1" model="account.wht.type">
+            <field name="name"><![CDATA[1. เงินเดือน ค่าจ้าง เบี้ยเลี้ยง โบนัส ฯลฯ ตามมาตรา 40 (1)]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="100"/>
+        </record>
+        <record id="wht_type_2" model="account.wht.type">
+            <field name="name"><![CDATA[2. ค่าธรรมเนียม ค่านายหน้า ฯลฯ ตามมาตรา 40 (2)]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="200"/>
+        </record>
+        <record id="wht_type_3" model="account.wht.type">
+            <field name="name"><![CDATA[3. ค่าแห่งลิขสิทธิ์ ฯลฯ ตามมาตรา 40 (3)]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="300"/>
+        </record>
+        <record id="wht_type_40" model="account.wht.type">
+
+            <field name="name"><![CDATA[4 (ก) ดอกเบี้ย ฯลฯ ตามมาตรา 40 (4)(ก)]]></field>
+            <field name="percentage">1</field>
+            <field name="seq" eval="400"/>
+        </record>
+        <record id="wht_type_411" model="account.wht.type">
+            <field name="name"><![CDATA[4 (1.1) อัตราร้อยละ 30 ของกำไรสุทธิ ตามมาตรา 40 (4)(ข)]]></field>
+            <field name="percentage">1</field>
+            <field name="seq" eval="411"/>
+        </record>
+        <record id="wht_type_412" model="account.wht.type">
+            <field name="name"><![CDATA[4 (1.2) อัตราร้อยละ 25 ของกำไรสุทธิ ตามมาตรา 40 (4)(ข)]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="412"/>
+        </record>
+        <record id="wht_type_413" model="account.wht.type">
+            <field name="name"><![CDATA[4 (1.3) อัตราร้อยละ 20 ของกำไรสุทธิ ตามมาตรา 40 (4)(ข)]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="413"/>
+        </record>
+        <record id="wht_type_414" model="account.wht.type">
+            <field name="name"><![CDATA[4 (1.4) อัตราอื่นๆ ฯลฯ ตามมาตรา 40 (4)(ข)]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="414"/>
+        </record>
+        <record id="wht_type_421" model="account.wht.type">
+            <field name="name"><![CDATA[4 (2.1) กำไรสุทธิของกิจการที่ได้รับยกเว้นเงินได้ภาษีเงินได้นิติบุคคล]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="421"/>
+        </record>
+        <record id="wht_type_422" model="account.wht.type">
+            <field name="name"><![CDATA[4 (2.2) เงินปันผลหรือเงินส่วนแบ่งของกำไรที่ได้รับยกเว้นไม่ต้องนำมารวมคำนวณเป็นรายได้เพื่อเสียภาษีเงินได้นิติบุคคล]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="422"/>
+        </record>
+        <record id="wht_type_423" model="account.wht.type">
+            <field name="name"><![CDATA[4 (2.3) กำไรสุทธิส่วนที่ได้หักผลขาดทุนสุทธิยกมาไม่เกิน 5 ปีก่อนรอบระยะเวลาบัญชีปีปัจจุบัน]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="423"/>
+        </record>
+        <record id="wht_type_424" model="account.wht.type">
+            <field name="name"><![CDATA[4 (2.4) กำไรที่รับรู้ทางบัญชีโดยวิธีส่วนได้เสีย (Equity method)]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="424"/>
+        </record>
+        <record id="wht_type_425" model="account.wht.type">
+            <field name="name"><![CDATA[4 (2.5) อื่นๆ]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="425"/>
+        </record>
+        <record id="wht_type_500" model="account.wht.type">
+            <field name="name"><![CDATA[5 การจ่ายเงินได้ที่ต้องหักภาษี ณ ที่จ่าย ตามคำสั่งกรมสรรพากรที่ออกตามมาตรา 3 เตรส เช่น รางวัล ส่นลดหรือประโยชน์ใดๆ เนื่องากการส่งเสริมการขาย รางวัลในการประกวด การแข่งขัน การชิงโชค ค่าแสดงของนักแสดงสาธารณะ ค่าจ้าทำของ ค่าโฆษณา ค่าเช่า ค่าขนส่ง ค่าบริการ ค่าเบี้ยประกันวินาศภัย ฯลฯ]]></field>
+            <field name="percentage">5</field>
+            <field name="seq" eval="500"/>
+        </record>
+        <record id="wht_type_600" model="account.wht.type">
+            <field name="name"><![CDATA[6 อื่นๆ (ระบุ)]]></field>
+            <field name="percentage">3</field>
+            <field name="seq" eval="600"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_tax_line,access.account.tax.line,model_account_tax_line,,1,1,1,1
+access_wizard_sale_vat_report,access.wizard.sale.vat.report,model_wizard_sale_vat_report,,1,1,1,1
+access_wizard_purchase_vat_report,access.wizard.purchase.vat.report,model_wizard_purchase_vat_report,,1,1,1,1
+access_wizard_clear_pp36,access_wizard_clear_pp36.report,model_wizard_clear_pp36,,1,1,1,1

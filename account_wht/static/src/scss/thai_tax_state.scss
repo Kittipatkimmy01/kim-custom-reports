@@ -1,0 +1,25 @@
+.o_thai_tax_state_cell > span {
+  padding: 2px 12px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.o_thai_tax_state_cell > span[raw-value="unused"] {
+  background-color: #ffc107;
+  color: #ffffff;
+}
+
+.o_thai_tax_state_cell > span[raw-value="used"] {
+  background-color: #28a745;
+  color: #ffffff;
+}
+
+.o_thai_tax_state_cell > span[raw-value="expire"] {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+.o_thai_tax_state_cell > span[raw-value="post"] {
+  background-color: #714B67;
+  color: #ffffff;
+}

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_cheque" language="groovy" pageWidth="555" pageHeight="842" columnWidth="535" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5000000000000064"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="IDS" class="java.lang.Object">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT tc.id,tc.state,rp.name,tc.amount,rb.name,
+SUBSTRING(TO_CHAR(tc.cheque_date,'yyyymmdd'),7,1) as date_1,
+SUBSTRING(TO_CHAR(tc.cheque_date,'yyyymmdd'),8,1) as date_2,
+SUBSTRING(TO_CHAR(tc.cheque_date,'yyyymmdd'),5,1) as month_1,
+SUBSTRING(TO_CHAR(tc.cheque_date,'yyyymmdd'),6,1) as month_2,
+SUBSTRING(TO_CHAR(tc.cheque_date,'yyyymmdd'),1,1) as year_1,
+SUBSTRING(TO_CHAR(tc.cheque_date,'yyyymmdd'),2,1) as year_2,
+SUBSTRING(TO_CHAR(tc.cheque_date,'yyyymmdd'),3,1) as year_3,
+SUBSTRING(TO_CHAR(tc.cheque_date,'yyyymmdd'),4,1) as year_4
+FROM tr_cheque tc
+LEFT JOIN res_partner rp
+ON tc.partner_id = rp.id
+LEFT JOIN res_bank rb
+ON tc.bank = rb.id
+WHERE tc.id in ($P!{IDS})]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Amount]]></fieldDescription>
+	</field>
+	<field name="date_1" class="java.lang.String"/>
+	<field name="date_2" class="java.lang.String"/>
+	<field name="month_1" class="java.lang.String"/>
+	<field name="month_2" class="java.lang.String"/>
+	<field name="year_1" class="java.lang.String"/>
+	<field name="year_2" class="java.lang.String"/>
+	<field name="year_3" class="java.lang.String"/>
+	<field name="year_4" class="java.lang.String"/>
+	<variable name="bahttext" class="java.lang.String">
+		<variableExpression><![CDATA[org.numbertext.Numbertext.moneytext((String)(($F{amount}*100).intValue()/100),"THB","th_TH")]]></variableExpression>
+	</variable>
+	<group name="id group">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<detail>
+		<band height="255" splitType="Stretch">
+			<textField pattern="">
+				<reportElement x="333" y="104" width="142" height="14"/>
+				<textElement lineSpacing="Single">
+					<font size="10" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["— "+new java.text.DecimalFormat("#,##0.00").format($F{amount}) + " —"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="51" width="301" height="16"/>
+				<textElement lineSpacing="Single">
+					<font size="10" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="19" width="18" height="18"/>
+				<textElement lineSpacing="Single">
+					<font size="11" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="19" width="18" height="18"/>
+				<textElement lineSpacing="Single">
+					<font size="11" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="386" y="19" width="18" height="18"/>
+				<textElement lineSpacing="Single">
+					<font size="11" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{month_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="19" width="18" height="18"/>
+				<textElement lineSpacing="Single">
+					<font size="11" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{month_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="19" width="18" height="18"/>
+				<textElement lineSpacing="Single">
+					<font size="11" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{year_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="19" width="18" height="18"/>
+				<textElement lineSpacing="Single">
+					<font size="11" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{year_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="19" width="18" height="18"/>
+				<textElement lineSpacing="Single">
+					<font size="11" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{year_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="19" width="18" height="18"/>
+				<textElement lineSpacing="Single">
+					<font size="11" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{year_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="78" width="363" height="16"/>
+				<textElement lineSpacing="Single">
+					<font size="10" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA['— '+$V{bahttext}+' —']]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="119" y="19" width="357" height="148" forecolor="#FF0033">
+					<printWhenExpression><![CDATA[$F{state}=='cancel']]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="Norasi" size="72" pdfFontName="/usr/share/fonts/truetype/tlwg/Norasi.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[ยกเลิก]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
