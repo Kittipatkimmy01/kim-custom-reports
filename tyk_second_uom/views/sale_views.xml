@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="view_order_form" model="ir.ui.view">
+            <field name="name">view_order_form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree/field[@name='customer_lead']" position="before">
+                    <field name="qty_second_uom" groups="uom.group_uom" optional="show"/>
+                    <field name="second_uom_id" optional="show" groups="uom.group_uom" options="{'no_create': True}"/>
+                    <field name="is_active_2nd_uom" widget="boolean_toggle" optional="show" groups="uom.group_uom"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

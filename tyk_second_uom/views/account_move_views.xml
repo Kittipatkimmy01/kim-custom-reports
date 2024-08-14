@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="invoice_supplier_form_inherit" model="ir.ui.view">
+            <field name="name">account.supplier.bill.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page/field[@name='invoice_line_ids']/tree/field[@name='product_uom_id']" position="after">
+                    <field name="qty_second_uom" groups="uom.group_uom" optional="show"/>
+                    <field name="second_uom_id" optional="show" groups="uom.group_uom" options="{'no_create': True}"/>
+                    <field name="is_active_2nd_uom" widget="boolean_toggle" optional="show" groups="uom.group_uom"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

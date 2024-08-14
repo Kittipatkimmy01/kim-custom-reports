@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_transfer_item_detail,sale_transfer_item_detail,model_sale_transfer_item_detail,,1,1,1,1
+access_sale_delivery_order_split_wizard,sale_delivery_order_split_wizard,model_sale_delivery_order_split_wizard,,1,1,1,1

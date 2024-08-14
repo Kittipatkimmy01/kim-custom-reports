@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <record id="view_sale_delivery_order_split_form" model="ir.ui.view">
+            <field name="name">sale.delivery.order.split.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='backorder_id']" position="after">
+                    <field name="split_from_id" readonly="True"
+                           invisible="'split_from_id' == False"/>
+                </xpath>
+                <xpath expr="//header/button[last()]" position="after">
+                    <field name="sale_id" invisible="1"/>
+                    <button class="oe_highlight" name="split_sale_delivery_order"
+                            string="Split Order"
+                            type="object"
+                            invisible="sale_id == False or state not in ('assigned', 'confirmed', 'draft', 'waiting')"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

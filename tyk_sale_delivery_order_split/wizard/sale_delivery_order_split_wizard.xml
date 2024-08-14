@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id='sale_delivery_order_split_wizard_form' model='ir.ui.view'>
+        <field name='name'>sale_delivery.order.split.wizard.form</field>
+        <field name='model'>sale.delivery.order.split.wizard</field>
+        <field name='arch' type='xml'>
+            <form>
+                <group>
+                    <field name="scheduled_date" required="True"/>
+                </group>
+                <field name="transfer_item_detail_ids" options="{'no_create_edit':True}">
+                    <tree string="Inventory Details" editable="bottom" create="false" delete="true">
+                        <field name="product_id" readonly="1" invisible="1" />
+                        <field name="name" readonly="1" />
+                        <field name="quantity"/>
+                        <field name="location_id" invisible="1"/>
+                        <field name="location_dest_id" invisible="1"/>
+                    </tree>
+                </field>
+                <footer>
+                    <button name="split_sale_transfer" string="Split" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id='sale_delivery_order_split_wizard_form' model='ir.ui.view'>
+        <field name='name'>sale_delivery.order.split.wizard.form</field>
+        <field name='model'>sale.delivery.order.split.wizard</field>
+        <field name="inherit_id" ref="tyk_sale_delivery_order_split.sale_delivery_order_split_wizard_form"/>
+        <field name='arch' type='xml'>
+            <xpath expr="//field[@name='location_dest_id']" position="after">
+                <field name="qty_second_uom"
+                       groups="uom.group_uom"
+                       optional="show"/>
+                <field name="second_uom_id"
+                       invisible="1"
+                       groups="uom.group_uom"
+                       options="{'no_create': True}"/>
+                <field name="is_active_2nd_uom"
+                       invisible="1"
+                       widget="boolean_toggle"
+                       groups="uom.group_uom"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
