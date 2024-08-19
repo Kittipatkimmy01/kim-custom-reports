@@ -29,7 +29,7 @@
 #         "views/account_journal_view.xml",
 #         "views/account_pp30_view.xml",
         "views/account_payment_view.xml",
-        "views/res_partner_view.xml.xml",
+        "views/res_partner_view.xml",
     ],
     "assets": {
     },
