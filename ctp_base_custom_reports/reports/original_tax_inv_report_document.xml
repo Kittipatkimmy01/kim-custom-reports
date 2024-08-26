@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="origin_tax_inv_report_document">
-        <div t-att-class="header">
+        <div class="header">
             <div class="row">
                 <div class="col-2 pe-2">
                     <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height: 120px;" alt="Company Logo" class="float-left position-absolute"/>
@@ -349,12 +349,12 @@
         <field name="page_height">0</field>
         <field name="page_width">0</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">5</field>
+        <field name="margin_top">60</field>
         <field name="margin_bottom">90</field>
         <field name="margin_left">5</field>
         <field name="margin_right">5</field>
         <field name="header_line" eval="False"/>
-        <field name="header_spacing">5</field>
+        <field name="header_spacing">55</field>
         <field name="dpi">90</field>
     </record>
 
