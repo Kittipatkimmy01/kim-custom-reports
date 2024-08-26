@@ -5,7 +5,7 @@
     "category": "Accounting",
     "license": "LGPL-3",
     # "external_dependencies": {"python": ["bahttext"]},
-    "depends": ["account", "tyk_base_reports", "account_payment_order"],
+    "depends": ["account", "tyk_base_reports"],
     "data": [
         "security/ir.model.access.csv",
         "security/security.xml",
