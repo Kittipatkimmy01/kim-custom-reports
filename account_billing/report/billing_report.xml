@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="layout_billing">
+        <div class="header" style="font-family: THSarabunNew; font-size: 20px;">
+            <div style="position: absolute; top: 4.4cm; left: 3cm; white-space: nowrap;">
+                <span t-esc="doc.partner_id.ref"/>
+            </div>
+            <div style="position: absolute; top: 5.3cm; left: 3cm; white-space: nowrap;">
+                <span t-esc="doc.partner_id.name"/>
+            </div>
+            <div style="position: absolute; top: 6.15cm; left: 3cm; width: 15cm;">
+                <t t-if="doc.partner_id.street"><span t-esc="doc.partner_id.street"/></t>
+                <t t-if="doc.partner_id.street2">&#160;<span t-esc="doc.partner_id.street2"/></t>
+                <t t-if="doc.partner_id.city">&#160;<span t-esc="doc.partner_id.city"/></t>
+                <t t-if="doc.partner_id.state_id.name">&#160;<span t-esc="doc.partner_id.state_id.name"/></t>
+                <t t-if="doc.partner_id.zip">&#160;<span t-esc="doc.partner_id.zip"/></t>
+            </div>
+            <div style="position: absolute; top: 4.4cm; left: 20.6cm;">
+                <span t-field="doc.name"/>
+            </div>
+            <div style="position: absolute; top: 5.4cm; left: 20.6cm;">
+                <span t-esc="doc.get_date(doc.bill_date)"/>
+            </div>
+            <div style="position: absolute; top: 8.2cm; left: 3cm; white-space: nowrap;">
+                <span t-esc="doc.partner_id.phone"/>
+            </div>
+            <div style="position: absolute; top: 8.2cm; left: 20.6cm;">
+                <t t-if="len(doc.line_ids)">
+                    <span t-esc="doc.line_ids[0].move_id.invoice_payment_term_id.name"/>
+                </t>
+                <t t-else="">
+                    <span t-esc="doc.payment_term_id.name"/>
+                </t>
+            </div>
+        </div>
+        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-out="0"/>
+        </div>
+        <div class="footer" style="font-size: 20px;">
+            <div style="font-family: THSarabunNew;">
+                <div style="position: absolute; left: 1cm; width: 11.5cm; text-align: center;">
+                    (<span t-esc="doc.get_amount_bahttext(doc.amount_total)"/>)
+                </div>
+                <div style="position: absolute; right: 6.3cm;">
+                    <span t-esc="'{:,.2f}'.format(doc.amount_total)"/>
+                </div>
+                <div style="position: absolute; top: 2.3cm; left: 0.6cm;">
+                    <span t-field="doc.notes"/>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="report_billing_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="company" t-value="doc.company_id"/>
+                <t t-call="account_billing.layout_billing">
+                    <div class="page" style="font-family: THSarabunNew; font-size: 20px;">
+                        <style>
+                          td {
+                            border: hidden;
+                          }
+                        </style>
+                        <table width="100%">
+                            <tbody>
+                                <t t-foreach="doc.line_ids" t-as="line">
+                                    <tr>
+                                        <td width="5.5%" style="text-align: center;"><span t-esc="line_index + 1"/></td>
+                                        <td width="19%" style="padding-left: 2mm;"><span t-field="line.move_id"/></td>
+                                        <td width="16.8%" style="padding-left: 1mm;"><span t-esc="doc.get_date(line.invoice_date)"/></td>
+                                        <td width="17.5%" style="padding-left: 2mm;"><span t-esc="doc.get_date(line.invoice_date_due)"/></td>
+                                        <td width="17.2%" style="text-align: right; padding-right: 1mm;"><span t-esc="'{:,.2f}'.format(line.amount_total)"/></td>
+                                        <td style="padding-left: 3mm;"><span t-field="line.notes"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="paperformat_billing" model="report.paperformat">
+        <field name="name">Billing Notes</field>
+        <field name="default" eval="True" />
+        <field name="format">Letter</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">100</field>
+        <field name="margin_bottom">85</field>
+        <field name="margin_left">1</field>
+        <field name="margin_right">1</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">95</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report
+        id="account_billing_report"
+        model="account.billing"
+        string="Billing Notes"
+        report_type="qweb-pdf"
+        file="account_billing.report_billing_document"
+        name="account_billing.report_billing_document"
+        paperformat="account_billing.paperformat_billing"
+        menu="True"
+    />
+</odoo>

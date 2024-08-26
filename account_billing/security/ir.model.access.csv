@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_billing_user,access.account.billing.user,model_account_billing,account.group_account_readonly,1,0,0,0
+access_account_billing_line_user,access.account.billing.user.line,model_account_billing_line,account.group_account_readonly,1,0,0,0
+access_account_billing_manager,access.account.billing.manager,model_account_billing,account.group_account_invoice,1,1,1,0
+access_account_billing_line_manager,access.account.billing.manager.line,model_account_billing_line,account.group_account_invoice,1,1,1,1

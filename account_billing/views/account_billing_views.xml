@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_billing_form" model="ir.ui.view">
+        <field name="name">view_account_billing_form</field>
+        <field name="model">account.billing</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <!--button name="action_register_payment" class="oe_highlight" string="Register Payment" type="object"
+                            attrs="{'invisible': ['|', ('state', '!=', 'posted'), ('is_hide_register', '=', True)]}"/-->
+                    <button name="action_post" string="Confirm" class="oe_highlight" type="object" invisible="state != 'draft'"/>
+                    <button name="button_cancel" string="Cancel" type="object" invisible="id == False or state != 'draft'"/>
+                    <button name="button_draft" string="Reset to Draft" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,posted"/>
+                </header>
+                <sheet>
+                    <field name="is_hide_register" invisible="1"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1" placeholder="Draft"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" invisible="state != 'draft'"
+                                   widget="res_partner_many2one"
+                                   context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                                   options="{'no_create': 1, 'always_reload': 1}"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="bill_date" invisible="state != 'draft'"/>
+                            <field name="payment_term_id" invisible="state != 'draft'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Orders">
+                            <field name="move_ids" widget="many2many_tags" invisible="1"/>
+                            <field name="line_ids" readonly="state != 'draft'">
+                                <tree editable="bottom">
+                                    <field name="move_id"
+                                           domain="[
+                                               ('move_type', 'in', ['out_invoice', 'out_refund', 'out_debit']),
+                                               ('state', '=', 'posted'),
+                                               ('payment_state', 'not in', ['paid']),
+                                               ('amount_residual', '>', 0),
+                                               ('partner_id', '=', parent.partner_id),
+                                               ('id', 'not in', parent.move_ids),
+                                           ]"
+                                    />
+                                    <field name="invoice_date"/>
+                                    <field name="invoice_date_due"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount_total"/>
+                                    <field name="amount_manual"/>
+                                    <field name="notes"/>
+                                    <field name="payment_state" widget="badge"
+                                           decoration-danger="payment_state == 'not_paid'"
+                                           decoration-warning="payment_state in ('partial', 'in_payment')"
+                                           decoration-success="payment_state in ('paid', 'reversed')"
+                                    />
+                                </tree>
+                            </field>
+                            <group>
+                                <group>
+                                    <field name="notes" placeholder="Add a note ....."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount_total" class="oe_subtotal_footer_separator"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_account_billing_tree" model="ir.ui.view">
+        <field name="name">view_account_billing_tree</field>
+        <field name="model">account.billing</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="amount_total"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="account_billing_action" model="ir.actions.act_window">
+        <field name="name">Billing Notes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.billing</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="account_billing_categ" name="Billing Notes"
+              parent="account.menu_finance_receivables"
+              action="account_billing_action"
+              sequence="3"/>
+
+</odoo>
