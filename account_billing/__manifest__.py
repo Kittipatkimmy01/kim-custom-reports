@@ -6,7 +6,7 @@
     "license": "LGPL-3",
     # "external_dependencies": {"python": ["bahttext"]},
     "depends": ["account",
-                # "tyk_base_reports", 
+                # "tyk_base_reports",
                 # "account_payment_order"
                 ],
     "data": [

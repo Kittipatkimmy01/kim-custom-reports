@@ -144,8 +144,8 @@ class AccountBilling(models.Model):
                 amt_total = sum(rec.line_ids.mapped('amount_total'))
             rec.amount_total = amt_total
 
-    def get_amount_bahttext(self, amount):
-        return bahttext(amount)
+    # def get_amount_bahttext(self, amount):
+    #     return bahttext(amount)
 
     def get_date(self, date):
         if date:
