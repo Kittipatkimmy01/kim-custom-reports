@@ -70,263 +70,266 @@
                 </div>
             </div>
         </div>
-        <div class="page" style="font-family: AngsanaNew; font-size: 14px;">
 
-            <div class="row pb-2">
-                <div class="col-7 p-3">
-                    <strong>ลูกค้า</strong>
-                    <br/>
-                    ชื่อ :[<span t-field="o.partner_id.ref"/>]<![CDATA[&nbsp;]]><span t-field="o.partner_id.name"/>
-                    <br/>
-                    ที่อยู่
-                    <span t-if="o.partner_id.street" t-esc="o.partner_id.street"/>
-                    <br/>
-                    <span t-if="o.partner_id.street2" t-esc="o.partner_id.street2"/>
-                    <span t-if="o.partner_id.city" t-esc="o.partner_id.city"/>
-                    <span t-if="o.partner_id.state_id" t-esc="o.partner_id.state_id.name"/>
-                    <span t-if="o.partner_id.zip" t-esc="o.partner_id.zip"/>
-                    <span t-if="o.partner_id.country_id" t-esc="o.partner_id.country_id.name"/>
-                    <br/>
-                    เลขประจำตัวผู้เสียภาษี : <span t-if="o.partner_id.vat" t-esc="o.partner_id.vat"/>
-                    สาขา : <span t-if="o.partner_id.branch != '00000'" t-esc="o.partner_id.branch"/><span t-else="">สำนักงานใหญ่</span>
-                </div>
-                <div class="col-5 p-3">
-                    <strong>วันที่</strong>:
-                    <span t-field="o.invoice_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
-                    <br/>
-                     <strong>เลขที่เอกสาร</strong>:
-                    <span t-field="o.name"/>
-                    <br/>
-                     <strong>เลขที่ใบสั่งซื้อ</strong>:
-                    <span t-field="o.ref"/>
-                    <br/>
-                     <strong>เงื่อนไขการชำระเงิน</strong>:
-                    <span t-esc="o.invoice_payment_term_id.name"/>
-                    <br/>
-                    <strong>วันครบกำหนดชำระ</strong>:
-                    <span t-field="o.invoice_date_due" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
-                </div>
-            </div>
-            <table class="table table-bordered o_main_table border" width="100%">
-                <thead>
-                    <tr style="background-color:#E2DBC8;">
-                        <td class="text-center p-2">ลำดับ</td>
-                        <td class="text-center p-2">รหัสสินค้า</td>
-                        <td class="text-center p-2">รายการสินค้า</td>
-                        <td class="text-center p-2">จำนวน/หน่วย</td>
-                        <td class="text-center p-2">ราคา/หน่วย</td>
-                        <td class="text-center p-2">ส่วนลด</td>
-                        <td class="text-center p-2">มูลค่ารวม</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <t t-set="sumall" t-value="0"/>
-                    <t t-set="line_index" t-value="0"/>
-                    <t t-set="lines" t-value="line"/>
-                    <!-- <t t-foreach="o.get_invoice_with_out_down_payment()" t-as="line"> -->
-                    <t t-foreach="lines" t-as="line">
-                        <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
-                            <t t-if="not line.display_type" name="account_invoice_line_accountable">
+        <t t-call="web.external_layout">
+            <div class="page" style="font-family: AngsanaNew; font-size: 14px;">
 
-                                <td width="5%" class="text-center p-2">
-                                    <span t-esc="i"/>
-                                </td>
-                                <td class="text-center">
-                                    <span t-esc="line.product_id.default_code"/>
-                                </td>
-                                <td class="text-center">
-                                    <span t-esc="line.product_id.name"/>
-                                </td>
-                                <td class="text-center">
-                                    <span t-esc="line.quantity"/><![CDATA[&nbsp;]]><span t-esc="line.product_uom_id.name"/>
-                                </td>
-                                <td class="text-right p-2">
-                                    <span t-esc="'{:,.2f}'.format(line.price_unit)"/>
-                                </td>
+                <div class="row pb-2">
+                    <div class="col-7 p-3">
+                        <strong>ลูกค้า</strong>
+                        <br/>
+                        ชื่อ :[<span t-field="o.partner_id.ref"/>]<![CDATA[&nbsp;]]><span t-field="o.partner_id.name"/>
+                        <br/>
+                        ที่อยู่
+                        <span t-if="o.partner_id.street" t-esc="o.partner_id.street"/>
+                        <br/>
+                        <span t-if="o.partner_id.street2" t-esc="o.partner_id.street2"/>
+                        <span t-if="o.partner_id.city" t-esc="o.partner_id.city"/>
+                        <span t-if="o.partner_id.state_id" t-esc="o.partner_id.state_id.name"/>
+                        <span t-if="o.partner_id.zip" t-esc="o.partner_id.zip"/>
+                        <span t-if="o.partner_id.country_id" t-esc="o.partner_id.country_id.name"/>
+                        <br/>
+                        เลขประจำตัวผู้เสียภาษี : <span t-if="o.partner_id.vat" t-esc="o.partner_id.vat"/>
+                        สาขา : <span t-if="o.partner_id.branch != '00000'" t-esc="o.partner_id.branch"/><span t-else="">สำนักงานใหญ่</span>
+                    </div>
+                    <div class="col-5 p-3">
+                        <strong>วันที่</strong>:
+                        <span t-field="o.invoice_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
+                        <br/>
+                         <strong>เลขที่เอกสาร</strong>:
+                        <span t-field="o.name"/>
+                        <br/>
+                         <strong>เลขที่ใบสั่งซื้อ</strong>:
+                        <span t-field="o.ref"/>
+                        <br/>
+                         <strong>เงื่อนไขการชำระเงิน</strong>:
+                        <span t-esc="o.invoice_payment_term_id.name"/>
+                        <br/>
+                        <strong>วันครบกำหนดชำระ</strong>:
+                        <span t-field="o.invoice_date_due" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
+                    </div>
+                </div>
+                <table class="table table-bordered o_main_table border" width="100%">
+                    <thead>
+                        <tr style="background-color:#E2DBC8;">
+                            <td class="text-center p-2">ลำดับ</td>
+                            <td class="text-center p-2">รหัสสินค้า</td>
+                            <td class="text-center p-2">รายการสินค้า</td>
+                            <td class="text-center p-2">จำนวน/หน่วย</td>
+                            <td class="text-center p-2">ราคา/หน่วย</td>
+                            <td class="text-center p-2">ส่วนลด</td>
+                            <td class="text-center p-2">มูลค่ารวม</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="sumall" t-value="0"/>
+                        <t t-set="line_index" t-value="0"/>
+                        <t t-set="lines" t-value="line"/>
+                        <!-- <t t-foreach="o.get_invoice_with_out_down_payment()" t-as="line"> -->
+                        <t t-foreach="lines" t-as="line">
+                            <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                <t t-if="not line.display_type" name="account_invoice_line_accountable">
+
+                                    <td width="5%" class="text-center p-2">
+                                        <span t-esc="i"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="line.product_id.default_code"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="line.product_id.name"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="line.quantity"/><![CDATA[&nbsp;]]><span t-esc="line.product_uom_id.name"/>
+                                    </td>
+                                    <td class="text-right p-2">
+                                        <span t-esc="'{:,.2f}'.format(line.price_unit)"/>
+                                    </td>
+                                    <td>
+    <!--                                    <t t-if="line.discount_type">-->
+                                            <span t-esc="line.discount"/>
+    <!--                                        <span t-esc="dict(line.fields_get(allfields=['discount_type'])['discount_type']['selection'])[line.discount_type]"/>-->
+    <!--                                    </t>-->
+                                    </td>
+
+                                    <td class="text-right p-2">
+                                        <span t-esc="'{:,.2f}'.format(line.price_total)"/>
+                                    </td>
+                                    <t t-set="i" t-value="i + 1"/>
+                                </t>
+                                <t t-if="line.display_type == 'line_section'">
+                                    <td colspan="99">
+                                        <span t-field="line.name" t-options="{'widget': 'text'}"/>
+                                    </td>
+                                    <t t-set="current_section" t-value="line"/>
+                                    <t t-set="current_subtotal" t-value="0"/>
+                                </t>
+                                <t t-if="line.display_type == 'line_note'">
+                                    <td colspan="99">
+                                        <span t-field="line.name" t-options="{'widget': 'text'}"/>
+                                    </td>
+                                </t>
+                                </tr>
+                            <t t-set="sumall" t-value="line.price_total + sumall"/>
+                        </t>
+                    </tbody>
+                </table>
+    <!--             <t t-if="i % 8 ==0">-->
+    <!--                <div style="page-break-after:always;"/>-->
+    <!--            </t>-->
+                <div class="row justify-content-end">
+                    <div class="col-5">
+                        <table class="table table-sm">
+                            <tr class="border-black">
                                 <td>
-<!--                                    <t t-if="line.discount_type">-->
-                                        <span t-esc="line.discount"/>
-<!--                                        <span t-esc="dict(line.fields_get(allfields=['discount_type'])['discount_type']['selection'])[line.discount_type]"/>-->
-<!--                                    </t>-->
+                                    มูลค่าสินค้า
                                 </td>
-
-                                <td class="text-right p-2">
-                                    <span t-esc="'{:,.2f}'.format(line.price_total)"/>
+                                <td class="text-right">
+    <!--                                <span t-esc="o.amount_untaxed_before_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
                                 </td>
-                                <t t-set="i" t-value="i + 1"/>
-                            </t>
-                            <t t-if="line.display_type == 'line_section'">
-                                <td colspan="99">
-                                    <span t-field="line.name" t-options="{'widget': 'text'}"/>
-                                </td>
-                                <t t-set="current_section" t-value="line"/>
-                                <t t-set="current_subtotal" t-value="0"/>
-                            </t>
-                            <t t-if="line.display_type == 'line_note'">
-                                <td colspan="99">
-                                    <span t-field="line.name" t-options="{'widget': 'text'}"/>
-                                </td>
-                            </t>
                             </tr>
-                        <t t-set="sumall" t-value="line.price_total + sumall"/>
-                    </t>
-                </tbody>
-            </table>
-<!--             <t t-if="i % 8 ==0">-->
-<!--                <div style="page-break-after:always;"/>-->
-<!--            </t>-->
-            <div class="row justify-content-end">
-                <div class="col-5">
-                    <table class="table table-sm">
-                        <tr class="border-black">
-                            <td>
-                                มูลค่าสินค้า
-                            </td>
-                            <td class="text-right">
-<!--                                <span t-esc="o.amount_untaxed_before_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                            </td>
-                        </tr>
-                        <tr class="border-black">
-                            <td>ส่วนลดการค้า</td>
-                            <td class="text-right">
-<!--                                <span t-esc="o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                            </td>
-                        </tr>
-                        <tr class="border-black">
-                            <td >มูลค่าหลังหักส่วนลด</td>
-                            <td class="text-right">
-<!--                                <span t-esc="o.amount_untaxed_before_trade_discount - o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                            </td>
-                        </tr>
-                        <tr class="border-black">
-                            <td>ภาษีมูลค่าเพิ่ม <span t-esc="', '.join(map(lambda x: (x.description or '{0:.2f}%'.format(x.amount)), o.invoice_line_ids.tax_ids))" id="line_tax_ids"/></td>
-                            <td class="text-right">
-                                <span t-esc="o.amount_tax" t-options='{"widget": "float", "precision": 2}'/>
-                            </td>
-                        </tr>
-                        <tr class="border-black" style="border-bottom:1pt solid black;">
-                            <td><strong>มูลค่าสุทธิ</strong></td>
-                            <td class="text-right">
-                                <span t-esc="o.amount_total" t-options='{"widget": "float", "precision": 2}'/>
-                            </td>
-                        </tr>
-                    </table>
+                            <tr class="border-black">
+                                <td>ส่วนลดการค้า</td>
+                                <td class="text-right">
+    <!--                                <span t-esc="o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
+                                </td>
+                            </tr>
+                            <tr class="border-black">
+                                <td >มูลค่าหลังหักส่วนลด</td>
+                                <td class="text-right">
+    <!--                                <span t-esc="o.amount_untaxed_before_trade_discount - o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
+                                </td>
+                            </tr>
+                            <tr class="border-black">
+                                <td>ภาษีมูลค่าเพิ่ม <span t-esc="', '.join(map(lambda x: (x.description or '{0:.2f}%'.format(x.amount)), o.invoice_line_ids.tax_ids))" id="line_tax_ids"/></td>
+                                <td class="text-right">
+                                    <span t-esc="o.amount_tax" t-options='{"widget": "float", "precision": 2}'/>
+                                </td>
+                            </tr>
+                            <tr class="border-black" style="border-bottom:1pt solid black;">
+                                <td><strong>มูลค่าสุทธิ</strong></td>
+                                <td class="text-right">
+                                    <span t-esc="o.amount_total" t-options='{"widget": "float", "precision": 2}'/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <table style="margin-top:0;" width="100%">
-                <tr class="border" style="height: 50px;vertical-align: middle;">
-                    <td></td>
-                    <td style="vertical-align: middle;">
-<!--                        <span>รวม-->
-<!--&lt;!&ndash;                            <t t-esc="len(o.invoice_line_ids)"/> รายการ&ndash;&gt;-->
-<!--                        </span>-->
-                    </td>
-                    <td></td>
-                    <td style="vertical-align: middle;">
-                        <span>จำนวนเงิน
-                            (<t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.amount_total))"/>)
-                        </span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td class="text-right" style="vertical-align: middle;">
-                    </td>
-                </tr>
-            </table>
-            <p style="font-family: AngsanaNew; font-size: 12px;">
-                <strong>หมายเหตุ:</strong><br/>
-                <span style="font-family: AngsanaNew; font-size: 12px;">
-                    <ul>
-                        <li>กรณีจ่ายเป็นเช็ค ใบเสร็จรับเงินนี้จะสมบูรณ์ก็ต่อเมื่อเช็คได้เรียกเก็บเงินจากธนาคารแล้ว</li>
-                        <li>กรณีโอนเงิน/เงินสด ใบเสร็จรับเงินนี้จำสมบูรณ์ก็ต่อเมื่อได้รับโอนเงิน/เงินสดเรียบร้อยแล้ว</li>
-                        <li>เอกสารไม่ถูกต้องกรุณาแจ้งแก้ไขภายใน 7 วัน หากพ้นกำหนดแล้วบริษัทฯ ขอสงวนสิทธิ์ในการพิจารณาเป็นกรณี</li>
-                        <li>สินค้าจำนวนตามรายการที่ระบุไว้ในใบส่งสินค้านี้ผู้ขายยังเป็นเจ้าของสินค้าจนกว่าผู้ซื้อได้ชำระค่าสินค้าครบถ้วนแล้ว ทั้งนี้แม้ว่าผู้ซื้อได้รับมอบสินค้าแล้วก็ตาม</li>
-                        <li>บริษัทเรียกเก็บดอกเบี้ย 1.25 % ต่อเดือนเมื่อชำระเกินกำหนด</li>
-                    </ul>
-                </span>
-            </p>
-            </div>
-        <div class="footer last-page">
-            <table class="table table-borderless" style="border-color:#FFF;width:100%;height:20%">
-                <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-                    <td style="width:30%;">ได้รับสินค้าครบตามรายการ<br>พร้อมได้รับใบกำกับภาษีเรียบร้อยแล้ว</br></td>
-                    <td style="width:5%;"/>
-                    <td style="width:30%;" class="text-left">ได้รับชำระโดย</td>
-                    <td style="width:5%;"/>
-                    <td style="width:40%;">ในนาม บริษัท สยาม คริสตัล ไรซ์ จำกัด</td>
-                </tr>
-                <tr class="text-left" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-                    <td style="width:20%;"/>
-                    <td style="width:5%;"/>
-                    <td style="width:30%;">
-                        <input type="checkbox" id="checkbox_cash" t-att-checked="o.journal_id.type =='cash'"/><span>เงินสด.............</span><br/>
-                        <input type="checkbox" id="checkbox_cheque" t-att-checked="o.journal_id.type =='cheque'"/><span>เช็คธนาคาร..........</span><br/>
-                        <input type="checkbox" id="checkbox_cash" t-att-checked="o.journal_id.type =='bank'"/><span>เงินโอน.............</span><br/>
-                    </td>
-                    <td style="width:5%;"/>
-                    <td/>
-                </tr>
-                <tr style="background-color: #FFF;">
-                    <td class="text-center" style="width:25%;"/>
-                    <td style="width:5%;"/>
-                    <td class="text-center" style="background-color: #FFF;width:30%;">
-                        <t>
-<!--                            <img t-attf-src="data:image/png;base64,{{ o.get_user_validate_signature()}}" style="max-width: 75px;"/>-->
-                        </t>
-                    </td>
-                    <td style="width:5%;"/>
-                    <td class="text-center" style="background-color: #FFF;">
-                        <t>
+                <table style="margin-top:0;" width="100%">
+                    <tr class="border" style="height: 50px;vertical-align: middle;">
+                        <td></td>
+                        <td style="vertical-align: middle;">
+    <!--                        <span>รวม-->
+    <!--&lt;!&ndash;                            <t t-esc="len(o.invoice_line_ids)"/> รายการ&ndash;&gt;-->
+    <!--                        </span>-->
+                        </td>
+                        <td></td>
+                        <td style="vertical-align: middle;">
+                            <span>จำนวนเงิน
+                                (<t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.amount_total))"/>)
+                            </span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-right" style="vertical-align: middle;">
+                        </td>
+                    </tr>
+                </table>
+                <p style="font-family: AngsanaNew; font-size: 12px;">
+                    <strong>หมายเหตุ:</strong><br/>
+                    <span style="font-family: AngsanaNew; font-size: 12px;">
+                        <ul>
+                            <li>กรณีจ่ายเป็นเช็ค ใบเสร็จรับเงินนี้จะสมบูรณ์ก็ต่อเมื่อเช็คได้เรียกเก็บเงินจากธนาคารแล้ว</li>
+                            <li>กรณีโอนเงิน/เงินสด ใบเสร็จรับเงินนี้จำสมบูรณ์ก็ต่อเมื่อได้รับโอนเงิน/เงินสดเรียบร้อยแล้ว</li>
+                            <li>เอกสารไม่ถูกต้องกรุณาแจ้งแก้ไขภายใน 7 วัน หากพ้นกำหนดแล้วบริษัทฯ ขอสงวนสิทธิ์ในการพิจารณาเป็นกรณี</li>
+                            <li>สินค้าจำนวนตามรายการที่ระบุไว้ในใบส่งสินค้านี้ผู้ขายยังเป็นเจ้าของสินค้าจนกว่าผู้ซื้อได้ชำระค่าสินค้าครบถ้วนแล้ว ทั้งนี้แม้ว่าผู้ซื้อได้รับมอบสินค้าแล้วก็ตาม</li>
+                            <li>บริษัทเรียกเก็บดอกเบี้ย 1.25 % ต่อเดือนเมื่อชำระเกินกำหนด</li>
+                        </ul>
+                    </span>
+                </p>
+                </div>
+            <div class="footer last-page">
+                <table class="table table-borderless" style="border-color:#FFF;width:100%;height:20%">
+                    <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
+                        <td style="width:30%;">ได้รับสินค้าครบตามรายการ<br>พร้อมได้รับใบกำกับภาษีเรียบร้อยแล้ว</br></td>
+                        <td style="width:5%;"/>
+                        <td style="width:30%;" class="text-left">ได้รับชำระโดย</td>
+                        <td style="width:5%;"/>
+                        <td style="width:40%;">ในนาม บริษัท สยาม คริสตัล ไรซ์ จำกัด</td>
+                    </tr>
+                    <tr class="text-left" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
+                        <td style="width:20%;"/>
+                        <td style="width:5%;"/>
+                        <td style="width:30%;">
+                            <input type="checkbox" id="checkbox_cash" t-att-checked="o.journal_id.type =='cash'"/><span>เงินสด.............</span><br/>
+                            <input type="checkbox" id="checkbox_cheque" t-att-checked="o.journal_id.type =='cheque'"/><span>เช็คธนาคาร..........</span><br/>
+                            <input type="checkbox" id="checkbox_cash" t-att-checked="o.journal_id.type =='bank'"/><span>เงินโอน.............</span><br/>
+                        </td>
+                        <td style="width:5%;"/>
+                        <td/>
+                    </tr>
+                    <tr style="background-color: #FFF;">
+                        <td class="text-center" style="width:25%;"/>
+                        <td style="width:5%;"/>
+                        <td class="text-center" style="background-color: #FFF;width:30%;">
+                            <t>
+    <!--                            <img t-attf-src="data:image/png;base64,{{ o.get_user_validate_signature()}}" style="max-width: 75px;"/>-->
+                            </t>
+                        </td>
+                        <td style="width:5%;"/>
+                        <td class="text-center" style="background-color: #FFF;">
+                            <t>
+                                 <t>
+    <!--                                <img t-attf-src="data:image/png;base64,{{ o.get_user_approve_signature()}}" style="max-width: 75px;"/>-->
+                                 </t>
+                            </t>
+                        </td>
+                    </tr>
+
+                    <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
+                        <td style="width:25%;"><div class="border-black" style="border-bottom: 2px dotted"/> </td>
+                        <td style="width:5%;"/>
+                        <td style="width:30%;">
+                            <t>
+    <!--                            <span t-esc="o.get_user_validate_name()"/>-->
+                            </t>
+                        </td>
+                        <td style="width:5%;"/>
+                        <td style="width:30%;">
                              <t>
-<!--                                <img t-attf-src="data:image/png;base64,{{ o.get_user_approve_signature()}}" style="max-width: 75px;"/>-->
-                             </t>
-                        </t>
-                    </td>
-                </tr>
+    <!--                            <span t-esc="o.get_user_approve_name()"/>-->
+                            </t>
+                        </td>
+                    </tr>
+                    <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
+                        <td style="width:25%;">ผู้รับของ</td>
+                        <td style="width:5%;"/>
+                        <td style="width:30%;">ผู้รับเงิน</td>
+                        <td style="width:5%;"/>
+                        <td style="width:30%;">ผู้มีอำนาจลงนาม</td>
 
-                <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-                    <td style="width:25%;"><div class="border-black" style="border-bottom: 2px dotted"/> </td>
-                    <td style="width:5%;"/>
-                    <td style="width:30%;">
-                        <t>
-<!--                            <span t-esc="o.get_user_validate_name()"/>-->
-                        </t>
-                    </td>
-                    <td style="width:5%;"/>
-                    <td style="width:30%;">
-                         <t>
-<!--                            <span t-esc="o.get_user_approve_name()"/>-->
-                        </t>
-                    </td>
-                </tr>
-                <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-                    <td style="width:25%;">ผู้รับของ</td>
-                    <td style="width:5%;"/>
-                    <td style="width:30%;">ผู้รับเงิน</td>
-                    <td style="width:5%;"/>
-                    <td style="width:30%;">ผู้มีอำนาจลงนาม</td>
-
-                </tr>
-                <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-                    <td class="text-center" style="width:25%;word-break: break-word;">วันที่........../........../..........</td>
-                    <td style="width:5%;"/>
-                    <td class="text-center" style="width:30%;">วันที่ <span style="border-bottom:1px dashed #000;" t-field="o.invoice_date" t-options="{'widget': 'date','format': 'dd/MM/yyyy'}"/>
-                    </td>
-                   <td style="width:5%;"/>
-                    <td class="text-center" style="width:30%;">วันที่ <span style="border-bottom:1px dashed #000;" t-field="o.invoice_date" t-options="{'widget': 'date','format': 'dd/MM/yyyy'}"/>
-                    </td>
-                    <td/>
-                </tr>
-                <tr style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-                    <td class="text-center" style="width:25%;word-break: break-word;">ผู้ส่งของ.................................</td>
-                    <td style="width:5%;"/>
-                    <td class="text-center" style="width:30%;"/>
-                   <td style="width:5%;"/>
-                    <td class="text-center" style="width:30%;"/>
-                </tr>
-            </table>
-        </div>
-<!--        <p style="page-break-before:always;"/>-->
+                    </tr>
+                    <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
+                        <td class="text-center" style="width:25%;word-break: break-word;">วันที่........../........../..........</td>
+                        <td style="width:5%;"/>
+                        <td class="text-center" style="width:30%;">วันที่ <span style="border-bottom:1px dashed #000;" t-field="o.invoice_date" t-options="{'widget': 'date','format': 'dd/MM/yyyy'}"/>
+                        </td>
+                       <td style="width:5%;"/>
+                        <td class="text-center" style="width:30%;">วันที่ <span style="border-bottom:1px dashed #000;" t-field="o.invoice_date" t-options="{'widget': 'date','format': 'dd/MM/yyyy'}"/>
+                        </td>
+                        <td/>
+                    </tr>
+                    <tr style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
+                        <td class="text-center" style="width:25%;word-break: break-word;">ผู้ส่งของ.................................</td>
+                        <td style="width:5%;"/>
+                        <td class="text-center" style="width:30%;"/>
+                       <td style="width:5%;"/>
+                        <td class="text-center" style="width:30%;"/>
+                    </tr>
+                </table>
+            </div>
+    <!--        <p style="page-break-before:always;"/>-->
+        </t>
     </template>
 
     <template id="report_original_rv_tax_inv">

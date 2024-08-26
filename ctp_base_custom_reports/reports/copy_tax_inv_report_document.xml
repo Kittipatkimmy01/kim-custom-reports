@@ -70,6 +70,7 @@
                 </div>
             </div>
         </div>
+
         <t t-call="web.external_layout">
             <div class="page" style="font-family: AngsanaNew; font-size: 14px;">
                 <div class="row pb-2">
@@ -334,11 +335,11 @@
         <t t-call="web.html_container">
             <!--            <t t-call="web.external_layout">-->
             <t t-foreach="docs" t-as="o">
-                <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
-                     t-att-data-oe-lang="o and o.env.context.get('lang')">
+<!--                <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"-->
+<!--                     t-att-data-oe-lang="o and o.env.context.get('lang')">-->
                     <t t-set="lang" t-value="o.partner_id.lang"/>
                     <t t-call="ctp_base_custom_reports.copy_tax_inv_report_document" t-lang="lang"/>
-                </div>
+<!--                </div>-->
             </t>
             <!--            </t>-->
         </t>
