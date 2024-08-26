@@ -178,26 +178,26 @@
             <div class="row justify-content-end">
                 <div class="col-5">
                     <table class="table table-sm">
-                        <tr class="border-black">
-                            <td>
-                                มูลค่าสินค้า
-                            </td>
-                            <td class="text-right">
-<!--                                <span t-esc="o.amount_untaxed_before_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                            </td>
-                        </tr>
-                        <tr class="border-black">
-                            <td>ส่วนลดการค้า</td>
-                            <td class="text-right">
-<!--                                <span t-esc="o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                            </td>
-                        </tr>
-                        <tr class="border-black">
-                            <td >มูลค่าหลังหักส่วนลด</td>
-                            <td class="text-right">
-<!--                                <span t-esc="o.amount_untaxed_before_trade_discount - o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                            </td>
-                        </tr>
+<!--                        <tr class="border-black">-->
+<!--                            <td>-->
+<!--                                มูลค่าสินค้า-->
+<!--                            </td>-->
+<!--                            <td class="text-right">-->
+<!--&lt;!&ndash;                                <span t-esc="o.amount_untaxed_before_trade_discount" t-options='{"widget": "float", "precision": 2}'/>&ndash;&gt;-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr class="border-black">-->
+<!--                            <td>ส่วนลดการค้า</td>-->
+<!--                            <td class="text-right">-->
+<!--&lt;!&ndash;                                <span t-esc="o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>&ndash;&gt;-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr class="border-black">-->
+<!--                            <td >มูลค่าหลังหักส่วนลด</td>-->
+<!--                            <td class="text-right">-->
+<!--&lt;!&ndash;                                <span t-esc="o.amount_untaxed_before_trade_discount - o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>&ndash;&gt;-->
+<!--                            </td>-->
+<!--                        </tr>-->
                         <tr class="border-black">
                             <td>ภาษีมูลค่าเพิ่ม <span t-esc="', '.join(map(lambda x: (x.description or '{0:.2f}%'.format(x.amount)), o.invoice_line_ids.tax_ids))" id="line_tax_ids"/></td>
                             <td class="text-right">
@@ -239,10 +239,10 @@
             <div id="payment_method">
                 <span>ได้รับชำระโดย</span>
                 <ul>
-                    <li><input type="checkbox" id="checkbox_cash" t-att-checked="o.account_payment_method_id.code =='cash'"/><span>เงินสด</span></li>
-                    <li><input type="checkbox" id="checkbox_bank" t-att-checked="o.account_payment_method_id.code =='bank'"/><span>โอนเงิน</span><![CDATA[&nbsp;]]>
-                        <span t-if="o.account_payment_method_id.code =='bank'"  style='border-bottom:1px dashed #000;' t-field="o.journal_id.name"/></li>
-                    <li><input type="checkbox" id="checkbox_cheque" t-att-checked="o.account_payment_method_id.code =='cheque'"/><span>เช็ค</span></li>
+                    <li><input type="checkbox" id="checkbox_cash" t-att-checked="o.journal_id.type =='cash'"/><span>เงินสด</span></li>
+                    <li><input type="checkbox" id="checkbox_bank" t-att-checked="o.journal_id.type =='bank'"/><span>โอนเงิน</span>&amp;nbsp;
+                        <span t-if="o.journal_id.type =='bank'" style="border-bottom:1px dashed #000;" t-field="o.journal_id.name"/></li>
+                    <li><input type="checkbox" id="checkbox_cheque" t-att-checked="o.journal_id.type =='cheque'"/><span>เช็ค</span></li>
                 </ul>
             </div>
             <p style="font-family: AngsanaNew; font-size: 12px;">

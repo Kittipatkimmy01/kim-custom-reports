@@ -225,10 +225,10 @@
             <div id="payment_method">
                 <span>ได้รับชำระโดย</span>
                 <ul>
-                    <li><input type="checkbox" id="checkbox_cash" t-att-checked="o.account_payment_method_id.code =='cash'"/><span>เงินสด</span></li>
-                    <li><input type="checkbox" id="checkbox_bank" t-att-checked="o.account_payment_method_id.code =='bank'"/><span>โอนเงิน</span><![CDATA[&nbsp;]]>
+                    <li><input type="checkbox" id="checkbox_cash" t-att-checked="o.journal_id.type =='cash'"/><span>เงินสด</span></li>
+                    <li><input type="checkbox" id="checkbox_bank" t-att-checked="o.journal_id.type =='bank'"/><span>โอนเงิน</span><![CDATA[&nbsp;]]>
                         <span t-if="o.account_payment_method_id.code =='bank'"  style='border-bottom:1px dashed #000;' t-field="o.journal_id.name"/></li>
-                    <li><input type="checkbox" id="checkbox_cheque" t-att-checked="o.account_payment_method_id.code =='cheque'"/><span>เช็ค</span></li>
+                    <li><input type="checkbox" id="checkbox_cheque" t-att-checked="o.journal_id.type =='cheque'"/><span>เช็ค</span></li>
                 </ul>
             </div>
             <p>

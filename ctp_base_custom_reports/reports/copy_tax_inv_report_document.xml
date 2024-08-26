@@ -260,9 +260,9 @@
                         <td style="width:20%;"/>
                         <td style="width:5%;"/>
                         <td style="width:30%;">
-                            <input type="checkbox" id="checkbox_cash" t-att-checked="o.payment_mode_id.payment_method_id.code =='cash'"/><span>เงินสด.............</span><br/>
-                            <input type="checkbox" id="checkbox_cheque" t-att-checked="o.payment_mode_id.payment_method_id.code =='cheque'"/><span>เช็คธนาคาร..........</span><br/>
-                            <input type="checkbox" id="checkbox_cash" t-att-checked="o.payment_mode_id.payment_method_id.code =='bank'"/><span>เงินโอน.............</span><br/>
+                            <input type="checkbox" id="checkbox_cash" t-att-checked="o.journal_id.type =='cash'"/><span>เงินสด.............</span><br/>
+                            <input type="checkbox" id="checkbox_cheque" t-att-checked="o.journal_id.type =='cheque'"/><span>เช็คธนาคาร..........</span><br/>
+                            <input type="checkbox" id="checkbox_cash" t-att-checked="o.journal_id.type =='bank'"/><span>เงินโอน.............</span><br/>
                         </td>
                         <td style="width:5%;"/>
                         <td/>
