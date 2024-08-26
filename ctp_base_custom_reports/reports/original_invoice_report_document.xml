@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="original_invoice_report_document">
-        <div class="header">
+        <div t-att-class="header">
             <div class="row">
                 <div class="col-2 pe-2">
                     <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
@@ -164,26 +164,26 @@
             <div class="row justify-content-end">
                 <div class="col-5">
                     <table class="table table-sm">
-                        <tr class="border-black">
-                            <td>
-                                มูลค่าสินค้า
-                            </td>
-                            <td class="text-right">
-<!--                                <span t-esc="o.amount_untaxed_before_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                            </td>
-                        </tr>
-                        <tr class="border-black">
-                            <td>ส่วนลดการค้า</td>
-                            <td class="text-right">
-<!--                                <span t-esc="o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                            </td>
-                        </tr>
-                        <tr class="border-black">
-                            <td >มูลค่าหลังหักส่วนลด</td>
-                            <td class="text-right">
-<!--                                <span t-esc="o.amount_untaxed_before_trade_discount - o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                            </td>
-                        </tr>
+<!--                        <tr class="border-black">-->
+<!--                            <td>-->
+<!--                                มูลค่าสินค้า-->
+<!--                            </td>-->
+<!--                            <td class="text-right">-->
+<!--&lt;!&ndash;                                <span t-esc="o.amount_untaxed_before_trade_discount" t-options='{"widget": "float", "precision": 2}'/>&ndash;&gt;-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr class="border-black">-->
+<!--                            <td>ส่วนลดการค้า</td>-->
+<!--                            <td class="text-right">-->
+<!--&lt;!&ndash;                                <span t-esc="o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>&ndash;&gt;-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr class="border-black">-->
+<!--                            <td >มูลค่าหลังหักส่วนลด</td>-->
+<!--                            <td class="text-right">-->
+<!--&lt;!&ndash;                                <span t-esc="o.amount_untaxed_before_trade_discount - o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>&ndash;&gt;-->
+<!--                            </td>-->
+<!--                        </tr>-->
                         <tr class="border-black">
                             <td>ภาษีมูลค่าเพิ่ม <span t-esc="', '.join(map(lambda x: (x.description or '{0:.2f}%'.format(x.amount)), o.invoice_line_ids.tax_ids))" id="line_tax_ids"/></td>
                             <td class="text-right">
@@ -201,13 +201,13 @@
             </div>
             <table style="margin-top:0;" width="100%">
                 <tr class="border" style="height: 50px;vertical-align: middle;">
-                    <td></td>
-                    <td style="vertical-align: middle;">
-<!--                        <span>รวม-->
-<!--&lt;!&ndash;                            <t t-esc="len(o.invoice_line_ids)"/> รายการ&ndash;&gt;-->
-<!--                        </span>-->
-                    </td>
-                    <td></td>
+<!--                    <td></td>-->
+<!--                    <td style="vertical-align: middle;">-->
+<!--&lt;!&ndash;                        <span>รวม&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            <t t-esc="len(o.invoice_line_ids)"/> รายการ&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        </span>&ndash;&gt;-->
+<!--                    </td>-->
+<!--                    <td></td>-->
                     <td style="vertical-align: middle;">
                         <span>จำนวนเงิน
                             (<t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.amount_total))"/>)
@@ -246,30 +246,31 @@
                     <td style="width:30%;"/>
                     <td style="width:5%;"/>
                     <td>สำหรับ <br/>บริษัท สยาม คริสตัล ไรซ์ จำกัด</td>
-                </tr><tr style="background-color: #FFF;">
-                    <td style="width:30%;"/>
-                    <td style="width:5%;"/>
-                    <td class="text-center" style="background-color: #FFF;">
-<!--                        <img t-attf-src="data:image/png;base64,{{ o.get_user_validate_signature()}}"-->
-<!--                             style="max-width: 75px;"/>-->
-                    </td>
-                    <td style="width:5%;"/>
-                    <td class="text-center" style="background-color: #FFF;">
-<!--                        <img t-attf-src="data:image/png;base64,{{ o.get_user_approve_signature()}}"-->
-<!--                         style="max-width: 75px;"/>-->
-                    </td>
                 </tr>
-                <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-                    <td style="width:30%;"><div class="border-black" style="border-bottom: 2px dotted"/> </td>
-                    <td style="width:5%;"/>
-                    <td style="width:30%;">
-<!--                            <span t-esc="o.get_user_validate_name()"/>-->
-                    </td>
-                    <td style="width:5%;"/>
-                    <td style="width:30%;">
-<!--                            <span t-esc="o.get_user_approve_name()"/>-->
-                    </td>
-                </tr>
+<!--                <tr style="background-color: #FFF;">-->
+<!--                    <td style="width:30%;"/>-->
+<!--                    <td style="width:5%;"/>-->
+<!--                    <td class="text-center" style="background-color: #FFF;">-->
+<!--&lt;!&ndash;                        <img t-attf-src="data:image/png;base64,{{ o.get_user_validate_signature()}}"&ndash;&gt;-->
+<!--&lt;!&ndash;                             style="max-width: 75px;"/>&ndash;&gt;-->
+<!--                    </td>-->
+<!--                    <td style="width:5%;"/>-->
+<!--                    <td class="text-center" style="background-color: #FFF;">-->
+<!--&lt;!&ndash;                        <img t-attf-src="data:image/png;base64,{{ o.get_user_approve_signature()}}"&ndash;&gt;-->
+<!--&lt;!&ndash;                         style="max-width: 75px;"/>&ndash;&gt;-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">-->
+<!--                    <td style="width:30%;"><div class="border-black" style="border-bottom: 2px dotted"/> </td>-->
+<!--                    <td style="width:5%;"/>-->
+<!--                    <td style="width:30%;">-->
+<!--&lt;!&ndash;                            <span t-esc="o.get_user_validate_name()"/>&ndash;&gt;-->
+<!--                    </td>-->
+<!--                    <td style="width:5%;"/>-->
+<!--                    <td style="width:30%;">-->
+<!--&lt;!&ndash;                            <span t-esc="o.get_user_approve_name()"/>&ndash;&gt;-->
+<!--                    </td>-->
+<!--                </tr>-->
                 <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
                     <td style="width:30%;">ผู้รับสินค้า</td>
                     <td style="width:5%;"/>

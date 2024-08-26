@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="billing_report_document">
-        <div class="header">
+        <div t-att-class="header">
             <div class="row">
                 <div class="col-2 pe-2">
                     <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height: 120px;" alt="Company Logo" class="float-left position-absolute"/>
@@ -141,29 +141,29 @@
 <!--                        </t>-->
                 </tbody>
             </table>
-            <table style="margin-top:0;" width="100%">
-                <tr class="border" style="height: 50px;vertical-align: middle;">
-                    <td/>
-                    <td style="vertical-align: middle;">
-                        <span>รวม
-                            <!--<t t-esc="len(o.invoice_ids)"/> รายการ-->
-                        </span>
-                    </td>
-                    <td/>
-                    <td style="vertical-align: middle;">
-                        <span>จำนวนเงิน
-                            <!--(<t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.bills_total))"/>)-->
-                        </span>
-                    </td>
-                    <td/>
-                    <td/>
-                    <td class="text-right" style="vertical-align: middle;">
-                        <span>
-                            <!--<t t-esc="'{0:,.2f}'.format(o.bills_total)"/>-->
-                        </span>
-                    </td>
-                </tr>
-            </table>
+<!--            <table style="margin-top:0;" width="100%">-->
+<!--                <tr class="border" style="height: 50px;vertical-align: middle;">-->
+<!--                    <td/>-->
+<!--                    <td style="vertical-align: middle;">-->
+<!--                        <span>รวม-->
+<!--                            &lt;!&ndash;<t t-esc="len(o.invoice_ids)"/> รายการ&ndash;&gt;-->
+<!--                        </span>-->
+<!--                    </td>-->
+<!--                    <td/>-->
+<!--                    <td style="vertical-align: middle;">-->
+<!--                        <span>จำนวนเงิน-->
+<!--                            &lt;!&ndash;(<t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.bills_total))"/>)&ndash;&gt;-->
+<!--                        </span>-->
+<!--                    </td>-->
+<!--                    <td/>-->
+<!--                    <td/>-->
+<!--                    <td class="text-right" style="vertical-align: middle;">-->
+<!--                        <span>-->
+<!--                            &lt;!&ndash;<t t-esc="'{0:,.2f}'.format(o.bills_total)"/>&ndash;&gt;-->
+<!--                        </span>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </table>-->
             <p>
                 <strong>หมายเหตุ</strong>
             </p>
@@ -239,12 +239,12 @@
 
     <record id="paperformat_billing_format" model="report.paperformat">
         <field name="name">Billing Note Peper format</field>
-        <field name="default" eval="True"/>
+        <field name="default" eval="False"/>
         <field name="format">A4</field>
         <field name="page_height">0</field>
         <field name="page_width">0</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">50</field>
+        <field name="margin_top">45</field>
         <field name="margin_bottom">80</field>
         <field name="margin_left">5</field>
         <field name="margin_right">5</field>
@@ -255,11 +255,11 @@
 
     <record id="action_report_report_custom_billing" model="ir.actions.report">
         <field name="name">Billing Note (PDF)</field>
-        <field name="model">account.move</field>
+        <field name="model">account.billing</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">ctp_base_custom_reports.report_billing_report</field>
         <field name="report_file">ctp_base_custom_reports.report_billing_report</field>
-        <field name="binding_model_id" eval="ref('account.model_account_move')"/>
+        <field name="binding_model_id" eval="ref('account_billing.model_account_billing')"/>
         <field name="paperformat_id" ref="paperformat_billing_format"/>
         <field name="print_report_name">'BL_ %s' % (object.name)</field>
         <field name="binding_type">report</field>

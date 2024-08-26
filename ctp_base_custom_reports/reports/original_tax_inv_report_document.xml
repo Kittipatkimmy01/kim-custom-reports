@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="origin_tax_inv_report_document">
-        <div class="header">
+        <div t-att-class="header">
             <div class="row">
                 <div class="col-2 pe-2">
                     <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height: 120px;" alt="Company Logo" class="float-left position-absolute"/>

@@ -2,7 +2,7 @@
     'name': 'CTP Base Customs Reports',
     'version': '17.0.1.0.1',
     'category': 'Tools',
-    'depends': ['base', 'account', 'sale', 'purchase'],
+    'depends': ['base', 'account', 'sale', 'purchase', 'account_billing'],
     'license': 'OPL-1',
     'author': 'Cybernetics+',
     'website': 'https://www.cybernetics.plus',

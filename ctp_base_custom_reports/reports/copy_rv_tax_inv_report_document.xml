@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="copy_rv_tax_inv_report_document">
-        <div class="header">
+        <div t-att-class="header">
             <div class="row">
                 <div class="col-2 pe-2">
                     <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
@@ -215,13 +215,13 @@
             </div>
             <table style="margin-top:0;" width="100%">
                 <tr class="border" style="height: 50px;vertical-align: middle;">
-                    <td></td>
-                    <td style="vertical-align: middle;">
+<!--                    <td></td>-->
+<!--                    <td style="vertical-align: middle;">-->
 <!--                        <span>รวม-->
 <!--&lt;!&ndash;                            <t t-esc="len(o.invoice_line_ids)"/> รายการ&ndash;&gt;-->
 <!--                        </span>-->
-                    </td>
-                    <td></td>
+<!--                    </td>-->
+<!--                    <td></td>-->
                     <td style="vertical-align: middle;">
                         <span>จำนวนเงิน
                             (<t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.amount_total))"/>)
@@ -278,39 +278,39 @@
                     <td style="width:5%;"/>
                     <td/>
                 </tr>
-                <tr style="background-color: #FFF;">
-                    <td class="text-center" style="width:25%;"/>
-                    <td style="width:5%;"/>
-                    <td class="text-center" style="background-color: #FFF;width:30%;">
-                        <t>
-<!--                            <img t-attf-src="data:image/png;base64,{{ o.get_user_validate_signature()}}" style="max-width: 75px;"/>-->
-                        </t>
-                    </td>
-                    <td style="width:5%;"/>
-                    <td class="text-center" style="background-color: #FFF;">
-                        <t>
-                             <t>
-<!--                                <img t-attf-src="data:image/png;base64,{{ o.get_user_approve_signature()}}" style="max-width: 75px;"/>-->
-                             </t>
-                        </t>
-                    </td>
-                </tr>
+<!--                <tr style="background-color: #FFF;">-->
+<!--                    <td class="text-center" style="width:25%;"/>-->
+<!--                    <td style="width:5%;"/>-->
+<!--                    <td class="text-center" style="background-color: #FFF;width:30%;">-->
+<!--                        <t>-->
+<!--&lt;!&ndash;                            <img t-attf-src="data:image/png;base64,{{ o.get_user_validate_signature()}}" style="max-width: 75px;"/>&ndash;&gt;-->
+<!--                        </t>-->
+<!--                    </td>-->
+<!--                    <td style="width:5%;"/>-->
+<!--                    <td class="text-center" style="background-color: #FFF;">-->
+<!--                        <t>-->
+<!--                             <t>-->
+<!--&lt;!&ndash;                                <img t-attf-src="data:image/png;base64,{{ o.get_user_approve_signature()}}" style="max-width: 75px;"/>&ndash;&gt;-->
+<!--                             </t>-->
+<!--                        </t>-->
+<!--                    </td>-->
+<!--                </tr>-->
 
-                <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-                    <td style="width:25%;"><div class="border-black" style="border-bottom: 2px dotted"/> </td>
-                    <td style="width:5%;"/>
-                    <td style="width:30%;">
-                        <t>
-<!--                            <span t-esc="o.get_user_validate_name()"/>-->
-                        </t>
-                    </td>
-                    <td style="width:5%;"/>
-                    <td style="width:30%;">
-                         <t>
-<!--                            <span t-esc="o.get_user_approve_name()"/>-->
-                        </t>
-                    </td>
-                </tr>
+<!--                <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">-->
+<!--                    <td style="width:25%;"><div class="border-black" style="border-bottom: 2px dotted"/> </td>-->
+<!--                    <td style="width:5%;"/>-->
+<!--                    <td style="width:30%;">-->
+<!--                        <t>-->
+<!--&lt;!&ndash;                            <span t-esc="o.get_user_validate_name()"/>&ndash;&gt;-->
+<!--                        </t>-->
+<!--                    </td>-->
+<!--                    <td style="width:5%;"/>-->
+<!--                    <td style="width:30%;">-->
+<!--                         <t>-->
+<!--&lt;!&ndash;                            <span t-esc="o.get_user_approve_name()"/>&ndash;&gt;-->
+<!--                        </t>-->
+<!--                    </td>-->
+<!--                </tr>-->
                 <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
                     <td style="width:25%;">ผู้รับของ</td>
                     <td style="width:5%;"/>
