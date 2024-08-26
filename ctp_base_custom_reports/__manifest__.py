@@ -28,5 +28,6 @@
         'reports/original_payment_report_document.xml',
         'reports/original_rv_tax_inv_report_document.xml',
         'reports/report_picking_slip.xml',
+        'reports/sale_report_document.xml',
     ],
 }
