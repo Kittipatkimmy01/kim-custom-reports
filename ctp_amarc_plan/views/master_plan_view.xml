@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="master_plan_views_form" model="ir.ui.view">
+        <field name="name">master.plan.views.form</field>
+        <field name="model">master.plan</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label for="name" string="Master Plan"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="General Information">
+                            <group>
+                                <field name="plan_code"/>
+                                <field name="plan_cate"/>
+                                <field name="description"/>
+                            </group>
+                        </page>
+                        <page string="Master Test">
+                            <field name="master_test_ids">
+                                <tree editable="bottom">
+                                    <field name="master_test_id" options="{'no_open': True, 'no_create': True}"/>
+                                    <field name="name" optional="show" readonly="1" force_save="1"/>
+                                    <field name="test_no_coa" optional="show" readonly="1" force_save="1"/>
+                                    <field name="method_id" optional="show" readonly="1" force_save="1"/>
+                                    <field name="tm_id" optional="show" readonly="1" force_save="1"/>
+                                    <field name="description" optional="show" readonly="1" force_save="1"/>
+                                    <field name="standard_unit" optional="hide" readonly="1" force_save="1"/>
+                                    <field name="tat_standard_revise" optional="hide" readonly="1" force_save="1"/>
+                                    <field name="tat_standard" optional="hide" readonly="1" force_save="1"/>
+                                    <field name="tat_express" optional="hide" readonly="1" force_save="1"/>
+                                    <field name="sample_qty_minimum" optional="hide" readonly="1" force_save="1"/>
+                                    <field name="sample_qty_qty" optional="hide" readonly="1" force_save="1"/>
+                                    <field name="boi_selected" optional="hide" readonly="1" force_save="1"/>
+                                    <field name="product_id" optional="hide" readonly="1" force_save="1"/>
+                                    <field name="master_test_id" optional="hide" readonly="1" force_save="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="master_plan_views_tree" model="ir.ui.view">
+        <field name="name">master.plan.views.tree</field>
+        <field name="model">master.plan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="master_plan_action">
+        <field name="name">Master Plan</field>
+        <field name="res_model">master.plan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="master_master_menu" sequence="99" parent="stock.menu_stock_root" name="Plan"/>
+    <menuitem id="master_plan_menu" sequence="0" parent="master_master_menu" action="master_plan_action"/>
+
+</odoo>

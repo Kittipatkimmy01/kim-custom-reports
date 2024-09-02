@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_master_plan,access.master.plan,model_master_plan,,1,1,1,1
+access_master_test,access.master.test,model_master_test,,1,1,1,1
+access_master_test_line,access.master.test.line,model_master_test_line,,1,1,1,1
+access_master_analyze,access.master.analyze,model_master_analyze,,1,1,1,1
+access_master_analyze_line,access.master.analyze.line,model_master_analyze_line,,1,1,1,1
+access_plan_category,access.plan.category,model_plan_category,,1,1,1,1
+access_method_config,access.method.config,model_method_config,,1,1,1,1
+access_tm_config,access.tm.config,model_tm_config,,1,1,1,1

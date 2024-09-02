@@ -1,0 +1,25 @@
+{
+    "name": "Amarc Plan",
+    "version": "17.0.1.0.1",
+    "description": "This is a model for testing substances and standards.",
+    "author": "Cybernetics+",
+    "website": "https://www.cybernetics.plus",
+    "live_test_url": "https://www.cybernetics.plus",
+    "category": "Sales",
+    "license": "AGPL-3",
+    "application": True,
+    "auto_install": False,
+    "installable": True,
+    "depends": [
+       "base", "stock",
+    ],
+    "data": [
+        'security/ir.model.access.csv',
+        'views/master_plan_view.xml',
+        'views/master_test_view.xml',
+        'views/master_analyze_view.xml',
+        'views/plan_category_view.xml',
+        'views/method_config_view.xml',
+        'views/tm_config_view.xml',
+    ],
+}

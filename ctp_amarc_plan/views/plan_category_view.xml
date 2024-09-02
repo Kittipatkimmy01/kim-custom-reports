@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="plan_category_views_form" model="ir.ui.view">
+        <field name="name">plan.category.views.form</field>
+        <field name="model">plan.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label for="name" string="Plan Category"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="plan_category_views_tree" model="ir.ui.view">
+        <field name="name">plan.category.views.tree</field>
+        <field name="model">plan.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="plan_category_action">
+        <field name="name">Plan Category</field>
+        <field name="res_model">plan.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="configuration_menu" sequence="3" parent="master_master_menu" name="Setting"/>
+    <menuitem id="plan_category_menu" sequence="1" parent="configuration_menu" action="plan_category_action"/>
+</odoo>

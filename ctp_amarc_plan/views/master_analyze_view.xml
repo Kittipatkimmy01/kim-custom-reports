@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="master_analyze_views_form" model="ir.ui.view">
+        <field name="name">master.analyze.views.form</field>
+        <field name="model">master.analyze</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label for="name" string="Master test"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="General Information">
+                            <group>
+                                <group>
+                                    <field name="analyze_code"/>
+                                    <field name="uom_id"/>
+                                    <field name="description"/>
+                                </group>
+                                <group>
+                                    <field name="use_for_bool"/>
+                                    <field name="master_plan_id" invisible="use_for_bool == False"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="master_analyze_views_tree" model="ir.ui.view">
+        <field name="name">master.analyze.views.tree</field>
+        <field name="model">master.analyze</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="master_analyze_action">
+        <field name="name">Master Analyze</field>
+        <field name="res_model">master.analyze</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="master_analyze_menu" sequence="2" parent="master_master_menu" action="master_analyze_action"/>
+</odoo>

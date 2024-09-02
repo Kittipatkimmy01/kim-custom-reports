@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="master_test_views_form" model="ir.ui.view">
+        <field name="name">master.test.views.form</field>
+        <field name="model">master.test</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label for="name" string="Master test"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="General Information">
+                            <group>
+                                <group>
+                                    <field name="test_code"/>
+                                    <field name="test_no_coa"/>
+                                    <field name="method_id"/>
+                                    <field name="tm_id"/>
+                                    <field name="description"/>
+                                    <field name="boi_selected"/>
+                                    <field name="product_id"/>
+                                </group>
+                                <group>
+                                    <field name="standard_unit"/>
+                                    <field name="tat_standard_revise"/>
+                                    <field name="tat_standard"/>
+                                    <field name="tat_express"/>
+                                    <field name="sample_qty_minimum"/>
+                                    <field name="sample_qty_qty"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Analyze">
+                            <field name="master_analyze_ids">
+                                <tree editable="bottom">
+                                    <field name="master_analyze_id" options="{'no_open': True, 'no_create': True}"/>
+                                    <field name="name" optional="show" readonly="1" force_save="1"/>
+                                    <field name="description" optional="show" readonly="1" force_save="1"/>
+                                    <field name="master_plan_id" optional="show" readonly="1" force_save="1"/>
+                                    <field name="price" optional="show"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="master_test_views_tree" model="ir.ui.view">
+        <field name="name">master.test.views.tree</field>
+        <field name="model">master.test</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="master_test_action">
+        <field name="name">Master Test</field>
+        <field name="res_model">master.test</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="master_test_menu" sequence="1" parent="master_master_menu" action="master_test_action"/>
+</odoo>
