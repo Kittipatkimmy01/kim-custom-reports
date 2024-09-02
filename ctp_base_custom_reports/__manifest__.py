@@ -13,8 +13,6 @@
     'data': [
         'views/res_company_view.xml',
         'views/res_partner_view.xml',
-        'views/sale_order_view.xml',
-        'views/purchase_order_view.xml',
         'views/hr_employee_view.xml',
         'views/layouts.xml',
         'reports/sale_report_document.xml',

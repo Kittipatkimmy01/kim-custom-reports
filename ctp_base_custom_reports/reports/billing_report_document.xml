@@ -89,10 +89,10 @@
                     <span t-field="o.name"/>
                     <br/>
                      <strong>วันที่</strong>:
-                    <!--<span t-field="o.bill_date" t-options="{&quot;widget&quot;: &quot;date&quot;,&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>-->
+                        <span t-field="o.invoice_date" t-options="{&quot;widget&quot;: &quot;date&quot;,&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
                     <br/>
                      <strong>เงื่อนไขการชำระเงิน</strong>:
-                    <!--<span t-esc="o.get_payment_term()"/>-->
+                    <span t-if="o.invoice_payment_term_id" t-esc="o.invoice_payment_term_id.name"/>
                 </div>
             </div>
             <table class="table table-bordered o_main_table border" width="100%">
@@ -111,59 +111,58 @@
                     <t t-set="sumall" t-value="0"/>
                     <t t-set="line_index" t-value="0"/>
                     <t t-set="lines" t-value="line"/>
-                    <!-- <t t-foreach="o.get_invoice_with_out_down_payment()" t-as="line"> -->
-<!--                    <t t-foreach="o.invoice_ids" t-as="line">-->
-<!--                            <tr>-->
-<!--                                <t t-set="line_index" t-value="line_index + 1"/>-->
-<!--                                <td width="5%" class="text-center p-2">-->
-<!--                                    <span t-esc="line_index"/>-->
-<!--                                </td>-->
-<!--                                <td class="text-center">-->
-<!--                                    <span t-esc="line.name"/>-->
-<!--                                </td>-->
-<!--                                <td class="text-center">-->
-<!--                                    <span t-field="line.invoice_date" t-options="{&quot;widget&quot;: &quot;date&quot;,&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>-->
-<!--                                </td>-->
-<!--                                <td class="text-center">-->
-<!--                                    <span t-field="line.invoice_date_due" t-options="{&quot;widget&quot;: &quot;date&quot;,&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>-->
-<!--                                </td>-->
-<!--                                <td class="text-center">-->
-<!--                                    <span t-field="line.ref"/>-->
-<!--                                </td>-->
-<!--                                <td class="text-right p-2">-->
-<!--                                    <span t-esc="'{:,.2f}'.format(line.amount_total)"/>-->
-<!--                                </td>-->
-<!--                                <td class="text-right p-2">-->
-<!--                                    <span t-esc="'{:,.2f}'.format(line.amount_residual)"/>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <t t-set="sumall" t-value="line.price_subtotal + sumall"/>-->
-<!--                        </t>-->
+                    <t t-foreach="o.invoice_ids" t-as="line">
+                            <tr>
+                                <t t-set="line_index" t-value="line_index + 1"/>
+                                <td width="5%" class="text-center p-2">
+                                    <span t-esc="line_index"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-field="line.invoice_date" t-options="{&quot;widget&quot;: &quot;date&quot;,&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-field="line.invoice_date_due" t-options="{&quot;widget&quot;: &quot;date&quot;,&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-field="line.ref"/>
+                                </td>
+                                <td class="text-right p-2">
+                                    <span t-esc="'{:,.2f}'.format(line.amount_total)"/>
+                                </td>
+                                <td class="text-right p-2">
+                                    <span t-esc="'{:,.2f}'.format(line.amount_residual)"/>
+                                </td>
+                            </tr>
+                            <t t-set="sumall" t-value="line.price_subtotal + sumall"/>
+                        </t>
                 </tbody>
             </table>
-<!--            <table style="margin-top:0;" width="100%">-->
-<!--                <tr class="border" style="height: 50px;vertical-align: middle;">-->
-<!--                    <td/>-->
+            <table style="margin-top:0;" width="100%">
+                <tr class="border" style="height: 50px;vertical-align: middle;">
+                    <td/>
 <!--                    <td style="vertical-align: middle;">-->
 <!--                        <span>รวม-->
-<!--                            &lt;!&ndash;<t t-esc="len(o.invoice_ids)"/> รายการ&ndash;&gt;-->
+<!--                            <t t-esc="len(o.invoice_ids)"/> รายการ-->
 <!--                        </span>-->
 <!--                    </td>-->
-<!--                    <td/>-->
+                    <td/>
 <!--                    <td style="vertical-align: middle;">-->
 <!--                        <span>จำนวนเงิน-->
 <!--                            &lt;!&ndash;(<t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.bills_total))"/>)&ndash;&gt;-->
 <!--                        </span>-->
 <!--                    </td>-->
-<!--                    <td/>-->
-<!--                    <td/>-->
-<!--                    <td class="text-right" style="vertical-align: middle;">-->
-<!--                        <span>-->
-<!--                            &lt;!&ndash;<t t-esc="'{0:,.2f}'.format(o.bills_total)"/>&ndash;&gt;-->
-<!--                        </span>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--            </table>-->
+                    <td/>
+                    <td/>
+                    <td class="text-right" style="vertical-align: middle;">
+                        <span>
+                            <t t-esc="'{0:,.2f}'.format(o.amount_total)"/>
+                        </span>
+                    </td>
+                </tr>
+            </table>
             <p>
                 <strong>หมายเหตุ</strong>
             </p>
@@ -264,13 +263,4 @@
         <field name="print_report_name">'BL_ %s' % (object.name)</field>
         <field name="binding_type">report</field>
     </record>
-
-<!--    <report string="Billing Note (PDF)"-->
-<!--            id="action_report_report_scr_custom_billing"-->
-<!--            model="dtr.account.billing"-->
-<!--            report_type="qweb-pdf"-->
-<!--            name="scr_custom_form.report_billing_report"-->
-<!--            file="scr_custom_form.report_billing_report"-->
-<!--            paperformat="scr_custom_form.paperformat_billing_format"-->
-<!--            print_report_name="'BL_ %s' % (object.name)"/>-->
 </odoo>

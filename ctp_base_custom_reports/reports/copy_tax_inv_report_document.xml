@@ -180,26 +180,6 @@
                 <div class="row justify-content-end">
                     <div class="col-5">
                         <table class="table table-sm">
-<!--                            <tr class="border-black">-->
-<!--                                <td>-->
-<!--                                    มูลค่าสินค้า-->
-<!--                                </td>-->
-<!--                                <td class="text-right">-->
-<!--    &lt;!&ndash;                                <span t-esc="o.amount_untaxed_before_trade_discount" t-options='{"widget": "float", "precision": 2}'/>&ndash;&gt;-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr class="border-black">-->
-<!--                                <td>ส่วนลดการค้า</td>-->
-<!--                                <td class="text-right">-->
-<!--    &lt;!&ndash;                                <span t-esc="o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>&ndash;&gt;-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr class="border-black">-->
-<!--                                <td >มูลค่าหลังหักส่วนลด</td>-->
-<!--                                <td class="text-right">-->
-<!--    &lt;!&ndash;                                <span t-esc="o.amount_untaxed_before_trade_discount - o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>&ndash;&gt;-->
-<!--                                </td>-->
-<!--                            </tr>-->
                             <tr class="border-black">
                                 <td>ภาษีมูลค่าเพิ่ม <span t-esc="', '.join(map(lambda x: (x.description or '{0:.2f}%'.format(x.amount)), o.invoice_line_ids.tax_ids))" id="line_tax_ids"/></td>
                                 <td class="text-right">
@@ -268,39 +248,7 @@
                         <td style="width:5%;"/>
                         <td/>
                     </tr>
-                    <tr style="background-color: #FFF;">
-                        <td class="text-center" style="width:25%;"/>
-                        <td style="width:5%;"/>
-                        <td class="text-center" style="background-color: #FFF;width:30%;">
-                            <t>
-    <!--                            <img t-attf-src="data:image/png;base64,{{ o.get_user_validate_signature()}}" style="max-width: 75px;"/>-->
-                            </t>
-                        </td>
-                        <td style="width:5%;"/>
-                        <td class="text-center" style="background-color: #FFF;">
-                            <t>
-                                 <t>
-    <!--                                <img t-attf-src="data:image/png;base64,{{ o.get_user_approve_signature()}}" style="max-width: 75px;"/>-->
-                                 </t>
-                            </t>
-                        </td>
-                    </tr>
 
-<!--                    <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">-->
-<!--                        <td style="width:25%;"><div class="border-black" style="border-bottom: 2px dotted"/> </td>-->
-<!--                        <td style="width:5%;"/>-->
-<!--                        <td style="width:30%;">-->
-<!--                            <t>-->
-<!--    &lt;!&ndash;                            <span t-esc="o.get_user_validate_name()"/>&ndash;&gt;-->
-<!--                            </t>-->
-<!--                        </td>-->
-<!--                        <td style="width:5%;"/>-->
-<!--                        <td style="width:30%;">-->
-<!--                             <t>-->
-<!--    &lt;!&ndash;                            <span t-esc="o.get_user_approve_name()"/>&ndash;&gt;-->
-<!--                            </t>-->
-<!--                        </td>-->
-<!--                    </tr>-->
                     <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
                         <td style="width:25%;">ผู้รับของ</td>
                         <td style="width:5%;"/>

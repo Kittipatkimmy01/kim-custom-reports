@@ -123,9 +123,9 @@
                         <strong>วันที่ส่งของ</strong> :
                         <span t-field="o.commitment_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
                         <br/>
-                        <strong>เงื่อนไขการจัดส่ง</strong> :
-                        <span t-field="o.transport_address"/>
-                        <br/>
+<!--                        <strong>เงื่อนไขการจัดส่ง</strong> :-->
+<!--                        <span t-field="o.transport_address"/>-->
+<!--                        <br/>-->
                         <strong>พนักงานขาย</strong> : <span t-field="o.user_id.name"/>
                         <br/>
                         <strong>เบอร์ติดต่อ</strong> : <span t-field="o.user_id.phone"/>
@@ -147,7 +147,6 @@
                         <t t-set="sumall" t-value="0"/>
                         <t t-set="line_index" t-value="0"/>
                         <t t-set="lines" t-value="line"/>
-                        <!-- <t t-foreach="o.get_invoice_with_out_down_payment()" t-as="line"> -->
                         <t t-foreach="o.order_line" t-as="line">
                             <t t-if="not line.display_type">
                                 <tr style="font-family: AngsanaNew; font-size: 12px;">
@@ -168,10 +167,7 @@
                                         <span t-esc="'{:,.2f}'.format(line.price_unit)"/>
                                     </td>
                                     <td width="15%" class="text-right p-2">
-    <!--                                    <t t-if="line.discount_type">-->
                                             <span t-esc="'{:,.2f}'.format(line.discount)"/>
-    <!--                                        <span t-esc="dict(line.fields_get(allfields=['discount_type'])['discount_type']['selection'])[line.discount_type]"/>-->
-    <!--                                    </t>-->
                                     </td>
                                     <td class="text-right p-2">
                                         <span t-esc="'{:,.2f}'.format(line.price_subtotal)"/>
@@ -186,42 +182,28 @@
                     <div class="col-5">
                         <table class="table table-sm">
                             <tr class="border-black">
-                                <td>
-                                    มูลค่าสินค้า
-                                </td>
-                                <td class="text-right">
-    <!--                                <span t-esc="o.amount_untaxed_before_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                                </td>
-                            </tr>
-                            <tr class="border-black">
-                                <td>ส่วนลดการค้า</td>
-                                <td class="text-right">
-    <!--                                <span t-esc="o.amount_trade_discount" t-options='{"widget": "float", "precision": 2}'/>-->
-                                </td>
-                            </tr>
-                            <tr class="border-black">
                                 <td >มูลค่าหลังหักส่วนลด</td>
                                 <td class="text-right">
-    <!--                                <span t-esc="o.amount_untaxed" t-options='{"widget": "float", "precision": 2}'/>-->
+                                    <span t-esc="o.amount_untaxed" t-options='{"widget": "float", "precision": 2}'/>
                                 </td>
                             </tr>
                             <tr class="border-black">
                                 <td>ภาษีมูลค่าเพิ่ม <span t-esc="', '.join(map(lambda x: (x.description or '{0:.2f}%'.format(x.amount)), o.order_line.tax_id))" id="line_tax_ids"/></td>
                                 <td class="text-right">
-    <!--                                <span t-esc="o.amount_tax" t-options='{"widget": "float", "precision": 2}'/>-->
+                                    <span t-esc="o.amount_tax" t-options='{"widget": "float", "precision": 2}'/>
                                 </td>
                             </tr>
                             <tr class="border-black" style="border-bottom:1pt solid black;font-family: AngsanaNew; font-size: 12px;">
                                 <td><strong>มูลค่าสุทธิ</strong></td>
                                 <td class="text-right">
-    <!--                                <span t-esc="o.amount_total" t-options='{"widget": "float", "precision": 2}'/>-->
+                                    <span t-esc="o.amount_total" t-options='{"widget": "float", "precision": 2}'/>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
                 <span>จำนวนเงิน
-    <!--                <t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.amount_total))"/>-->
+                    <t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.amount_total))"/>
                 </span>
                 <p>
                     <strong>หมายเหตุ</strong>
@@ -230,65 +212,39 @@
                 <div class="oe_structure"/>
             </div>
             <div class="footer last-page" style="font-family: AngsanaNew; font-size: 14px;">
-    <!--            <t t-set="submitted_user" t-value="o._get_submitted_user()"/>-->
-    <!--            <t t-set="validate_user" t-value="o._get_validate_user()"/>-->
-    <!--            <t t-set="approved_user" t-value="o._get_approved_user()"/>-->
                 <table class="table table-borderless" style="border-color:#FFF;width:100%;height:20%">
-                    <tr style="background-color: #FFF;">
-    <!--                    <t t-if="o.state in ('to approve', 'purchase', 'done')">-->
-                            <td class="text-center">
-    <!--                            <t t-if="submitted_user">-->
-    <!--                                <img t-attf-src="data:image/png;base64,{{ submitted_user[1] }}"-->
-    <!--                                     style="max-width: 75px;"/>-->
-    <!--                            </t>-->
-                            </td>
-                            <td/>
-                            <td class="text-center">
-    <!--                            <t t-if="validate_user">-->
-    <!--                               <img t-attf-src="data:image/png;base64,{{ validate_user[1]}}"-->
-    <!--                                 style="max-width: 75px;"/>-->
-    <!--                            </t>-->
-                            </td>
-                            <td/>
-                            <td class="text-center">
-    <!--                            <t t-if="approved_user">-->
-    <!--                                <img t-attf-src="data:image/png;base64,{{ approved_user[1]}}"-->
-    <!--                                 style="max-width: 75px;"/>-->
-    <!--                            </t>-->
-                            </td>
-                    </tr>
-                    <tr class="text-center" style="background-color: #FFF;">
-                        <td style="width:25%;">ผู้จัดทำเอกสาร</td>
-                        <td style="width:5%;"/>
-                        <td style="width:25%;">ผู้ตรวจสอบ</td>
-                        <td style="width:5%;"/>
-                        <td style="width:25%;">ผู้อนุมัติ</td>
-                        <td>ผู้มีอำนาจลงนาม</td>
+<!--                    <tr class="text-center" style="background-color: #FFF;">-->
+<!--                        <td style="width:25%;">ผู้จัดทำเอกสาร</td>-->
+<!--                        <td style="width:5%;"/>-->
+<!--                        <td style="width:25%;">ผู้ตรวจสอบ</td>-->
+<!--                        <td style="width:5%;"/>-->
+<!--                        <td style="width:25%;">ผู้อนุมัติ</td>-->
+<!--                        <td>ผู้มีอำนาจลงนาม</td>-->
 
-                    </tr>
-                    <tr class="text-center" style="background-color: #FFF;">
-                        <td style="width:30%;">
-                            <t t-if="submitted_user">
-                                <span t-esc="submitted_user[0]"/>
-                            </t>
-                        </td>
-                        <td style="width:5%;"/>
-                        <td style="width:30%;">
-                            <t t-if="validate_user">
-                                <span t-esc="validate_user[0]"/>
-                            </t>
-                        </td>
-                        <td style="width:5%;"/>
-                        <td>
-                            <t t-if="approved_user">
-                                <span t-esc="approved_user[0]"/>
-                            </t>
+<!--                    </tr>-->
+<!--                    <tr class="text-center" style="background-color: #FFF;">-->
+<!--                        <td style="width:30%;">-->
+<!--                            <t t-if="submitted_user">-->
+<!--                                <span t-esc="submitted_user[0]"/>-->
+<!--                            </t>-->
+<!--                        </td>-->
+<!--                        <td style="width:5%;"/>-->
+<!--                        <td style="width:30%;">-->
+<!--                            <t t-if="validate_user">-->
+<!--                                <span t-esc="validate_user[0]"/>-->
+<!--                            </t>-->
+<!--                        </td>-->
+<!--                        <td style="width:5%;"/>-->
+<!--                        <td>-->
+<!--                            <t t-if="approved_user">-->
+<!--                                <span t-esc="approved_user[0]"/>-->
+<!--                            </t>-->
 
-                        </td>
-                        <td>
-                            <span>.........................</span>
-                        </td>
-                    </tr>
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <span>.........................</span>-->
+<!--                        </td>-->
+<!--                    </tr>-->
                     <tr style="background-color: #FFF;">
                         <td class="text-center">วันที่ <span style='border-bottom:1px dashed #000;'
                                       t-esc="context_timestamp(o.create_date).strftime('%d-%m-%Y')"/></td>

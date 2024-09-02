@@ -139,10 +139,7 @@
                                         <span t-esc="'{:,.2f}'.format(line.price_unit)"/>
                                     </td>
                                     <td>
-                                        <t t-if="line.discount_type">
-                                            <span t-esc="line.discount"/>
-                                            <span t-esc="dict(line.fields_get(allfields=['discount_type'])['discount_type']['selection'])[line.discount_type]"/>
-                                        </t>
+                                        <span t-esc="line.discount"/>
                                     </td>
 
                                     <td class="text-right p-2">
@@ -174,26 +171,6 @@
                     <div class="col-5">
                         <table class="table table-sm">
                             <tr class="border-black">
-                                <td>
-                                    มูลค่าสินค้า
-                                </td>
-                                <td class="text-right">
-                                    <!--<span t-esc="o.amount_untaxed_before_trade_discount" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>-->
-                                </td>
-                            </tr>
-                            <tr class="border-black">
-                                <td>ส่วนลดการค้า</td>
-                                <td class="text-right">
-                                    <!--<span t-esc="o.amount_trade_discount" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>-->
-                                </td>
-                            </tr>
-                            <tr class="border-black">
-                                <td>มูลค่าหลังหักส่วนลด</td>
-                                <td class="text-right">
-                                    <!--<span t-esc="o.amount_untaxed_before_trade_discount - o.amount_trade_discount" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>-->
-                                </td>
-                            </tr>
-                            <tr class="border-black">
                                 <td>ภาษีมูลค่าเพิ่ม <span t-esc="', '.join(map(lambda x: (x.description or '{0:.2f}%'.format(x.amount)), o.invoice_line_ids.tax_ids))" id="line_tax_ids"/></td>
                                 <td class="text-right">
                                     <span t-esc="o.amount_tax" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
@@ -212,9 +189,9 @@
                     <tr class="border" style="height: 50px;vertical-align: middle;">
                         <td/>
                         <td style="vertical-align: middle;">
-    <!--                        <span>รวม-->
-    <!--&lt;!&ndash;                            <t t-esc="len(o.invoice_line_ids)"/> รายการ&ndash;&gt;-->
-    <!--                        </span>-->
+                            <span>รวม
+                                <t t-esc="len(o.invoice_line_ids)"/> รายการ
+                            </span>
                         </td>
                         <td/>
                         <td style="vertical-align: middle;">
@@ -225,9 +202,9 @@
                         <td/>
                         <td/>
                         <td class="text-right" style="vertical-align: middle;">
-    <!--                        <span>-->
-    <!--                            <t t-esc="'{0:,.2f}'.format(o.amount_total)"/>-->
-    <!--                        </span>-->
+                            <span>
+                                <t t-esc="'{0:,.2f}'.format(o.amount_total)"/>
+                            </span>
                         </td>
                     </tr>
                 </table>
@@ -264,39 +241,7 @@
                         <td style="width:5%;"/>
                         <td/>
                     </tr>
-                    <tr style="background-color: #FFF;">
-                        <td class="text-center" style="width:25%;"/>
-                        <td style="width:5%;"/>
-                        <td class="text-center" style="background-color: #FFF;width:30%;">
-                            <t>
-                                <!--<img t-attf-src="data:image/png;base64,{{ o.get_user_validate_signature()}}" style="max-width: 75px;"/>-->
-                            </t>
-                        </td>
-                        <td style="width:5%;"/>
-                        <td class="text-center" style="background-color: #FFF;">
-                            <t>
-                                 <t>
-                                    <!--<img t-attf-src="data:image/png;base64,{{ o.get_user_approve_signature()}}" style="max-width: 75px;"/>-->
-                                 </t>
-                            </t>
-                        </td>
-                    </tr>
 
-                    <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-                        <td style="width:25%;"><div class="border-black" style="border-bottom: 2px dotted"/> </td>
-                        <td style="width:5%;"/>
-                        <td style="width:30%;">
-                            <t>
-                                <!--<span t-esc="o.get_user_validate_name()"/>-->
-                            </t>
-                        </td>
-                        <td style="width:5%;"/>
-                        <td style="width:30%;">
-                             <t>
-                                <!--<span t-esc="o.get_user_approve_name()"/>-->
-                            </t>
-                        </td>
-                    </tr>
                     <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
                         <td style="width:25%;">ผู้รับของ</td>
                         <td style="width:5%;"/>

@@ -94,7 +94,7 @@
                         <span t-field="o.name"/>
                         <br/>
                          <strong>วันที่</strong>:
-    <!--                    <span t-field="o.payment_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>-->
+                        <span t-field="o.invoice_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
     <!--                    <br/>-->
     <!--                     <strong>การรับชำระเงิน</strong>:-->
     <!--                    <span t-esc="o.account_payment_method_id.name"/>-->
@@ -116,34 +116,33 @@
                         <t t-set="sumall" t-value="0"/>
                         <t t-set="line_index" t-value="0"/>
                         <t t-set="lines" t-value="line"/>
-                        <!-- <t t-foreach="o.get_invoice_with_out_down_payment()" t-as="line"> -->
-    <!--                    <t t-foreach="o.processing_invoice_ids" t-as="line">-->
-    <!--                            <tr>-->
-    <!--                                <t t-set="line_index" t-value="line_index + 1"/>-->
-    <!--                                <td width="5%" class="text-center p-2">-->
-    <!--                                    <span t-esc="line_index"/>-->
-    <!--                                </td>-->
-    <!--                                <td class="text-center">-->
-    <!--                                    <span t-esc="line.name"/>-->
-    <!--                                </td>-->
-    <!--                                <td class="text-center">-->
-    <!--                                    <span t-field="line.invoice_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>-->
-    <!--                                </td>-->
+                        <t t-foreach="o.invoice_ids" t-as="line">
+                                <tr>
+                                    <t t-set="line_index" t-value="line_index + 1"/>
+                                    <td width="5%" class="text-center p-2">
+                                        <span t-esc="line_index"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="line.name"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-field="line.invoice_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-field="line.ref"/>
+                                    </td>
     <!--                                <td class="text-center">-->
     <!--                                    <span t-field="line.ref"/>-->
     <!--                                </td>-->
-    <!--&lt;!&ndash;                                <td class="text-center">&ndash;&gt;-->
-    <!--&lt;!&ndash;                                    <span t-field="line.ref"/>&ndash;&gt;-->
-    <!--&lt;!&ndash;                                </td>&ndash;&gt;-->
-    <!--                                <td class="text-right p-2">-->
-    <!--                                    <span t-esc="'{:,.2f}'.format(line.amount_total)"/>-->
-    <!--                                </td>-->
-    <!--                                <td class="text-right p-2">-->
-    <!--                                    <span t-esc="'{:,.2f}'.format(line.amount_total)"/>-->
-    <!--                                </td>-->
-    <!--                            </tr>-->
-    <!--                            <t t-set="sumall" t-value="line.amount_total + sumall"/>-->
-    <!--                        </t>-->
+                                    <td class="text-right p-2">
+                                        <span t-esc="'{:,.2f}'.format(line.amount_total)"/>
+                                    </td>
+                                    <td class="text-right p-2">
+                                        <span t-esc="'{:,.2f}'.format(line.amount_total)"/>
+                                    </td>
+                                </tr>
+                                <t t-set="sumall" t-value="line.amount_total + sumall"/>
+                            </t>
                     </tbody>
                 </table>
                 <div class="row justify-content-end">
@@ -157,28 +156,28 @@
     <!--                                <span t-esc="o.inv_untaxed" t-options='{"widget": "float", "precision": 2}'/>-->
                                 </td>
                             </tr>
-                            <tr class="border-black">
-                                <td>หักค่าธรรมเนียม/อื่นๆ</td>
-                                <td class="text-right">
-    <!--                                <span t-esc="o.amount_fee" t-options='{"widget": "float", "precision": 2}'/>-->
-                                </td>
-                            </tr>
+<!--                            <tr class="border-black">-->
+<!--                                <td>หักค่าธรรมเนียม/อื่นๆ</td>-->
+<!--                                <td class="text-right">-->
+<!--    &lt;!&ndash;                                <span t-esc="o.amount_fee" t-options='{"widget": "float", "precision": 2}'/>&ndash;&gt;-->
+<!--                                </td>-->
+<!--                            </tr>-->
                             <tr class="border-black">
                                 <td >หัก ณ ที่จ่าย</td>
                                 <td class="text-right">
-    <!--                                <span t-esc="o.amount_wht" t-options='{"widget": "float", "precision": 2}'/>-->
+                                    <span t-esc="o.amount_wht" t-options='{"widget": "float", "precision": 2}'/>
                                 </td>
                             </tr>
                             <tr class="border-black">
                                 <td>ภาษีมูลค่าเพิ่ม </td>
                                 <td class="text-right">
-    <!--                                <span t-esc="o.inv_tax" t-options='{"widget": "float", "precision": 2}'/>-->
+                                    <span t-esc="o.tax_totals" t-options='{"widget": "float", "precision": 2}'/>
                                 </td>
                             </tr>
                             <tr class="border-black" style="border-bottom:1pt solid black;">
                                 <td><strong>ยอดรวม</strong></td>
                                 <td class="text-right">
-    <!--                                <span t-esc="o.inv_total" t-options='{"widget": "float", "precision": 2}'/>-->
+                                    <span t-esc="o.amount_total" t-options='{"widget": "float", "precision": 2}'/>
                                 </td>
                             </tr>
                         </table>
@@ -189,20 +188,20 @@
                         <td></td>
                         <td style="vertical-align: middle;">
                             <span>รวม
-    <!--                            <t t-esc="len(o.processing_invoice_ids)"/> รายการ-->
+                                <t t-esc="len(o.invoice_ids)"/> รายการ
                             </span>
                         </td>
                         <td></td>
                         <td style="vertical-align: middle;">
                             <span>จำนวนเงิน
-    <!--                            (<t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.inv_total))"/>)-->
+                                (<t t-esc="o.currency_id.thai_baht('{0:.2f}'.format(o.amount_total))"/>)
                             </span>
                         </td>
                         <td></td>
                         <td></td>
                         <td class="text-right" style="vertical-align: middle;">
                             <span>
-    <!--                            <t t-esc="'{0:,.2f}'.format(o.inv_total)"/>-->
+                                <t t-esc="'{0:,.2f}'.format(o.amount_total)"/>
                             </span>
                         </td>
                     </tr>
@@ -224,21 +223,15 @@
             </div>
 
             <div class="footer last-page">
-    <!--            <t t-set="approved_user" t-value="o._get_approved_user()"/>-->
                 <table class="table table-borderless" style="border-color:#FFF;width:100%;height:20%">
                     <tr style="background-color: #FFF;">
                         <t>
-                            <td class="text-center" style="background-color: #FFF;">
-    <!--                            <img t-attf-src="data:image/png;base64,{{ o.get_user_approve_signature()}}"-->
-    <!--                                 style="max-width: 75px;"/>-->
-                            </td>
-                            <td/>
                             <td/>
                             <td/>
                             <td class="text-center" style="background-color: #FFF;">
                                 <t>
-    <!--                                <img t-attf-src="data:image/png;base64,{{ o.create_uid.employee_ids[0].sudo().user_signature}}"-->
-    <!--                                 style="max-width: 75px;"/>-->
+                                    <img t-attf-src="data:image/png;base64,{{ o.create_uid.employee_ids[0].sudo().user_signature}}"
+                                     style="max-width: 75px;"/>
                                 </t>
                             </td>
                         </t>
@@ -252,9 +245,6 @@
                         <td style="width:30%;">ผู้รับเงิน</td>
                     </tr>
                     <tr class="text-center" style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-                        <td style="width:30%;">
-    <!--                        <span t-esc="o._get_approved_user()"/>-->
-                        </td>
                         <td style="width:5%;"/>
                         <td style="width:5%;"/>
                         <td/>
@@ -264,15 +254,15 @@
                     </tr>
 
                     <tr style="background-color: #FFF;font-family: AngsanaNew; font-size: 14px;">
-    <!--                    <td class="text-center">วันที่ <span style='border-bottom:1px dashed #000;'-->
-    <!--                                  t-field="o.payment_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>-->
-    <!--                    </td>-->
+                        <td class="text-center">วันที่ <span style='border-bottom:1px dashed #000;'
+                                      t-field="o.invoice_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
+                        </td>
                         <td class="text-center"/>
                         <td/>
                         <td/>
-    <!--                    <td class="text-center">วันที่ <span style='border-bottom:1px dashed #000;'-->
-    <!--                                  t-field="o.payment_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>-->
-    <!--                    </td>-->
+                        <td class="text-center">วันที่ <span style='border-bottom:1px dashed #000;'
+                                      t-field="o.invoice_date" t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
+                        </td>
                     </tr>
                 </table>
             </div>

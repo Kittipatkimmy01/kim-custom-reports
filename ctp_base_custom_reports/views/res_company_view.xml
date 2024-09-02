@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <!-- Add "Asset Category" to supplier invoices -->
     <record model="ir.ui.view" id="view_res_company_scr_demo">
         <field name="name">res.company.view.form</field>
