@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="ir_actions_report_inherit_view" model="ir.ui.view">
+        <field name="name">ir.actions.report.inherit.view</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']/button[@name='create_action']" position="after">
+                <button name="view_log_reports" class="oe_stat_button" type="object" icon="fa-solid fa-file"
+                        invisible="count == 0">
+                    <field name="count" widget="statinfo" string="Log"/>
+                </button>
+            </xpath>
+            <xpath expr="//sheet/notebook/page[@name='advanced']/group/field[@name='attachment']" position="after">
+                <field name="limit_printing" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="ir_actions_report_view_inherit" model="ir.ui.view">
+        <field name="name">ir.actions.report.view.inherit</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="ctp_print_options.act_report_view_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='advanced']/group/field[@name='default_print_option']" position="replace">
+                <field name="print_option" readonly="1"/>
+                <field name="access_right_id" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

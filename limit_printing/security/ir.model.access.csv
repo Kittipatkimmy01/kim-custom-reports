@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_actions_report,access.actions.report,model_actions_report,base.group_no_one,1,1,1,1
+access_log_reports,access.log.reports,model_log_reports,base.group_no_one,1,1,1,1
+access_state_for_print,access.state.for.print,model_state_for_print,base.group_no_one,1,1,1,1

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    <data noupdate="1">-->
+        <record id="status_print_order" model="state.for.print">
+            <field name="name">Order</field>
+            <field name="color">1</field>
+        </record>
+        <record id="status_picking" model="state.for.print">
+            <field name="name">Picking</field>
+            <field name="color">2</field>
+        </record>
+        <record id="status_print_invoice" model="state.for.print">
+            <field name="name">Invoice</field>
+            <field name="color">3</field>
+        </record>
+        <record id="status_print_payment" model="state.for.print">
+            <field name="name">Payment</field>
+            <field name="color">4</field>
+        </record>
+<!--    </data>-->
+</odoo>

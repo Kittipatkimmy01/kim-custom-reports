@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="approval_category_view_form_inherit" model="ir.ui.view">
+        <field name="name">approval.category.view.form.inherit</field>
+        <field name="model">approval.category</field>
+        <field name="inherit_id" ref="approvals.approval_category_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group/field[@name='company_id']" position="after">
+                <field name="is_limit_printing"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="approval_request_view_form_inherit" model="ir.ui.view">
+        <field name="name">approval.request.view.form.inherit</field>
+        <field name="model">approval.request</field>
+        <field name="inherit_id" ref="approvals.approval_request_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group/group[@name='request_main']/field[@name='partner_id']" position="attributes">
+                <attribute name="required">0</attribute>
+            </xpath>
+            <xpath expr="//sheet/group/group[@name='request_main']/field[@name='partner_id']" position="after">
+                <field name="action_id" invisible="1"/>
+                <field name="is_limit_printing" invisible="1"/>
+                <field name="sale_order_id" invisible="sale_order_id == False" readonly="1"/>
+                <field name="purchase_order_id" invisible="purchase_order_id == False" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+

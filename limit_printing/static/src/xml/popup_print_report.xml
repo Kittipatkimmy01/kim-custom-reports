@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="limit_printing.print_report_dialog" owl="1">
+        <Dialog size="'md'" title="'Notify User'">
+            <div class="text-left">
+                <h4>You cannot print this report because it has reached the printing limits.</h4>
+            </div>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary btn-lg" t-on-click="()=>props.onSelectOption('request_approve')">Create Approve</button>
+                <button class="btn btn-outline-danger btn-lg" t-on-click="()=>props.onSelectOption('close')">Close</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

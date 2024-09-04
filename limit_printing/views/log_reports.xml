@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="log_reports_views_form" model="ir.ui.view">
+        <field name="name">log.reports.views.form</field>
+        <field name="model">log.reports</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="action_id" class="oe_inline"/>
+                        <field name="user_id" class="oe-inline"/>
+                        <field name="date_print" class="oe_inline"/>
+                        <field name="count" class="oe_inline"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="log_reports_views_tree" model="ir.ui.view">
+        <field name="name">log.reports.views.tree</field>
+        <field name="model">log.reports</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="action_id" string="Actions ID" width="5%"/>
+                <field name="user_id" width="20%"/>
+                <field name="date_print" width="50%"/>
+                <field name="count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="report_printing_view_search" model="ir.ui.view">
+        <field name="model">log.reports</field>
+        <field name="arch" type="xml">
+            <search string="Search Report">
+                <group expand="0" string="Group By">
+                    <filter name="name" string="Report" domain="[('name', '=', context.get('name'))]"/>
+                    <field name="action_id"/>
+                    <field name="user_id"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="log_reports_action">
+        <field name="name">Log Report</field>
+        <field name="res_model">log.reports</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

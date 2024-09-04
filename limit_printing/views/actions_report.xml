@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="actions_report_views_form" model="ir.ui.view">
+        <field name="name">actions.report.views.form</field>
+        <field name="model">actions.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" string="Report Name" class="oe-inline"/>
+                        <field name="action_id" class="oe_inline"/>
+                        <field name="user_id" class="oe_inline"/>
+                        <field name="print_count" class="oe_inline"/>
+                        <field name="date_print" class="oe_inline"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="actions_report_views_tree" model="ir.ui.view">
+        <field name="name">actions.report.views.tree</field>
+        <field name="model">actions.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="report_order"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="report_printing_view_search" model="ir.ui.view">
+        <field name="model">actions.report</field>
+        <field name="arch" type="xml">
+            <search string="Search Report">
+                <group expand="0" string="Group By">
+                    <field name="name"/>
+                    <field name="user_id"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="report_printing_action">
+        <field name="name">Report printing</field>
+        <field name="res_model">actions.report</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_report_printing" parent="base.reporting_menuitem" sequence="4" action="report_printing_action" groups="base.group_no_one"/>
+</odoo>

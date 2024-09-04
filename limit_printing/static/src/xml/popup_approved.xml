@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="limit_printing.approved_dialog" owl="1">
+        <Dialog size="'md'" title="'Notify User'">
+            <div class="text-left">
+                <h4>This report cannot be printed because it has expired <br/> <br/>
+                    <p class="text-primary">If you would like to print this report please press the approved button.</p>
+                </h4>
+            </div>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary btn-lg" t-on-click="()=>props.onSelectOption('ok')">approved</button>
+                <button class="btn btn-outline-danger btn-lg" t-on-click="()=>props.onSelectOption('close')">Cancel</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>
